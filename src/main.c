@@ -6,14 +6,14 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 22:08:00 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/03 00:22:29 by ensebast         ###   ########.br       */
+/*   Updated: 2022/03/03 00:24:13 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
 static void	init_signal(void);
-static void	signal_handler(int sig);
+static void	interrupt_handler(int sig);
 
 int	main(void)
 {
