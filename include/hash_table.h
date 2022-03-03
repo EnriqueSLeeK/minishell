@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prompt.c                                           :+:      :+:    :+:   */
+/*   hash_table.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/02 22:05:58 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/03 15:07:18 by ensebast         ###   ########.br       */
+/*   Created: 2022/03/03 15:42:03 by ensebast          #+#    #+#             */
+/*   Updated: 2022/03/03 15:45:09 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shell.h"
+#ifndef HASH_TABLE_H
+# define HASH_TABLE_H
 
-char	*prompt(void)
+typedef struct s_hash_table
 {
-	char	*line;
 
-	line = readline("\e[1;34m minishell \e[01;34m>\e[00m ");
-	if (line == 0)
-	{
-		rl_clear_history();
-		exit(1);
-	}
-	else
-		add_history(line);
-	return (line);
-}
+}	t_hash_table;
+
+#endif
