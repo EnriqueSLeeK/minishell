@@ -6,5 +6,9 @@
 # include <signal.h>
 # include <stdlib.h>
 # include <termios.h>
+# include <readline/history.h>
+# include <readline/readline.h>
+
+char	*prompt(void);
 
 #endif
