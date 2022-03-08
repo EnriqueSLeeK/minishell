@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 15:42:03 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/07 22:30:19 by ensebast         ###   ########.br       */
+/*   Updated: 2022/03/07 23:05:01 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void					remove_entry(t_hash_table *table, char *key);
 unsigned long long int	hash(const char *data_byte);
 
 // Misc functions
+void					list_all(t_hash_table *table);
 char					*get_value(t_hash_table *table, char *key);
 void					print_elem(t_hash_table *table, char *key);
 int						index_adjust(unsigned long long int index,

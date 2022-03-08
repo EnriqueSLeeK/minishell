@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 23:46:35 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/07 22:44:26 by ensebast         ###   ########.br       */
+/*   Updated: 2022/03/07 23:02:06 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ extern t_shell	g_data;
 
 // Prompt
 char	*prompt(void);
+void	clean_up(void);
 int		init_env_table(char *envp[]);
 
 #endif
