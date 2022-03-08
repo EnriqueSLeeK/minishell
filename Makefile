@@ -6,7 +6,7 @@
 #    By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/03/07 22:45:48 by ensebast         ###   ########.br        #
+#    Updated: 2022/03/07 23:08:24 by ensebast         ###   ########.br        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ RM := rm -rf
 FILES_M := main.c\
 	hash.c\
 	prompt.c\
+	clean_up.c\
 	misc_func.c\
 	table_util.c\
 	entry_util.c\
@@ -34,7 +35,7 @@ DIR_OBJ := ./obj/
 
 OBJ_M := $(addprefix $(DIR_OBJ), $(FILE_OBJ))
 
-VPATH := ./src ./src/hash_table/
+VPATH := ./src/shell ./src/hash_table
 
 $(DIR_OBJ)%.o: %.c
 	@mkdir -p $(@D)
@@ -50,9 +51,11 @@ all: $(NAME)
 
 clean:
 	$(RM) $(DIR_OBJ)
+	make clean -C libft
 
 fclean: clean
 	$(RM) $(NAME)
+	make fclean -C libft
 
 re: fclean all
 
