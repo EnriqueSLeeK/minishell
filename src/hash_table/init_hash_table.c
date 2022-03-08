@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 17:14:56 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/07 23:04:14 by ensebast         ###   ########.br       */
+/*   Updated: 2022/03/07 23:17:28 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,5 @@ int	init_env_table(char *envp[])
 		envp[i][k] = '=';
 		i += 1;
 	}
-	list_all(g_data.env_vars);
 	return (1);
 }
