@@ -22,12 +22,12 @@ LIBFT := ./libft/libft.a
 RM := rm -rf
 
 FILES_M := main.c\
-		   hash.c\
-		   prompt.c\
-		   misc_func.c\
-		   table_util.c\
-		   entry_util.c\
-		   init_hash_table.c
+	hash.c\
+	prompt.c\
+	misc_func.c\
+	table_util.c\
+	entry_util.c\
+	init_hash_table.c
 
 FILE_OBJ := $(FILES_M:c=o)
 DIR_OBJ := ./obj/
