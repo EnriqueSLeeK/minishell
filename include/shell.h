@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 23:46:35 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/03 15:40:24 by ensebast         ###   ########.br       */
+/*   Updated: 2022/03/07 22:44:26 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,19 @@
 
 // Custom project headers
 # include "hash_table.h"
+# include "../libft/libft.h"
 
-// Functions
+typedef struct s_shell
+{
+	t_hash_table	*env_vars;
+	t_hash_table	*local_vars;
+	int				exit_code;
+}	t_shell;
+
+extern t_shell	g_data;
+
+// Prompt
 char	*prompt(void);
+int		init_env_table(char *envp[]);
 
 #endif

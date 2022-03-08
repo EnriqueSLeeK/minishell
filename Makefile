@@ -6,7 +6,7 @@
 #    By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/03/03 15:55:15 by ensebast         ###   ########.br        #
+#    Updated: 2022/03/07 22:45:48 by ensebast         ###   ########.br        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,25 +17,34 @@ CC := clang
 CFLAGS := -Wall -Werror -Wextra
 LIB := -lreadline
 
+LIBFT := ./libft/libft.a
+
 RM := rm -rf
 
-FILES_M := main.c prompt.c
-DIR_M := ./src/
+FILES_M := main.c\
+		   hash.c\
+		   prompt.c\
+		   misc_func.c\
+		   table_util.c\
+		   entry_util.c\
+		   init_hash_table.c
 
 FILE_OBJ := $(FILES_M:c=o)
 DIR_OBJ := ./obj/
 
 OBJ_M := $(addprefix $(DIR_OBJ), $(FILE_OBJ))
-SRC_M := $(addprefix $(DIR_M), $(FILES_M))
 
-DIR_GUARD=@mkdir -p $(@D)
+VPATH := ./src ./src/hash_table/
 
-$(DIR_OBJ)%.o: $(DIR_M)%.c
-	$(DIR_GUARD)
+$(DIR_OBJ)%.o: %.c
+	@mkdir -p $(@D)
 	$(CC) $(INCLUDE) -c $^ -o $@
 
-$(NAME): $(OBJ_M) ./include/shell.h
-	$(CC) -o $@ $(OBJ_M) $(LIB)
+$(NAME): $(OBJ_M) $(LIBFT)
+	$(CC) -o $@ $(OBJ_M) $(LIBFT) $(LIB)
+
+$(LIBFT):
+	make -C libft
 
 all: $(NAME)
 
