@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 15:28:46 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/07 21:57:35 by ensebast         ###   ########.br       */
+/*   Updated: 2022/03/08 16:49:44 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,34 +49,31 @@ int	set_entry(t_hash_table *table, t_entry *entry)
 	unsigned long long int	index;	
 
 	if (entry == 0)
-		return (0);
+		return (1);
 	index = hash(entry -> key) % table -> capacity;
 	if (update_or_find_null(table, entry, &index))
-		return (2);
+		return (0);
 	table -> length += 1;
 	table -> table[index] = entry;
 	if (table -> length >= (int)(table -> capacity / 2))
 	{
 		if (expand_table(table) == 0)
-		{
-			printf("Not enought memory\n");
-			return (0);
-		}
+			return (1);
 	}
-	return (1);
+	return (0);
 }
 
 // Get a entry from the table
 t_entry	**get_entry(t_hash_table *table, char *key)
 {
-	int	i;
+	unsigned long long int	i;
 
 	i = hash(key) % table -> capacity;
 	while (table -> table[i] != 0)
 	{
 		if (ft_strncmp(key, table -> table[i]-> key, ft_strlen(key)) == 0)
 			return (&(table -> table[i]));
-		i += 1;
+		i = index_adjust(i + 1, table -> capacity);
 	}
 	return (0);
 }
