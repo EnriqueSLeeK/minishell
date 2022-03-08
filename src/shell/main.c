@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 22:08:00 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/07 23:25:03 by ensebast         ###   ########.br       */
+/*   Updated: 2022/03/07 23:33:52 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	init(char *envp[])
 {
 	init_signal();
 	init_env_table(envp);
+	g_data.exit_code = 0;
 }
 
 // SIGQUIT = ctrl + \ must be ignored
