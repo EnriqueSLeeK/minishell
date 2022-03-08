@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 22:08:00 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/07 22:40:57 by ensebast         ###   ########.br       */
+/*   Updated: 2022/03/07 23:25:03 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,25 @@ t_shell	g_data;
 
 static void	init_signal(void);
 static void	interrupt_handler(int sig);
+static void	init(char *envp[]);
 
 int	main(int argc, char *argv[], char *envp[])
 {
 	char	*line;
 
-	init_signal();
-	init_env_table(envp);
+	init(envp);
 	while (1)
 	{
 		line = prompt();
 		free(line);
 	}
 	return (0);
+}
+
+void	init(char *envp[])
+{
+	init_signal();
+	init_env_table(envp);
 }
 
 // SIGQUIT = ctrl + \ must be ignored
