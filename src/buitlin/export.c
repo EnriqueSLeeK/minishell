@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 16:32:27 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/08 16:50:44 by ensebast         ###   ########.br       */
+/*   Updated: 2022/03/09 10:51:34 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,19 @@
 
 int	export(char	*key, char *value)
 {
-	remove_entry(g_data.local_vars, key);
-	return (set_entry(g_data.env_vars, create_entry(key, value)));
+	t_entry	**entry; 
+
+	if (value != 0 &&  *value != 0)
+		return (set_entry(g_data.env_vars, create_entry(key, value)));
+	else
+	{
+		entry = get_entry(g_data.local_vars, key);
+		if (entry != 0)
+		{
+			set_entry(g_data.env_vars, *entry);
+			*entry = 0;
+			return (0);
+		}
+	}
+	return (0);
 }
