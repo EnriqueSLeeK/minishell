@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 16:32:27 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/09 10:51:34 by ensebast         ###   ########.br       */
+/*   Updated: 2022/03/09 11:06:11 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	export(char	*key, char *value)
 {
-	t_entry	**entry; 
+	t_entry	**entry;
 
-	if (value != 0 &&  *value != 0)
+	if (value != 0 && *value != 0)
 		return (set_entry(g_data.env_vars, create_entry(key, value)));
 	else
 	{
