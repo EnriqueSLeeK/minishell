@@ -6,7 +6,7 @@
 #    By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/03/07 23:08:24 by ensebast         ###   ########.br        #
+#    Updated: 2022/03/10 18:32:46 by ensebast         ###   ########.br        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ LIBFT := ./libft/libft.a
 
 RM := rm -rf
 
+# Source files
 FILES_M := main.c\
 	hash.c\
 	prompt.c\
@@ -35,7 +36,8 @@ DIR_OBJ := ./obj/
 
 OBJ_M := $(addprefix $(DIR_OBJ), $(FILE_OBJ))
 
-VPATH := ./src/shell ./src/hash_table
+# Source directories
+VPATH := ./src/shell ./src/hash_table ./src/builtin
 
 $(DIR_OBJ)%.o: %.c
 	@mkdir -p $(@D)

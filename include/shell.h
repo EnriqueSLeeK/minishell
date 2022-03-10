@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 23:46:35 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/08 16:29:05 by ensebast         ###   ########.br       */
+/*   Updated: 2022/03/10 18:27:12 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <readline/readline.h>
 
 // Custom project headers
+# include "builtin.h"
 # include "hash_table.h"
 # include "../libft/libft.h"
 
