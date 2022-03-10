@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 15:34:55 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/09 16:40:49 by ensebast         ###   ########.br       */
+/*   Updated: 2022/03/10 18:21:46 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*get_value(t_hash_table *table, char *key)
 	entry = get_entry(table, key);
 	if (entry != 0)
 		return ((*entry)-> value);
-	return ("");
+	return (0);
 }
 
 // Print all element in the format "KEY=VALUE"
