@@ -41,10 +41,10 @@ VPATH := ./src/shell ./src/hash_table ./src/builtin
 
 $(DIR_OBJ)%.o: %.c
 	@mkdir -p $(@D)
-	$(CC) $(INCLUDE) -c $^ -o $@
+	$(CC) $(CFLAGS) $(INCLUDE) -c $^ -o $@
 
 $(NAME): $(OBJ_M) $(LIBFT)
-	$(CC) -o $@ $(OBJ_M) $(LIBFT) $(LIB)
+	$(CC) $(CFLAGS) -o $@ $(OBJ_M) $(LIBFT) $(LIB)
 
 $(LIBFT):
 	make -C libft

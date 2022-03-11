@@ -69,7 +69,7 @@ int	update_or_find_null(t_hash_table *table, t_entry *entry,
 }
 
 // Index adjust to give a circular motion
-int	index_adjust(unsigned long long int index, int capacity)
+int	index_adjust(unsigned long long int index, unsigned long long int capacity)
 {
 	if (index >= capacity)
 		return (0);

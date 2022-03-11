@@ -16,13 +16,13 @@ t_shell	g_data;
 
 static void	init_signal(void);
 static void	interrupt_handler(int sig);
-static void	init(char *envp[]);
+void		init(int argc, char *argv[], char *envp[]);
 
 int	main(int argc, char *argv[], char *envp[])
 {
 	char	*line;
 
-	init(envp);
+	init(argc, argv, envp);
 	while (1)
 	{
 		line = prompt();
@@ -31,11 +31,16 @@ int	main(int argc, char *argv[], char *envp[])
 	return (0);
 }
 
-void	init(char *envp[])
+void	init(int argc, char *argv[], char *envp[])
 {
-	init_signal();
-	init_env_table(envp);
-	g_data.exit_code = 0;
+	if (argc == 1 && argv[argc] == 0)
+	{
+		init_signal();
+		init_env_table(envp);
+		g_data.exit_code = 0;
+	}
+	else
+		exit(1);
 }
 
 // SIGQUIT = ctrl + \ must be ignored
@@ -48,8 +53,11 @@ static void	init_signal(void)
 
 static void	interrupt_handler(int sig)
 {
-	write(1, "\n", 1);
-	rl_replace_line("", 1);
-	rl_on_new_line();
-	rl_redisplay();
+	if (sig == SIGINT)
+	{
+		write(1, "\n", 1);
+		rl_replace_line("", 1);
+		rl_on_new_line();
+		rl_redisplay();
+	}
 }
