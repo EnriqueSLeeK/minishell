@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 13:44:56 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/12 14:29:06 by ensebast         ###   ########.fr       */
+/*   Updated: 2022/03/12 14:38:07 by ensebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static char	*search(char *bin)
 	i = 0;
 	path = ft_split(get_value(g_data.env_vars, "PATH"), ':');
 	if (path == 0)
-			printf("ft_split failure\n");
+		printf("ft_split failure\n");
 	else
 	{
 		while (path[i])
