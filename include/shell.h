@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 23:46:35 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/10 18:27:12 by ensebast         ###   ########.br       */
+/*   Updated: 2022/03/12 14:00:17 by ensebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 
 // Custom project headers
 # include "builtin.h"
+# include "bin_var.h"
 # include "hash_table.h"
 # include "../libft/libft.h"
 
