@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 13:44:56 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/12 14:24:37 by ensebast         ###   ########.fr       */
+/*   Updated: 2022/03/12 14:29:06 by ensebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	contain_slash(char *bin)
 	i = 0;
 	while (i < ft_strlen(bin))
 	{
-	if (bin[i] == '/')
+		if (bin[i] == '/')
 			return (1);
 	}
 	return (0);
