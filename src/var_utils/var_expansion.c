@@ -6,19 +6,21 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:44:03 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/10 18:19:45 by ensebast         ###   ########.br       */
+/*   Updated: 2022/03/12 14:17:17 by ensebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
+// Search for the value then expand, if not found
+// put a empty string
 static void	expand(char **parsed_line)
 {
 	char	*buff;
 
-	buff = get_value(g_data.env_vars, &parsed_line[i][1]);
+	buff = get_value(g_data.env_vars, *parsed_line);
 	if (buff == 0)
-		buff = get_value(g_data.local_vars, &parsed_line[i][1]);
+		buff = get_value(g_data.local_vars, *parsed_line);
 	free(*parsed_line);
 	if (buff == 0)
 		*parsed_line = ft_calloc(sizeof(char), 1);
