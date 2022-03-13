@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 23:46:35 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/11 11:54:56 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/13 16:18:44 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include <readline/readline.h>
 
 // Custom project headers
+# include "builtin.h"
+# include "bin_var.h"
 # include "hash_table.h"
 # include "../libft/libft.h"
 # include "parser.h"

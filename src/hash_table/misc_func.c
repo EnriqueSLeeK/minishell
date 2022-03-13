@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 15:34:55 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/07 21:55:00 by ensebast         ###   ########.br       */
+/*   Updated: 2022/03/10 18:21:46 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	update_or_find_null(t_hash_table *table, t_entry *entry,
 }
 
 // Index adjust to give a circular motion
-int	index_adjust(unsigned long long int index, int capacity)
+int	index_adjust(unsigned long long int index, unsigned long long int capacity)
 {
 	if (index >= capacity)
 		return (0);

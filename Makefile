@@ -6,7 +6,7 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/03/11 12:25:44 by mamaro-d         ###   ########.fr        #
+#    Updated: 2022/03/13 16:19:55 by mamaro-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ LIBFT := ./libft/libft.a
 
 RM := rm -rf
 
+# Source files
 FILES_M := main.c\
 	hash.c\
 	prompt.c\

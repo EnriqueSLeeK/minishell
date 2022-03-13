@@ -51,7 +51,7 @@ void					list_all(t_hash_table *table);
 char					*get_value(t_hash_table *table, char *key);
 void					print_elem(t_hash_table *table, char *key);
 int						index_adjust(unsigned long long int index,
-							int capacity);
+							unsigned long long int capacity);
 int						update_or_find_null(t_hash_table *table,
 							t_entry *entry, unsigned long long int *i);
 
