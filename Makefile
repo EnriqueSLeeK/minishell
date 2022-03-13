@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/03/07 23:08:24 by ensebast         ###   ########.br        #
+#    Updated: 2022/03/11 12:25:44 by mamaro-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME := minishell
 INCLUDE := -I ./include/
 
 CC := clang
-CFLAGS := -Wall -Werror -Wextra
+CFLAGS :=  -g
 LIB := -lreadline
 
 LIBFT := ./libft/libft.a
@@ -28,21 +28,22 @@ FILES_M := main.c\
 	misc_func.c\
 	table_util.c\
 	entry_util.c\
-	init_hash_table.c
+	init_hash_table.c\
+	parser.c
 
 FILE_OBJ := $(FILES_M:c=o)
 DIR_OBJ := ./obj/
 
 OBJ_M := $(addprefix $(DIR_OBJ), $(FILE_OBJ))
 
-VPATH := ./src/shell ./src/hash_table
+VPATH := ./src/shell ./src/hash_table ./src/parser
 
 $(DIR_OBJ)%.o: %.c
 	@mkdir -p $(@D)
-	$(CC) $(INCLUDE) -c $^ -o $@
+	$(CC) $(CFLAGS) $(INCLUDE) -c $^ -o $@
 
 $(NAME): $(OBJ_M) $(LIBFT)
-	$(CC) -o $@ $(OBJ_M) $(LIBFT) $(LIB)
+	$(CC) $(CFLAGS) -o $@ $(OBJ_M) $(LIBFT) $(LIB)
 
 $(LIBFT):
 	make -C libft

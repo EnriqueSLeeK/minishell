@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 22:08:00 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/08 15:31:00 by ensebast         ###   ########.br       */
+/*   Updated: 2022/03/11 12:13:21 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@ static void	init(char *envp[]);
 int	main(int argc, char *argv[], char *envp[])
 {
 	char	*line;
-
+	t_cmd	cmds;
 	init(envp);
 	while (1)
 	{
 		line = prompt();
+		parser_line(line, &cmds);
 		free(line);
 	}
 	return (0);

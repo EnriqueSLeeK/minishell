@@ -1,22 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tokenizer.h                                        :+:      :+:    :+:   */
+/*   ft_remove_occurrences.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/10 10:44:59 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/10 10:45:12 by mamaro-d         ###   ########.fr       */
+/*   Created: 2022/03/08 15:45:10 by mamaro-d          #+#    #+#             */
+/*   Updated: 2022/03/10 12:25:06 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TOKENIZER_H
-# define TOKENIZER_H
-# include "shell.h"
+#include "libft.h"
 
-# define BULTIN 42
-# define INFILE 43
-# define OUTFILE 44
-# define PIPE 45
+void	ft_remove_occurrences(char **str, char c)
+{
+	int i;
+	int len;
+	int j;
 
-#endif
+	i = 0;
+	len = ft_strlen(*str);
+	while (i < len)
+	{
+		if ((*str)[i] == c)
+		{
+			j = i;
+			while (j < len)
+			{
+				(*str)[j] = (*str)[j + 1];
+				j++;
+			}
+			i--;
+			len--;
+		}
+		i++;
+	}
+}
