@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 22:08:00 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/08 15:31:00 by ensebast         ###   ########.br       */
+/*   Updated: 2022/03/13 14:45:04 by ensebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ void		init(int argc, char *argv[], char *envp[]);
 int	main(int argc, char *argv[], char *envp[])
 {
 	char	*line;
+	t_cmd	cmd_info;
 
-	init(argc, argv, envp);
+	init(argc, argv, envp, &cmd_info);
 	while (1)
 	{
 		line = prompt();
@@ -31,13 +32,15 @@ int	main(int argc, char *argv[], char *envp[])
 	return (0);
 }
 
-void	init(int argc, char *argv[], char *envp[])
+void	init(int argc, char *argv[], char *envp[], t_cmd *cmd)
 {
 	if (argc == 1 && argv[argc] == 0)
 	{
 		init_signal();
 		init_env_table(envp);
 		g_data.exit_code = 0;
+		cmd -> cmd = 0;
+		cmd -> bin_with_path = 0;
 	}
 	else
 		exit(1);
