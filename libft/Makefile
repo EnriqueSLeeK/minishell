@@ -21,7 +21,7 @@ OBJS = $(SRCS:.c=.o)
 
 BONUS_OBJS	= ${BONUS:.c=.o}
 
-CC = clang
+CC = gcc
 
 $(NAME): $(OBJS)
 	ar -rcs $(NAME) $(OBJS)

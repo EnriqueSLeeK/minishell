@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 15:45:10 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/10 12:25:06 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/14 15:29:07 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_remove_occurrences(char **str, char c)
 {
-	int i;
-	int len;
-	int j;
+	int	i;
+	int	len;
+	int	j;
 
 	i = 0;
 	len = ft_strlen(*str);

@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 22:08:00 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/14 14:18:43 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/14 15:30:41 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@ t_shell	g_data;
 
 static void	init_signal(void);
 static void	interrupt_handler(int sig);
-static void init_operators(void);
+static void	init_operators(void);
 void		init(int argc, char *argv[], char *envp[], t_cmd *cmd);
 
 int	main(int argc, char *argv[], char *envp[])
 {
 	char	*line;
 	t_cmd	cmds;
+
 	init(argc, argv, envp, &cmds);
 	while (1)
 	{
