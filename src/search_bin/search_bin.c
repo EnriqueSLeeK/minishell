@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 13:44:56 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/12 14:38:07 by ensebast         ###   ########.fr       */
+/*   Updated: 2022/03/13 14:42:04 by ensebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,19 @@ static char	**free_matrix(char **matrix)
 	free(matrix);
 }
 
+static char	*prepare_bin_path(char *path, char *bin, char **bin_path)
+{
+	char	*tmp;
+
+	tmp = ft_strjoin(path, "/");
+	if (tmp == 0)
+		printf("Slash append failed\n");
+	*bin_path = ft_strjoin(tmp, bin);
+	if (*bin_path == 0)
+		printf("Failed to prepare the path");
+	free(tmp);
+}
+
 // Using the path var stored in the hashmap search
 // the bin
 static char	*search(char *bin)
@@ -56,7 +69,7 @@ static char	*search(char *bin)
 	{
 		while (path[i])
 		{
-			bin_path = ft_strjoin(path[i], bin);
+			prepare_bin_path(path[i], bin, &bin_path);
 			if (bin_path == 0)
 				printf("ft_strjoin failure\n");
 			if (access(bin_path, X_OK) == 0)
@@ -77,4 +90,5 @@ int	search_bin(char *bin, t_cmd *cmd)
 		cmd -> bin_with_path = ft_strdup(bin);
 	else
 		cmd -> bin_with_path = search(bin);
+	return (1);
 }

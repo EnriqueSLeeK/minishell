@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:02:51 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/11 11:44:19 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/13 16:20:40 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 # define PARSER_H
 #include "shell.h"
 
-typedef struct s_cmd {
-	char	*cmd;
+typedef struct s_command {
+	char	*command;
 	char	**args;
 	char	*relation;
-	struct s_cmd *next;
-} t_cmd;
+	struct s_command *next;
+} t_command;
 
 
 void	parser_line(char *line, t_cmd *cmd_list);

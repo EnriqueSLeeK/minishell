@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:05:26 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/11 12:42:36 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/13 16:26:11 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	is_in(char arr[6][3], char *line)
 }
 
 
-void	parser_line(char *line, t_cmd *cmd_list)
+void	parser_line(char *line, t_command *cmd_list)
 {
 	int	i;
 	char	operations[7][3] = {">", "|", "<", ">>", "<<", "\n", 0};
