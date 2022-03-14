@@ -6,15 +6,15 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/03/13 16:19:55 by mamaro-d         ###   ########.fr        #
+#    Updated: 2022/03/14 15:24:47 by mamaro-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := minishell
 INCLUDE := -I ./include/
 
-CC := clang
-CFLAGS :=  -g
+CC := gcc
+CFLAGS :=  -g -Wall -Wextra -Werror
 LIB := -lreadline
 
 LIBFT := ./libft/libft.a
@@ -30,7 +30,10 @@ FILES_M := main.c\
 	table_util.c\
 	entry_util.c\
 	init_hash_table.c\
+	create_command.c\
+	free_command.c\
 	parser.c
+	
 
 FILE_OBJ := $(FILES_M:c=o)
 DIR_OBJ := ./obj/
