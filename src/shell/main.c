@@ -6,11 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 22:08:00 by ensebast          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/03/13 16:17:37 by mamaro-d         ###   ########.fr       */
-=======
-/*   Updated: 2022/03/13 22:37:38 by ensebast         ###   ########.fr       */
->>>>>>> e422dc5da860870205ab75ad6357180c44c77f60
+/*   Updated: 2022/03/14 14:18:43 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +16,18 @@ t_shell	g_data;
 
 static void	init_signal(void);
 static void	interrupt_handler(int sig);
+static void init_operators(void);
 void		init(int argc, char *argv[], char *envp[], t_cmd *cmd);
 
 int	main(int argc, char *argv[], char *envp[])
 {
 	char	*line;
-<<<<<<< HEAD
 	t_cmd	cmds;
-	init(argc, argv,envp);
-=======
-	t_cmd	cmd_info;
-
-	init(argc, argv, envp, &cmd_info);
->>>>>>> e422dc5da860870205ab75ad6357180c44c77f60
+	init(argc, argv, envp, &cmds);
 	while (1)
 	{
 		line = prompt();
-		parser_line(line, &cmds);
+		create_relation(line);
 		free(line);
 	}
 	return (0);
@@ -49,6 +40,7 @@ void	init(int argc, char *argv[], char *envp[], t_cmd *cmd)
 		init_signal();
 		init_env_table(envp);
 		g_data.exit_code = 0;
+		init_operators();
 		cmd -> cmd = 0;
 		cmd -> bin_with_path = 0;
 	}
@@ -73,4 +65,14 @@ static void	interrupt_handler(int sig)
 		rl_on_new_line();
 		rl_redisplay();
 	}
+}
+
+static void	init_operators(void)
+{
+	g_data.operators = (char **)ft_calloc(6, sizeof(char *));
+	g_data.operators[0] = ft_strdup("|");
+	g_data.operators[1] = ft_strdup(">");
+	g_data.operators[2] = ft_strdup("<");
+	g_data.operators[3] = ft_strdup(">>");
+	g_data.operators[4] = ft_strdup("<<");
 }

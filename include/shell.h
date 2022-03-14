@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 23:46:35 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/13 16:18:44 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/14 11:30:21 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,16 @@
 # include "builtin.h"
 # include "bin_var.h"
 # include "hash_table.h"
-# include "../libft/libft.h"
 # include "parser.h"
+# include "../libft/libft.h"
 
 typedef struct s_shell
 {
 	t_hash_table	*env_vars;
 	t_hash_table	*local_vars;
 	int				exit_code;
+	char			**operators;
+	t_command		*commands;
 }	t_shell;
 
 extern t_shell	g_data;
