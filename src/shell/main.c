@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 22:08:00 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/13 14:45:04 by ensebast         ###   ########.fr       */
+/*   Updated: 2022/03/13 22:29:47 by ensebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_shell	g_data;
 
 static void	init_signal(void);
 static void	interrupt_handler(int sig);
-void		init(int argc, char *argv[], char *envp[]);
+void		init(int argc, char *argv[], char *envp[], t_cmd* cmd);
 
 int	main(int argc, char *argv[], char *envp[])
 {
