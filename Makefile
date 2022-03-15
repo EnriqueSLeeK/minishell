@@ -6,7 +6,7 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/03/15 12:29:26 by mamaro-d         ###   ########.fr        #
+#    Updated: 2022/03/15 12:31:38 by ensebast         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,8 @@ DIR_OBJ := ./obj/
 
 OBJ_M := $(addprefix $(DIR_OBJ), $(FILE_OBJ))
 
-VPATH := ./src/shell ./src/hash_table ./src/parser ./src/search_bin ./src/executor
+VPATH := ./src/shell ./src/hash_table ./src/parser ./src/search_bin ./src/executor\
+		 ./src/var_utils
 
 $(DIR_OBJ)%.o: %.c
 	@mkdir -p $(@D)
