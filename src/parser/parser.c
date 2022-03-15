@@ -6,12 +6,16 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:05:26 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/14 23:18:07 by ensebast         ###   ########.fr       */
+/*   Updated: 2022/03/15 10:20:26 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
+
+/* 	Verify if the first characters of line is equal of an operator
+	and returns a operator as relation for the next command
+*/
 static char	*is_in(char **operators, char *line)
 {
 	while (*operators)
@@ -67,5 +71,4 @@ void	create_relation(char *line)
 		index++;
 	}
 	line = create_node(line, index, first, relation);
-	free_commands();
 }

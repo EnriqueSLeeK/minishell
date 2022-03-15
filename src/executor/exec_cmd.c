@@ -1,21 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean_up.c                                         :+:      :+:    :+:   */
+/*   exec_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/07 22:59:42 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/15 11:03:46 by mamaro-d         ###   ########.fr       */
+/*   Created: 2022/03/15 10:26:57 by mamaro-d          #+#    #+#             */
+/*   Updated: 2022/03/15 10:34:14 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
-
-void	clean_up(void)
-{
-	free_table(&g_data.env_vars);
-	free_table(&g_data.local_vars);
-	free_operations();
-	rl_clear_history();
-}

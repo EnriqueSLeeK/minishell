@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_commands.c                                    :+:      :+:    :+:   */
+/*   free_command.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 15:19:19 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/14 15:19:28 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/15 11:39:40 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,5 @@ void	free_commands(void)
 	}
 	free_args(g_data.commands);
 	free(g_data.commands);
-	free_operations();
+	g_data.commands = NULL;
 }
