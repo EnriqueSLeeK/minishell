@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:44:03 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/15 13:40:39 by ensebast         ###   ########.fr       */
+/*   Updated: 2022/03/15 13:45:29 by ensebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	int_str(char *buff)
 	}
 }
 
-static char	*status_code()
+static char	*status_code(void)
 {
 	char	*buff;
 
