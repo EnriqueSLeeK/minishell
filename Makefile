@@ -6,7 +6,7 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/03/14 23:09:57 by ensebast         ###   ########.fr        #
+#    Updated: 2022/03/15 00:31:58 by ensebast         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,9 @@ FILES_M := main.c\
 	misc_func.c\
 	table_util.c\
 	entry_util.c\
-	init_hash_table.c\
 	search_bin.c\
+	var_expansion.c\
+	init_hash_table.c\
 	create_command.c\
 	free_command.c\
 	parser.c
@@ -41,7 +42,7 @@ DIR_OBJ := ./obj/
 
 OBJ_M := $(addprefix $(DIR_OBJ), $(FILE_OBJ))
 
-VPATH := ./src/shell ./src/hash_table ./src/parser ./src/search_bin
+VPATH := ./src/shell ./src/hash_table ./src/parser ./src/search_bin ./src/var_utils
 
 $(DIR_OBJ)%.o: %.c
 	@mkdir -p $(@D)

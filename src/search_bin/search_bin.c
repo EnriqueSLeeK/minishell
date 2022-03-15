@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 13:44:56 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/14 23:23:36 by ensebast         ###   ########.fr       */
+/*   Updated: 2022/03/15 00:04:12 by ensebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,8 @@ static char	*search(char **bin)
 
 int	search_bin(char **bin)
 {
-	if (!contain_slash(*bin))
+	if ((bin != 0 && *bin != 0)
+			|| !contain_slash(*bin))
 		*bin = search(bin);
 	return (1);
 }
