@@ -6,7 +6,7 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/03/15 09:44:25 by mamaro-d         ###   ########.fr        #
+#    Updated: 2022/03/15 12:29:26 by mamaro-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,9 @@ FILES_M := main.c\
 	misc_func.c\
 	table_util.c\
 	entry_util.c\
-	init_hash_table.c\
 	search_bin.c\
+	var_expansion.c\
+	init_hash_table.c\
 	create_command.c\
 	free_command.c\
 	parser.c
