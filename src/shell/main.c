@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 22:08:00 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/14 15:30:41 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/14 23:14:32 by ensebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,13 @@ t_shell	g_data;
 static void	init_signal(void);
 static void	interrupt_handler(int sig);
 static void	init_operators(void);
-void		init(int argc, char *argv[], char *envp[], t_cmd *cmd);
+void		init(int argc, char *argv[], char *envp[]);
 
 int	main(int argc, char *argv[], char *envp[])
 {
 	char	*line;
-	t_cmd	cmds;
 
-	init(argc, argv, envp, &cmds);
+	init(argc, argv, envp);
 	while (1)
 	{
 		line = prompt();
@@ -34,7 +33,7 @@ int	main(int argc, char *argv[], char *envp[])
 	return (0);
 }
 
-void	init(int argc, char *argv[], char *envp[], t_cmd *cmd)
+void	init(int argc, char *argv[], char *envp[])
 {
 	if (argc == 1 && argv[argc] == 0)
 	{
@@ -42,8 +41,6 @@ void	init(int argc, char *argv[], char *envp[], t_cmd *cmd)
 		init_env_table(envp);
 		g_data.exit_code = 0;
 		init_operators();
-		cmd -> cmd = 0;
-		cmd -> bin_with_path = 0;
 	}
 	else
 		exit(1);
