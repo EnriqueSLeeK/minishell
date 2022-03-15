@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 13:44:56 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/15 12:02:01 by ensebast         ###   ########.fr       */
+/*   Updated: 2022/03/15 12:05:10 by ensebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,23 +65,18 @@ static char	*search(char **bin)
 
 	i = 0;
 	path = ft_split(get_value(g_data.env_vars, "PATH"), ':');
-	if (path == 0)
-		printf("ft_split failure\n");
-	else
+	while (path[i])
 	{
-		while (path[i])
+		prepare_bin_path(path[i], *bin, &bin_path);
+		if (bin_path == 0)
+			printf("ft_strjoin failure\n");
+		if (access(bin_path, X_OK) == 0)
 		{
-			prepare_bin_path(path[i], *bin, &bin_path);
-			if (bin_path == 0)
-				printf("ft_strjoin failure\n");
-			if (access(bin_path, X_OK) == 0)
-			{
-				free_str(path, *bin);
-				return (bin_path);
-			}
-			free(bin_path);
-			i += 1;
+			free_str(path, *bin);
+			return (bin_path);
 		}
+		free(bin_path);
+		i += 1;
 	}
 	free_str(path, 0);
 	return (*bin);
@@ -90,7 +85,7 @@ static char	*search(char **bin)
 int	search_bin(char **bin)
 {
 	if ((bin != 0 && *bin != 0)
-			|| !contain_slash(*bin))
+		|| !contain_slash(*bin))
 		*bin = search(bin);
 	return (1);
 }
