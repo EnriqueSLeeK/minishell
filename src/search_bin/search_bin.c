@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 13:44:56 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/14 23:15:18 by ensebast         ###   ########.fr       */
+/*   Updated: 2022/03/14 23:23:36 by ensebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	contain_slash(char *bin)
 }
 
 // Free bidimensional array of type char **
-static void	free_matrix(char **matrix)
+static void	free_str(char **matrix, char *bin)
 {
 	int	i;
 
@@ -39,6 +39,7 @@ static void	free_matrix(char **matrix)
 		i += 1;
 	}
 	free(matrix);
+	free(bin);
 }
 
 static void	prepare_bin_path(char *path, char *bin, char **bin_path)
@@ -75,14 +76,13 @@ static char	*search(char **bin)
 				printf("ft_strjoin failure\n");
 			if (access(bin_path, X_OK) == 0)
 			{
-				free(*bin);
-				free_matrix(path);
+				free_str(path, *bin);
 				return (bin_path);
 			}
 			i += 1;
 		}
 	}
-	free_matrix(path);
+	free_str(path, 0);
 	return (*bin);
 }
 
