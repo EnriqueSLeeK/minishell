@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 13:44:56 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/15 00:04:12 by ensebast         ###   ########.fr       */
+/*   Updated: 2022/03/15 12:02:01 by ensebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ static char	*search(char **bin)
 				free_str(path, *bin);
 				return (bin_path);
 			}
+			free(bin_path);
 			i += 1;
 		}
 	}
