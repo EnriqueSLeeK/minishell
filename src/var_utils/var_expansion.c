@@ -35,10 +35,7 @@ void	var_expansion(char **parsed_line)
 	i = 0;
 	while (parsed_line[i])
 	{
-		if (ft_strncmp(parsed_line[i], "||", 3) == 0
-			|| ft_strncmp(parsed_line[i], "&&", 3) == 0)
-			break ;
-		else if (parsed_line[i][0] == '$')
+		if (parsed_line[i][0] == '$')
 		{
 			if (parsed_line[i][1] == 0)
 			{
