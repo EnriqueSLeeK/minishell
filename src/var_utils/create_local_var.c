@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bin_var.h                                          :+:      :+:    :+:   */
+/*   create_local_var.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/12 13:48:41 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/15 14:13:22 by ensebast         ###   ########.fr       */
+/*   Created: 2022/03/15 13:53:43 by ensebast          #+#    #+#             */
+/*   Updated: 2022/03/15 14:14:37 by ensebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BIN_VAR_H
-# define BIN_VAR_H
+#include "shell.h"
 
-# define EXPAND_ALL 1
-# define EXPAND_ONE 2
-
-int		search_bin(char **bin);
-int		create_local_var(char *key, char *value);
-void	var_expansion(char **parsed_line, int flag);
-
-#endif
+int	create_local_var(char *key, char *value)
+{
+	if (key == 0)
+		return (0);
+	else
+	{
+		set_entry(g_data.local_vars, create_entry(key, value));
+		return (0);
+	}
+}
