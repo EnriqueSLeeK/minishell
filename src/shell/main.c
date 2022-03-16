@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 22:08:00 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/15 12:00:28 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/16 10:00:07 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int	main(int argc, char *argv[], char *envp[])
 	{
 		line = prompt();
 		create_relation(line);
-		search_bin(&(g_data.commands->command));
-		printf("command path = %s\n", g_data.commands->command);
+		search_bin(&(g_data.commands->args[0]));
+		printf("command path = %s\n", g_data.commands->args[0]);
 		free_commands();
 		free(line);
 	}

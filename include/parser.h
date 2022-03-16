@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:02:51 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/14 15:28:48 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/16 10:38:19 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@
 
 # define TRUE 1
 # define FALSE 0
+# define QUOTE '\''
+# define DOUBLE_QOUTE '"'
 
 typedef struct s_command {
-	char				*command;
 	char				**args;
 	char				*relation;
+	char				*complet_instruct;
 	int					input;
 	int					output;
 	struct s_command	*next;

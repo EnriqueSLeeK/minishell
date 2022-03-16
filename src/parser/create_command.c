@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 15:20:07 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/14 15:20:16 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/16 10:59:21 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,9 @@
 t_command	*parse_command(char *command)
 {
 	t_command	*new_command;
-	char		**splitted;
-	int			index;
-	int			len;
 
-	len = 0;
 	new_command = (t_command *)ft_calloc(1, sizeof(t_command));
-	splitted = ft_split(command, ' ');
-	new_command->command = splitted[len];
-	while (splitted[len])
-		len++;
-	new_command->args = ft_calloc(len, sizeof(char *));
-	index = 1;
-	while (index < len)
-	{
-		new_command->args[index - 1] = splitted[index];
-		index++;
-	}
-	free(splitted);
+	new_command->args = ft_split(command, ' ');
 	return (new_command);
 }
 
@@ -56,6 +41,8 @@ void	create_command(char *command, char *relation)
 	new_command->input = STDIN_FILENO;
 	new_command->output = STDOUT_FILENO;
 	new_command->relation = relation;
+	new_command->next = NULL;
+	new_command->previous = NULL;
 	first = g_data.commands;
 	if (first == NULL)
 		g_data.commands = new_command;
@@ -65,10 +52,13 @@ void	create_command(char *command, char *relation)
 
 char	*create_node(char *line, int index, int first, char *relation)
 {
-	line[index] = '\0';
-	index++;
+	if(line[index] != '\0')
+		line[index++] = '\0';
 	create_command(line, relation);
-	line += index;
+	if(line[index] != 0)
+		line += index;
+	else
+		line += index - 1;
 	if (first == TRUE)
 	{
 		while (*line && *line == ' ')

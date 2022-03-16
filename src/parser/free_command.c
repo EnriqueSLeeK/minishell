@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 15:19:19 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/15 11:39:40 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/16 10:19:00 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	free_args(t_command *command)
 	}
 	free(command->args);
 	free(command->relation);
-	free(command->command);
 	command->args = NULL;
 }
 
