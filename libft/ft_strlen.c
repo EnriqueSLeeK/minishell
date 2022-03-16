@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 20:33:47 by mamaro-d          #+#    #+#             */
-/*   Updated: 2021/09/08 16:44:38 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/16 18:03:31 by ensebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_strlen(const char *str)
 	int		i;
 
 	i = 0;
+	if (str == 0)
+		return (0);
 	while (str[i] != 0)
 		i++;
 	return (i);

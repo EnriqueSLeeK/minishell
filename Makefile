@@ -6,7 +6,7 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/03/16 11:35:24 by mamaro-d         ###   ########.fr        #
+#    Updated: 2022/03/16 20:37:05 by ensebast         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,9 +25,9 @@ RM := rm -rf
 FILES_M := main.c\
 	hash.c\
 	pwd.c\
-	echo.c\
 	cd.c\
 	env.c\
+	echo.c\
 	unset.c\
 	export.c\
 	prompt.c\
@@ -39,6 +39,7 @@ FILES_M := main.c\
 	var_expansion.c\
 	init_hash_table.c\
 	create_local_var.c\
+	status_expansion.c\
 	create_command.c\
 	free_command.c\
 	parser.c

@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:05:26 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/16 11:36:16 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/16 17:48:49 by ensebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,29 +27,25 @@ static char	*is_in(char **operators, char *line)
 	return (NULL);
 }
 
-/* void	print_commands(void)
+void	print_commands(void)
 {
 	int	index;
 	index = -1;
 	t_command *first;
 
 	first = g_data.commands;	
-	printf("command\targs\trelation\tnext\n");
+	printf("args\trelation\tnext\n");
 	while (g_data.commands)
 	{
-		printf("%s\t", g_data.commands->command);
 		while (g_data.commands->args[++index])
 			printf("%s ", g_data.commands->args[index]);
 		printf("\t%s\t", g_data.commands->relation);
-		if(g_data.commands->next)
-			printf("%s", g_data.commands->next->command);
 		g_data.commands = g_data.commands->next;
 		index = 0;
 		printf("\n");
 	}
 	g_data.commands = first;
 }
- */
 
 
 int	verify_infile(t_command *node)
@@ -134,4 +130,6 @@ void	create_relation(char *line)
 	}
 	if(*line != 0)
 		create_node(line, index, first, relation);
+	var_expansion(g_data.commands->args, EXPAND_ALL);
+	print_commands();
 }
