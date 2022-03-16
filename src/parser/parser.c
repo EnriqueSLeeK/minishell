@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:05:26 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/16 11:33:15 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/16 11:36:16 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,5 +134,4 @@ void	create_relation(char *line)
 	}
 	if(*line != 0)
 		create_node(line, index, first, relation);
-	printf("address of next = %p", g_data.commands->next);
 }

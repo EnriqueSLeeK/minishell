@@ -6,11 +6,7 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2022/03/15 13:26:52 by mamaro-d         ###   ########.fr        #
-=======
-#    Updated: 2022/03/15 18:16:03 by ensebast         ###   ########.fr        #
->>>>>>> 34bd3c4baf737e09af25de6a765ee209908d5b44
+#    Updated: 2022/03/16 11:35:24 by mamaro-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,8 +24,8 @@ RM := rm -rf
 # Source files
 FILES_M := main.c\
 	hash.c\
-	echo.c\
 	pwd.c\
+	echo.c\
 	cd.c\
 	env.c\
 	unset.c\
@@ -53,7 +49,7 @@ DIR_OBJ := ./obj/
 
 OBJ_M := $(addprefix $(DIR_OBJ), $(FILE_OBJ))
 
-VPATH := ./src/shell ./src/hash_table ./src/parser ./src/search_bin ./src/var_utils
+VPATH := ./src/shell ./src/hash_table ./src/parser ./src/search_bin ./src/var_utils ./src/builtin
 $(DIR_OBJ)%.o: %.c
 	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) $(INCLUDE) -c $^ -o $@
