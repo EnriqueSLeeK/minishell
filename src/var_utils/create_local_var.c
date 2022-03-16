@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtin.h                                          :+:      :+:    :+:   */
+/*   create_local_var.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/10 18:24:21 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/15 18:11:47 by ensebast         ###   ########.fr       */
+/*   Created: 2022/03/15 13:53:43 by ensebast          #+#    #+#             */
+/*   Updated: 2022/03/15 14:14:37 by ensebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILTIN_H
-# define BUILTIN_H
+#include "shell.h"
 
-int	env(void);
-int	cd(char **args);
-int	unset(char *key);
-int	echo(char **args);
-int	export(char	*key, char *value);
-
-#endif
+int	create_local_var(char *key, char *value)
+{
+	if (key == 0)
+		return (0);
+	else
+	{
+		set_entry(g_data.local_vars, create_entry(key, value));
+		return (0);
+	}
+}

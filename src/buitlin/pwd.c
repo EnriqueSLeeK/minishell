@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtin.h                                          :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/10 18:24:21 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/15 18:11:47 by ensebast         ###   ########.fr       */
+/*   Created: 2022/03/15 16:40:28 by ensebast          #+#    #+#             */
+/*   Updated: 2022/03/15 16:41:49 by ensebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILTIN_H
-# define BUILTIN_H
+#include "shell.h"
 
-int	env(void);
-int	cd(char **args);
-int	unset(char *key);
-int	echo(char **args);
-int	export(char	*key, char *value);
-
-#endif
+int	pwd(void)
+{
+	printf("%s\n", get_value(g_data.env_vars, "PWD"));
+	return (0);
+}

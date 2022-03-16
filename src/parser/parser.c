@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:05:26 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/16 11:26:01 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/16 11:33:15 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ static char	*is_in(char **operators, char *line)
 	return (NULL);
 }
 
-/*
-void	print_commands(void)
+/* void	print_commands(void)
 {
 	int	index;
 	index = -1;
@@ -49,8 +48,8 @@ void	print_commands(void)
 		printf("\n");
 	}
 	g_data.commands = first;
-}*/
-
+}
+ */
 
 
 int	verify_infile(t_command *node)
