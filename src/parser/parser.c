@@ -26,7 +26,7 @@ static char	*is_in(char **operators, char *line)
 	}
 	return (NULL);
 }
-
+/*
 void	print_commands(void)
 {
 	int	index;
@@ -45,7 +45,7 @@ void	print_commands(void)
 		printf("\n");
 	}
 	g_data.commands = first;
-}
+}*/
 
 
 int	verify_infile(t_command *node)
@@ -130,6 +130,4 @@ void	create_relation(char *line)
 	}
 	if(*line != 0)
 		create_node(line, index, first, relation);
-	var_expansion(g_data.commands->args, EXPAND_ALL);
-	print_commands();
 }
