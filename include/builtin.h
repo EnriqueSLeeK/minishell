@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 18:24:21 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/17 10:13:31 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/17 11:35:35 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ int		unset(char *key);
 int		echo(char **args);
 int		export(char	*key, char *value);
 void	b_exit(void);
-void	pwd(void);
+int		pwd(void);
 
 #endif
