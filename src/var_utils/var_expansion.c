@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:44:03 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/16 21:13:38 by ensebast         ###   ########.fr       */
+/*   Updated: 2022/03/16 21:16:52 by ensebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	find_dllsign(char *line)
 }
 
 // Search for the var value
-static char *seach_var(char *var_name)
+static char	*seach_var(char *var_name)
 {
 	int		i;
 	char	*buff;
@@ -44,7 +44,7 @@ static char *seach_var(char *var_name)
 	return (buff);
 }
 
-static char *prepare(char *parsed_line, char *var_name, int k)
+static char	*prepare(char *parsed_line, char *var_name, int k)
 {
 	char	*tmp;
 	char	*line;

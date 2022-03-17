@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 13:48:41 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/16 16:53:50 by ensebast         ###   ########.fr       */
+/*   Updated: 2022/03/16 21:16:07 by ensebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,5 @@ void	var_expansion(char **parsed_line, int flag);
 
 // Bin utils
 int		search_bin(char **bin);
-
 
 #endif
