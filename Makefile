@@ -6,7 +6,7 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/03/16 20:37:05 by ensebast         ###   ########.fr        #
+#    Updated: 2022/03/17 10:14:56 by mamaro-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ FILES_M := main.c\
 	unset.c\
 	export.c\
 	prompt.c\
+	exit.c\
 	clean_up.c\
 	misc_func.c\
 	table_util.c\
@@ -42,7 +43,8 @@ FILES_M := main.c\
 	status_expansion.c\
 	create_command.c\
 	free_command.c\
-	parser.c
+	parser.c\
+	exec_cmd.c
 	
 
 FILE_OBJ := $(FILES_M:c=o)
@@ -50,7 +52,7 @@ DIR_OBJ := ./obj/
 
 OBJ_M := $(addprefix $(DIR_OBJ), $(FILE_OBJ))
 
-VPATH := ./src/shell ./src/hash_table ./src/parser ./src/search_bin ./src/var_utils ./src/builtin
+VPATH := ./src/shell ./src/hash_table ./src/parser ./src/search_bin ./src/var_utils ./src/builtin ./src/executor
 $(DIR_OBJ)%.o: %.c
 	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) $(INCLUDE) -c $^ -o $@

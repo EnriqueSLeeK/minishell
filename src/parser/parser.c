@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:05:26 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/16 17:48:49 by ensebast         ###   ########.fr       */
+/*   Updated: 2022/03/17 10:20:39 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,26 +26,27 @@ static char	*is_in(char **operators, char *line)
 	}
 	return (NULL);
 }
-/*
-void	print_commands(void)
-{
-	int	index;
-	index = -1;
-	t_command *first;
 
-	first = g_data.commands;	
-	printf("args\trelation\tnext\n");
-	while (g_data.commands)
-	{
-		while (g_data.commands->args[++index])
-			printf("%s ", g_data.commands->args[index]);
-		printf("\t%s\t", g_data.commands->relation);
-		g_data.commands = g_data.commands->next;
-		index = 0;
-		printf("\n");
-	}
-	g_data.commands = first;
-}*/
+int	is_builtin(t_command *cmd)
+{
+	if (!cmd->args[0])
+		return (cmd->builtin = FALSE);
+	if (!(ft_strncmp(cmd->args[0], "exit", 4)))
+		return (cmd->builtin =  TRUE);
+	if (!(ft_strncmp(cmd->args[0], "cd", 2)))
+		return (cmd->builtin =  TRUE);
+	if (!(ft_strncmp(cmd->args[0], "pwd", 3)))
+		return (cmd->builtin =  TRUE);
+	if (!(ft_strncmp(cmd->args[0], "export", 6)))
+		return (cmd->builtin =  TRUE);
+	if (!(ft_strncmp(cmd->args[0], "env", 3)))
+		return (cmd->builtin =  TRUE);
+	if (!(ft_strncmp(cmd->args[0], "unset", 5)))
+		return (cmd->builtin =  TRUE);
+	if (!(ft_strncmp(cmd->args[0], "echo", 4)))
+		return (cmd->builtin =  TRUE);
+	return (cmd->builtin = FALSE);
+}
 
 
 int	verify_infile(t_command *node)
@@ -76,49 +77,26 @@ void link_relations()
 	}
 }
 
-void	toggle_quote(char *line, char *holder_quote)
+
+int	is_redirect(char *str)
 {
-	if(*line == QUOTE || *line == DOUBLE_QOUTE)
-	{
-		if(!*holder_quote)
-			*holder_quote = *line;
-		else if (*holder_quote && *line == *holder_quote)
-			holder_quote = NULL;
-	}
+	if (!ft_strncmp(str, ">", -1) || !ft_strncmp(str, "<", -1))
+		return (1);
+	if (!ft_strncmp(str, ">>", -1) || !ft_strncmp(str, "<<", -1))
+		return (1);
+	return (0);
 }
-
-/* void fill_missing_arg(char *line, char *relation)
-{
-	char	**argv;
-	char	*tmp;
-	int		index;
-
-	tmp = line;
-	index = 0;
-	while(!is_in(g_data.operators, &line[index]) && line[index])
-		index++;
-	line[index] == 0;
-	while(!ft_isblank(*line) && *line != 0)
-		line++;
-	if(*line != 0)
-	{
-		argv = ft_split(line, ' ');
-		g_data.commands->args = argv;
-	}
-} */
 
 void	create_relation(char *line)
 {
 	char	*relation;
 	int		index;
 	int		first;
-	char	holder_quote;
 
 	index = 0;
 	first = TRUE;
 	while (line[index])
 	{
-		toggle_quote(&line[index], &holder_quote);
 		relation = is_in(g_data.operators, &line[index]);
 		if (relation)
 		{

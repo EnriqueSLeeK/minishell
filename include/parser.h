@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:02:51 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/16 10:38:19 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/17 10:21:00 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 typedef struct s_command {
 	char				**args;
 	char				*relation;
-	char				*complet_instruct;
 	int					input;
 	int					output;
+	int					builtin;
 	struct s_command	*next;
 	struct s_command	*previous;
 }	t_command;
@@ -37,6 +37,7 @@ t_command	*parse_command(char *command);
 void		create_new_command_node(t_command *new_command);
 void		create_command(char *command, char *relation);
 char		*create_node(char *line, int index, int first, char *relation);
+int			is_builtin(t_command *cmd);
 
 /*Functions to clear memory from commmand node and operators array*/
 

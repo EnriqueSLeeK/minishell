@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 14:39:11 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/15 18:19:58 by ensebast         ###   ########.fr       */
+/*   Updated: 2022/03/17 11:19:52 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	echo(char **args)
 	{
 		find_flag(args, &index, &flag);
 		print_args(&(args[index]));
-		if (flag)
+		if (ft_strncmp(args[1], "-n", 2))
 			printf("\n");
 	}
 	return (0);

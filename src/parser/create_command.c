@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 15:20:07 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/16 10:59:21 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/17 10:06:53 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	create_command(char *command, char *relation)
 	new_command->relation = relation;
 	new_command->next = NULL;
 	new_command->previous = NULL;
+	is_builtin(new_command);
 	first = g_data.commands;
 	if (first == NULL)
 		g_data.commands = new_command;
