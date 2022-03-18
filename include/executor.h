@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 10:08:19 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/17 15:34:28 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/18 11:24:08 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ typedef struct s_fd
 	struct s_fd *next;
 }	t_fd;
 
-void	make_command(void);
+void	make_command(char *envp[]);
 
 #endif
