@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 23:46:35 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/17 15:36:03 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/18 09:47:15 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <readline/readline.h>
 
 // Custom project headers
+# include "misc_func.h"
 # include "builtin.h"
 # include "bin_var.h"
 # include "hash_table.h"
@@ -37,7 +38,7 @@ typedef struct s_shell
 	int				exit_code;
 	char			**operators;
 	t_command		*commands;
-	t_fd			*all_fds;
+	t_fd			*all_fd;
 }	t_shell;
 
 extern t_shell	g_data;

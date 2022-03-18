@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 14:39:11 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/17 11:19:52 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/17 15:01:24 by ensebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,9 @@ static void	find_flag(char **args, int *index, int *flag)
 {
 	int	aux;
 
-	*index = 0;
+	*index = 1;
 	*flag = 0;
 	aux = 0;
-	if (ft_strncmp(args[*index], "echo", ft_strlen(args[*index])) == 0)
-		*index += 1;
 	while (args[*index] && args[*index][0] == '-'
 		&& args[*index][1] != 0)
 	{
@@ -69,7 +67,7 @@ int	echo(char **args)
 	{
 		find_flag(args, &index, &flag);
 		print_args(&(args[index]));
-		if (ft_strncmp(args[1], "-n", 2))
+		if (!(flag))
 			printf("\n");
 	}
 	return (0);

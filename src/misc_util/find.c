@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bin_var.h                                          :+:      :+:    :+:   */
+/*   find.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/12 13:48:41 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/17 21:15:09 by ensebast         ###   ########.fr       */
+/*   Created: 2022/03/17 15:25:35 by ensebast          #+#    #+#             */
+/*   Updated: 2022/03/17 20:27:32 by ensebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BIN_VAR_H
-# define BIN_VAR_H
+#include "shell.h"
 
-# define EXPAND_ALL 1
-# define EXPAND_ONE 2
+int	find_char(char *str, char c)
+{
+	int	i;
 
-// Var utils
-// Do not use status_code directly use var_expansion instead
-char	*status_code(void);
-int		local_var(char **arg);
-int		check_varname(char *var);
-void	var_expansion(char **parsed_line, int flag);
-
-// Bin utils
-int		search_bin(char **bin);
-
-#endif
+	if (str == 0)
+		return (-1);
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == c)
+			return (i);
+		i += 1;
+	}
+	return (-1);
+}
