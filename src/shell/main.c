@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 22:08:00 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/17 10:23:19 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/17 23:28:18 by ensebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int argc, char *argv[], char *envp[])
 	{
 		line = prompt();
 		create_relation(line);
-		if(!g_data.commands->builtin)
+		if (!g_data.commands->builtin)
 			search_bin(&(g_data.commands->args[0]));
 		make_command();
 		free_commands();
@@ -66,6 +66,7 @@ static void	interrupt_handler(int sig)
 		rl_replace_line("", 1);
 		rl_on_new_line();
 		rl_redisplay();
+		g_data.exit_code = 130;
 	}
 }
 

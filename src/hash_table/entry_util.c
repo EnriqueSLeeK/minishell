@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 15:28:46 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/08 16:49:44 by ensebast         ###   ########.br       */
+/*   Updated: 2022/03/17 15:10:23 by ensebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,15 @@ t_entry	**get_entry(t_hash_table *table, char *key)
 {
 	unsigned long long int	i;
 
-	i = hash(key) % table -> capacity;
-	while (table -> table[i] != 0)
+	if (key != 0)
 	{
-		if (ft_strncmp(key, table -> table[i]-> key, ft_strlen(key)) == 0)
-			return (&(table -> table[i]));
-		i = index_adjust(i + 1, table -> capacity);
+		i = hash(key) % table -> capacity;
+		while (table -> table[i] != 0)
+		{
+			if (ft_strncmp(key, table -> table[i]-> key, ft_strlen(key)) == 0)
+				return (&(table -> table[i]));
+			i = index_adjust(i + 1, table -> capacity);
+		}
 	}
 	return (0);
 }

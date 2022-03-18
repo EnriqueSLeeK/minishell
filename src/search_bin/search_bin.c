@@ -6,39 +6,16 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 13:44:56 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/17 11:34:58 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/17 23:27:57 by ensebast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-// Check if there is a path
-static int	contain_slash(char *bin)
-{
-	int	i;
-
-	i = 0;
-	while (i < ft_strlen(bin))
-	{
-		if (bin[i] == '/')
-			return (1);
-		i += 1;
-	}
-	return (0);
-}
-
 // Free bidimensional array of type char **
 static void	free_str(char **matrix, char *bin)
 {
-	int	i;
-
-	i = 0;
-	while (matrix[i])
-	{
-		free(matrix[i]);
-		i += 1;
-	}
-	free(matrix);
+	free_bmatrix(matrix);
 	free(bin);
 }
 
@@ -65,7 +42,7 @@ static char	*search(char **bin)
 
 	i = 0;
 	path = ft_split(get_value(g_data.env_vars, "PATH"), ':');
-	if(path[0] == NULL)
+	if (path[0] == NULL)
 		return (*bin);
 	while (path[i])
 	{
@@ -87,7 +64,7 @@ static char	*search(char **bin)
 int	search_bin(char **bin)
 {
 	if ((bin != 0 && *bin != 0)
-		|| !contain_slash(*bin))
+		|| !find_char(*bin, '/'))
 		*bin = search(bin);
 	return (1);
 }
