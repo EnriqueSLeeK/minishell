@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:02:51 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/17 10:21:00 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/22 12:10:02 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,30 +19,17 @@
 # define QUOTE '\''
 # define DOUBLE_QOUTE '"'
 
-typedef struct s_command {
-	char				**args;
-	char				*relation;
-	int					input;
-	int					output;
-	int					builtin;
-	struct s_command	*next;
-	struct s_command	*previous;
-}	t_command;
+typedef struct	s_node
+{
+	char	**args;
+	char	*relation;
+	int		fd_in;
+	int		fd_out;
+	struct s_node	*next;
+}	t_node;
 
-void		create_relation(char *line);
+void ft_parse(char *line, char **envp);
 
-/*Functions to create a new command node */
 
-t_command	*parse_command(char *command);
-void		create_new_command_node(t_command *new_command);
-void		create_command(char *command, char *relation);
-char		*create_node(char *line, int index, int first, char *relation);
-int			is_builtin(t_command *cmd);
-
-/*Functions to clear memory from commmand node and operators array*/
-
-void		free_args(t_command *command);
-void		free_operations(void);
-void		free_commands(void);
-
+void	free_operations(void);
 #endif

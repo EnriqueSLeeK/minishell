@@ -6,13 +6,13 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 15:19:19 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/17 23:57:00 by ensebast         ###   ########.fr       */
+/*   Updated: 2022/03/22 12:07:52 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-void	free_args(t_command *command)
+/* void	free_args(t_command *command)
 {
 	int	index;
 
@@ -26,7 +26,7 @@ void	free_args(t_command *command)
 	free(command->relation);
 	command->args = NULL;
 }
-
+*/
 void	free_operations(void)
 {
 	int	index;
@@ -40,7 +40,7 @@ void	free_operations(void)
 	free(g_data.operators);
 	g_data.operators = NULL;
 }
-
+/*
 void	free_commands(void)
 {
 	while (g_data.commands->next)
@@ -55,3 +55,4 @@ void	free_commands(void)
 	free(g_data.commands);
 	g_data.commands = NULL;
 }
+ */
