@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 23:46:35 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/18 11:52:01 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/24 00:41:21 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # include "misc_func.h"
 # include "builtin.h"
 # include "bin_var.h"
+# include "signal_handler.h"
 # include "hash_table.h"
 # include "parser.h"
 # include "executor.h"
@@ -35,12 +36,15 @@
 
 typedef struct s_shell
 {
-	t_hash_table	*env_vars;
-	t_hash_table	*local_vars;
-	int				exit_code;
-	char			**operators;
-	t_command		*commands;
-	t_fd			*all_fd;
+	t_hash_table		*env_vars;
+	t_hash_table		*local_vars;
+	int					exit_code;
+	int					status;
+	char				**operators;
+	t_command			*commands;
+	t_fd				*all_fd;
+	struct sigaction	sint_inf;
+	struct sigaction	squit_inf;
 }	t_shell;
 
 extern t_shell	g_data;

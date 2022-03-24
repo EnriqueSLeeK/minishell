@@ -6,7 +6,7 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/03/17 20:07:55 by ensebast         ###   ########.fr        #
+#    Updated: 2022/03/23 23:55:30 by ensebast         ###   ########.br        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ FILES_M := main.c\
 	create_local_var.c\
 	status_expansion.c\
 	create_command.c\
+	signal_handler.c\
 	free_command.c\
 	parser.c\
 	exec_cmd.c
@@ -55,7 +56,9 @@ DIR_OBJ := ./obj/
 OBJ_M := $(addprefix $(DIR_OBJ), $(FILE_OBJ))
 
 VPATH := ./src/shell ./src/hash_table ./src/parser ./src/search_bin\
-		 ./src/var_utils ./src/builtin ./src/executor ./src/misc_util
+		 ./src/var_utils ./src/builtin ./src/executor ./src/misc_util\
+		 ./src/signal_handler
+
 $(DIR_OBJ)%.o: %.c
 	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) $(INCLUDE) -c $^ -o $@

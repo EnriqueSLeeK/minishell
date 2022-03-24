@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 10:26:57 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/18 11:51:02 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/24 01:27:10 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void exec_bultin(t_command *cmd)
 {
 	if (!(ft_strncmp(cmd->args[0], "exit", 4)))
-			b_exit();
+		b_exit();
 	if (!(ft_strncmp(cmd->args[0], "echo", 4)))
 		echo(cmd->args);
 	if (!(ft_strncmp(cmd->args[0], "cd", 2)))
@@ -32,7 +32,6 @@ void exec_bultin(t_command *cmd)
 
 //fd[0] read
 //fd[1] write
-
 void handle_single_pipe(t_command *cmd)
 {
 	int	fd[2];
@@ -44,14 +43,11 @@ void handle_single_pipe(t_command *cmd)
 void	make_command(char *envp[])
 {
 	int	id;
-
 	t_command *cmd;
 
 	cmd = g_data.commands;
 	while(cmd)
 	{
-		if(!cmd)
-			break ;
 		if(cmd->builtin == TRUE && !cmd->next)
 			exec_bultin(cmd);
 		else
@@ -69,5 +65,4 @@ void	make_command(char *envp[])
 			cmd = cmd->next;
 		}
 	}
-	
 }

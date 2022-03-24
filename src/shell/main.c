@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 22:08:00 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/18 11:37:24 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/24 01:26:29 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 t_shell	g_data;
 
-static void	init_signal(void);
-static void	interrupt_handler(int sig);
 static void	init_operators(void);
 void		init(int argc, char *argv[], char *envp[]);
 
@@ -26,6 +24,9 @@ int	main(int argc, char *argv[], char *envp[])
 	init(argc, argv, envp);
 	while (1)
 	{
+		g_data.status = READ_STATUS;
+		signal_init(&(g_data.sint_inf), SIGINT, interrupt_handler);
+		signal_init(&(g_data.squit_inf), SIGQUIT, SIG_IGN);
 		line = prompt();
 		create_relation(line);
 		if (!g_data.commands->builtin)
@@ -37,37 +38,18 @@ int	main(int argc, char *argv[], char *envp[])
 	return (0);
 }
 
+// SIGQUIT = ctrl + \ must be ignored
+// SIGINT = ctrl + c will call the function interrupt_handler
 void	init(int argc, char *argv[], char *envp[])
 {
 	if (argc == 1 && argv[argc] == 0)
 	{
-		init_signal();
-		init_env_table(envp);
 		g_data.exit_code = 0;
+		init_env_table(envp);
 		init_operators();
 	}
 	else
 		exit(1);
-}
-
-// SIGQUIT = ctrl + \ must be ignored
-// SIGINT = ctrl + c will call the function interrupt_handler
-static void	init_signal(void)
-{
-	signal(SIGINT, interrupt_handler);
-	signal(SIGQUIT, SIG_IGN);
-}
-
-static void	interrupt_handler(int sig)
-{
-	if (sig == SIGINT)
-	{
-		write(1, "\n", 1);
-		rl_replace_line("", 1);
-		rl_on_new_line();
-		rl_redisplay();
-		g_data.exit_code = 130;
-	}
 }
 
 static void	init_operators(void)
