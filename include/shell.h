@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 23:46:35 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/24 00:41:21 by ensebast         ###   ########.br       */
+/*   Updated: 2022/03/24 12:35:55 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,15 @@ extern t_shell	g_data;
 
 // Prompt
 char	*prompt(void);
+
+// Convert hash_table to char **
+char	**convert_table_matrix(void);
+
+// Clean up
 void	clean_up(void);
+void	post_exec_clean(char *line, char **env);
+
+// inti env table
 int		init_env_table(char *envp[]);
 
 #endif

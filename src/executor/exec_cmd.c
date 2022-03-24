@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 10:26:57 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/24 01:27:10 by ensebast         ###   ########.br       */
+/*   Updated: 2022/03/24 14:17:53 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void handle_single_pipe(t_command *cmd)
 	cmd->next->input = fd[0];
 }
 
-void	make_command(char *envp[])
+void	make_command(char **envp)
 {
 	int	id;
 	t_command *cmd;

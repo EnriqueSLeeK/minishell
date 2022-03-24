@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 22:08:00 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/24 01:26:29 by ensebast         ###   ########.br       */
+/*   Updated: 2022/03/24 13:10:01 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void		init(int argc, char *argv[], char *envp[]);
 int	main(int argc, char *argv[], char *envp[])
 {
 	char	*line;
+	char	**env;
 
 	init(argc, argv, envp);
 	while (1)
@@ -31,9 +32,12 @@ int	main(int argc, char *argv[], char *envp[])
 		create_relation(line);
 		if (!g_data.commands->builtin)
 			search_bin(&(g_data.commands->args[0]));
-		make_command(envp);
-		free_commands();
-		free(line);
+		env = convert_table_matrix();
+		if (env != 0)
+			make_command(env);
+		post_exec_clean(line, env);
+		//free_commands();
+		//free(line);
 	}
 	return (0);
 }

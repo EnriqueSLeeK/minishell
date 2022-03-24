@@ -6,7 +6,7 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/03/23 23:55:30 by ensebast         ###   ########.br        #
+#    Updated: 2022/03/24 14:11:58 by ensebast         ###   ########.br        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME := minishell
 INCLUDE := -I ./include/
 
 CC := gcc
-CFLAGS :=  -g -Wall -Wextra -Werror
+CFLAGS :=  -Wall -Wextra -Werror
 LIB := -lreadline
 
 LIBFT := ./libft/libft.a
@@ -33,6 +33,7 @@ FILES_M := main.c\
 	unset.c\
 	export.c\
 	prompt.c\
+	convert.c\
 	clean_up.c\
 	misc_func.c\
 	table_util.c\
