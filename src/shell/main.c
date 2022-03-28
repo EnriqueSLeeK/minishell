@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 22:08:00 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/24 13:10:01 by ensebast         ###   ########.br       */
+/*   Updated: 2022/03/28 13:13:16 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ int	main(int argc, char *argv[], char *envp[])
 		if (env != 0)
 			make_command(env);
 		post_exec_clean(line, env);
-		//free_commands();
-		//free(line);
 	}
 	return (0);
 }
