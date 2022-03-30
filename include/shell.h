@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 23:46:35 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/24 12:35:55 by ensebast         ###   ########.br       */
+/*   Updated: 2022/03/30 13:10:44 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,10 @@ typedef struct s_shell
 {
 	t_hash_table		*env_vars;
 	t_hash_table		*local_vars;
-	int					exit_code;
-	int					status;
-	char				**operators;
 	t_command			*commands;
 	t_fd				*all_fd;
-	struct sigaction	sint_inf;
-	struct sigaction	squit_inf;
+	int					exit_code;
+	char				**operators;
 }	t_shell;
 
 extern t_shell	g_data;

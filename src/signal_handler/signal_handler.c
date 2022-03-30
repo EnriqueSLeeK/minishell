@@ -14,25 +14,25 @@
 void	quit_sig(int sig)
 {
 	write(1, "Quit\n", 5);
-	if (SIGQUIT == sig && (g_data.status & EXEC_STATUS))
-		g_data.exit_code = 131;
+	if (SIGQUIT == sig)
+		exit_code(sig);
 }
 
 void	interrupt_handler(int sig)
 {
-	if (sig == SIGINT && !(g_data.status & EXEC_STATUS))
+	if (sig == SIGINT)
 	{
 		write(1, "\n", 1);
 		rl_replace_line("", 1);
 		rl_on_new_line();
 		rl_redisplay();
-		g_data.exit_code = 130;
+		exit_code(sig);
 	}
-	else
-	{
-		write(1, "\n", 1);
-		g_data.exit_code = 130;
-	}
+}
+
+void	exit_code(int sig)
+{
+	g_data.exit_code = sig + 128;
 }
 
 void	signal_init(struct sigaction *act, int sig, void handler(int))

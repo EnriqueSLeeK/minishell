@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 22:08:00 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/28 13:13:16 by ensebast         ###   ########.br       */
+/*   Updated: 2022/03/30 13:16:38 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,14 @@ void		init(int argc, char *argv[], char *envp[]);
 
 int	main(int argc, char *argv[], char *envp[])
 {
-	char	*line;
-	char	**env;
+	char		*line;
+	char		**env;
+	t_signal	sig;
 
 	init(argc, argv, envp);
 	while (1)
 	{
-		g_data.status = READ_STATUS;
-		signal_init(&(g_data.sint_inf), SIGINT, interrupt_handler);
-		signal_init(&(g_data.squit_inf), SIGQUIT, SIG_IGN);
+		prompt_sig(&sig);
 		line = prompt();
 		create_relation(line);
 		if (!g_data.commands->builtin)
