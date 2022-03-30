@@ -23,6 +23,7 @@
 # include <readline/readline.h>
 # include <sys/types.h>
 # include <sys/wait.h>
+# include <fcntl.h>
 
 // Custom project headers
 # include "misc_func.h"
@@ -39,6 +40,7 @@ typedef struct s_shell
 	t_hash_table	*env_vars;
 	t_hash_table	*local_vars;
 	t_node			*node;
+	t_fd			*fds;
 	int				exit_code;
 	char			**operators;
 	int				pipe_count;

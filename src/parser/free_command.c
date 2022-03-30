@@ -12,21 +12,21 @@
 
 #include "shell.h"
 
-/* void	free_args(t_command *command)
+void	free_args(t_node *node)
 {
 	int	index;
 
 	index = 0;
-	while (command->args[index])
+	while (node->args[index])
 	{
-		free(command->args[index]);
+		free(node->args[index]);
 		index++;
 	}
-	free(command->args);
-	free(command->relation);
-	command->args = NULL;
+	free(node->args);
+	free(node->relation);
+	node->args = NULL;
 }
-*/
+
 void	free_operations(void)
 {
 	int	index;
@@ -40,19 +40,18 @@ void	free_operations(void)
 	free(g_data.operators);
 	g_data.operators = NULL;
 }
-/*
+
 void	free_commands(void)
 {
-	while (g_data.commands->next)
-		g_data.commands = g_data.commands->next;
-	while (g_data.commands->previous)
+	while (g_data.node->next)
+		g_data.node = g_data.node->next;
+	while (g_data.node->previous)
 	{
-		free_args(g_data.commands);
-		g_data.commands = g_data.commands->previous;
-		free(g_data.commands->next);
+		free_args(g_data.node);
+		g_data.node = g_data.node->previous;
+		free(g_data.node->next);
 	}
-	free_args(g_data.commands);
-	free(g_data.commands);
-	g_data.commands = NULL;
+	free_args(g_data.node);
+	free(g_data.node);
+	g_data.node = NULL;
 }
- */

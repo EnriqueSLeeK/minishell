@@ -15,12 +15,6 @@
 
 # include "shell.h"
 
-typedef struct s_fd
-{
-	int	value;
-	struct s_fd *next;
-}	t_fd;
-
 void	make_command(char *envp[]);
 
 #endif
