@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 22:08:00 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/31 16:52:27 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/31 17:57:01 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,11 @@ void		init(int argc, char *argv[], char *envp[]);
 int	main(int argc, char *argv[], char *envp[])
 {
 	char		*line;
-	t_signal	sig;
 
 	init(argc, argv, envp);
 	while (1)
 	{
-		prompt_sig(&sig);
+		prompt_sig(&(g_data.sig));
 		line = prompt();
 		ft_parse(line);
 		exec_commands();

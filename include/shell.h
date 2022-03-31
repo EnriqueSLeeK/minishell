@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 23:46:35 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/31 16:45:55 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/31 17:56:27 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_shell
 	int				exit_code;
 	char			**operators;
 	char			**envp;
+	t_signal		sig;
 }	t_shell;
 
 extern t_shell	g_data;

@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 01:44:47 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/31 17:13:14 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/31 17:50:36 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,15 @@ void	interrupt_handler(int sig)
 		rl_replace_line("", 1);
 		rl_on_new_line();
 		rl_redisplay();
+		exit_code(sig);
+	}
+}
+
+void	exec_interrupt(int sig)
+{
+	if (sig == SIGINT)
+	{
+		write(1, "\n", 1);
 		exit_code(sig);
 	}
 }

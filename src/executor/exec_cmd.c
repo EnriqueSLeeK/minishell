@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 10:26:57 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/31 16:48:04 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/31 18:00:03 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	execute_cmd(t_node *node)
 	t_fd	*fds;
 
 	fds = g_data.fds;
+	child_sig(&(g_data.sig));
 	while (fds)
 	{
 		if (fds->value != node->fd_in && fds->value != node->fd_out)
@@ -43,6 +44,7 @@ void	exec_commands(void)
 
 	node = g_data.node;
 	link_relation();
+	exec_sig(&(g_data.sig));
 	while (node)
 	{
 		if (!node->is_file)
