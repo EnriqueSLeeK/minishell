@@ -6,7 +6,7 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/03/31 10:23:22 by mamaro-d         ###   ########.fr        #
+#    Updated: 2022/03/31 11:59:17 by mamaro-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ FILES_M := main.c\
 	status_expansion.c\
 	free_command.c\
 	parser.c\
+	parser_utils.c\
 	handle_operators.c\
 	exec_cmd.c\
 	exec_utils.c\

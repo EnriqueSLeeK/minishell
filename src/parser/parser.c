@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 09:53:01 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/31 10:18:20 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/31 16:31:26 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_parse(char *line)
 
 	index = 0;
 	g_data.pipe_count = 0;
-	while(line[index] != '\0')
+	while (line[index] != '\0')
 	{
 		relation = is_in(g_data.operators, &line[index]);
 		if (relation)
@@ -32,9 +32,8 @@ void	ft_parse(char *line)
 		}
 		index++;
 	}
-	relation =  NULL;
-	ft_create_cmd(line, 0);
-	free_commands();
+	relation = NULL;
+	ft_create_cmd(line, relation);
 }
 
 char	*is_in(char **operators, char *line)
@@ -48,23 +47,14 @@ char	*is_in(char **operators, char *line)
 	return (0);
 }
 
-void	ft_create_cmd(char *line, char *relation)
+void	add_new_node(t_node *node)
 {
-	t_node *node;
-	t_node *last;
+	t_node	*last;
 
 	last = g_data.node;
-	node = (t_node *)malloc(sizeof(t_node));
-	node->args = ft_split(line, ' ');
-	node->relation = relation;
-	node->next = NULL;
-	node->previous = NULL;
-	node->fd_in = 0;
-	node->fd_out = 0;
-	search_bin(node->args);
-	if(last != NULL)
+	if (last != NULL)
 	{
-		while(last->next)
+		while (last->next)
 			last = last->next;
 		last->next = node;
 		node->previous = last;
@@ -73,19 +63,38 @@ void	ft_create_cmd(char *line, char *relation)
 		g_data.node = node;
 }
 
-void	link_relation()
+void	ft_create_cmd(char *line, char *relation)
+{
+	t_node	*node;
+
+	node = (t_node *)malloc(sizeof(t_node));
+	node->args = ft_split(line, ' ');
+	node->relation = relation;
+	node->next = NULL;
+	node->previous = NULL;
+	node->fd_in = 0;
+	node->fd_out = 0;
+	search_bin(node->args);
+	add_new_node(node);
+	set_type(node);
+}
+
+void	link_relation(void)
 {
 	t_node	*node;
 
 	node = g_data.node;
-	while(node)
+	while (node)
 	{
-		if(node->relation)
+		if (node->relation)
 		{
-			if(!ft_strncmp(node->relation, "|", ft_strlen(node->relation)))
+			if (!ft_strncmp(node->relation, "|", ft_strlen(node->relation)))
 				handle_pipe(node);
-			else if(!ft_strncmp(node->relation, ">", ft_strlen(node->relation)))
+			else if (!ft_strncmp(node->relation, ">",
+					ft_strlen(node->relation)))
 				handle_red_output(node);
+			else if (!ft_strncmp(node->relation, "<", 1))
+				handle_red_intput(node);
 		}
 		node = node->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 15:19:19 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/22 12:07:52 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/31 16:25:25 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void	free_args(t_node *node)
 	while (node->args[index])
 	{
 		free(node->args[index]);
+		node->args[index] = NULL;
 		index++;
 	}
 	free(node->args);
-	free(node->relation);
 	node->args = NULL;
 }
 
@@ -35,6 +35,7 @@ void	free_operations(void)
 	while (g_data.operators[index])
 	{
 		free(g_data.operators[index]);
+		g_data.operators[index] = NULL;
 		index++;
 	}
 	free(g_data.operators);
@@ -48,9 +49,17 @@ void	free_commands(void)
 	while (g_data.node->previous)
 	{
 		free_args(g_data.node);
+		if (g_data.node->fd_in != 0)
+			close(g_data.node->fd_in);
+		if (g_data.node->fd_out != 0)
+			close(g_data.node->fd_out);
 		g_data.node = g_data.node->previous;
 		free(g_data.node->next);
 	}
+	if (g_data.node->fd_in != 0)
+		close(g_data.node->fd_in);
+	if (g_data.node->fd_out != 0)
+		close(g_data.node->fd_out);
 	free_args(g_data.node);
 	free(g_data.node);
 	g_data.node = NULL;
