@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 23:46:35 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/22 16:22:54 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/31 16:37:09 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # include "misc_func.h"
 # include "builtin.h"
 # include "bin_var.h"
+# include "signal_handler.h"
 # include "hash_table.h"
 # include "parser.h"
 # include "executor.h"
@@ -51,7 +52,15 @@ extern t_shell	g_data;
 
 // Prompt
 char	*prompt(void);
+
+// Convert hash_table to char **
+char	**convert_table_matrix(t_hash_table *table);
+
+// Clean up
 void	clean_up(void);
+void	post_exec_clean(char *line, char **env);
+
+// inti env table
 int		init_env_table(char *envp[]);
 
 #endif

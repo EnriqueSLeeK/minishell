@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 22:08:00 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/31 10:25:12 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/31 16:36:42 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,59 +14,47 @@
 
 t_shell	g_data;
 
-static void	init_signal(void);
-static void	interrupt_handler(int sig);
 static void	init_operators(void);
 void		init(int argc, char *argv[], char *envp[]);
 
 int	main(int argc, char *argv[], char *envp[])
 {
-	char	*line;
+	char		*line;
+	char		**env;
+	t_signal	sig;
 
 	init(argc, argv, envp);
 	while (1)
 	{
+		prompt_sig(&sig);
 		line = prompt();
 		ft_parse(line);
 		exec_commands();
 		free_commands();
 		free(line);
+		create_relation(line);
+		if (!g_data.commands->builtin)
+			search_bin(&(g_data.commands->args[0]));
+		env = convert_table_matrix(g_data.env_vars);
+		if (env != 0)
+			make_command(env);
+		post_exec_clean(line, env);
 	}
 	return (0);
 }
 
+// SIGQUIT = ctrl + \ must be ignored
+// SIGINT = ctrl + c will call the function interrupt_handler
 void	init(int argc, char *argv[], char *envp[])
 {
 	if (argc == 1 && argv[argc] == 0)
 	{
-		init_signal();
-		init_env_table(envp);
 		g_data.exit_code = 0;
 		g_data.envp = envp;
 		init_operators();
 	}
 	else
 		exit(1);
-}
-
-// SIGQUIT = ctrl + \ must be ignored
-// SIGINT = ctrl + c will call the function interrupt_handler
-static void	init_signal(void)
-{
-	signal(SIGINT, interrupt_handler);
-	signal(SIGQUIT, SIG_IGN);
-}
-
-static void	interrupt_handler(int sig)
-{
-	if (sig == SIGINT)
-	{
-		write(1, "\n", 1);
-		rl_replace_line("", 1);
-		rl_on_new_line();
-		rl_redisplay();
-		g_data.exit_code = 130;
-	}
 }
 
 static void	init_operators(void)

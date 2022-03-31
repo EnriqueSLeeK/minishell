@@ -6,7 +6,11 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2022/03/31 11:59:17 by mamaro-d         ###   ########.fr        #
+=======
+#    Updated: 2022/03/29 14:44:52 by ensebast         ###   ########.br        #
+>>>>>>> 25c36eabe8d03957d4fedf62636de129898d00fb
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +18,7 @@ NAME := minishell
 INCLUDE := -I ./include/
 
 CC := gcc
-CFLAGS :=  -g -Wall -Wextra -Werror
+CFLAGS :=  -Wall -Wextra -Werror
 LIB := -lreadline
 
 LIBFT := ./libft/libft.a
@@ -33,6 +37,7 @@ FILES_M := main.c\
 	unset.c\
 	export.c\
 	prompt.c\
+	convert.c\
 	clean_up.c\
 	misc_func.c\
 	table_util.c\
@@ -49,6 +54,13 @@ FILES_M := main.c\
 	handle_operators.c\
 	exec_cmd.c\
 	exec_utils.c\
+	create_command.c\
+	signal_handler.c\
+	free_command.c\
+	parser.c\
+	exec_cmd.c\
+	signal_set.c
+	
 
 FILE_OBJ := $(FILES_M:c=o)
 DIR_OBJ := ./obj/
@@ -56,7 +68,9 @@ DIR_OBJ := ./obj/
 OBJ_M := $(addprefix $(DIR_OBJ), $(FILE_OBJ))
 
 VPATH := ./src/shell ./src/hash_table ./src/parser ./src/search_bin\
-		 ./src/var_utils ./src/builtin ./src/executor ./src/misc_util
+		 ./src/var_utils ./src/builtin ./src/executor ./src/misc_util\
+		 ./src/signal_handler
+
 $(DIR_OBJ)%.o: %.c
 	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) $(INCLUDE) -c $^ -o $@
