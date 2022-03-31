@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executor.h                                         :+:      :+:    :+:   */
+/*   handle_operators.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/17 10:08:19 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/31 09:59:01 by mamaro-d         ###   ########.fr       */
+/*   Created: 2022/03/31 10:10:17 by mamaro-d          #+#    #+#             */
+/*   Updated: 2022/03/31 10:26:11 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXECUTOR_H
-# define EXECUTOR_H
-
 # include "shell.h"
 
-void 	add_fd(int fd);
-void	close_fd(int fd);
-void 	close_prev_fd(t_node *node);
-void	exec_extern_cmd(t_node *node);
-void	execute_cmd(t_node *node);
-void	exec_commands(void);
+void	handle_red_output(t_node *node)
+{
+	node->fd_out = open(node->next->args[0], O_CREAT | O_WRONLY | O_TRUNC, 0666);
+}
 
-#endif
+int		handle_pipe(t_node *node)
+{
+	int	fd[2];
+
+	if(pipe(fd) == -1)
+		return (1);
+	add_fd(fd[0]);
+	add_fd(fd[1]);
+	if(node->next)
+		node->next->fd_in = fd[0];
+	if(node && node->fd_out == 0)
+		node->fd_out = fd[1];
+	else
+		close(fd[1]);
+	return (0);
+}

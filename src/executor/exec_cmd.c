@@ -6,77 +6,48 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 10:26:57 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/22 10:36:04 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/31 09:56:03 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-/* void exec_bultin(t_command *cmd)
+void	exec_extern_cmd(t_node *node)
 {
-	if (!(ft_strncmp(cmd->args[0], "exit", 4)))
-			b_exit();
-	if (!(ft_strncmp(cmd->args[0], "echo", 4)))
-		echo(cmd->args);
-	if (!(ft_strncmp(cmd->args[0], "cd", 2)))
-		cd(cmd->args);
-	if (!(ft_strncmp(cmd->args[0], "pwd", 3)))
-		pwd();
-	if (!(ft_strncmp(cmd->args[0], "export", 6)))
-		export(cmd->args);
-	if (!(ft_strncmp(cmd->args[0], "env", 3)))
-		env();
-	if (!(ft_strncmp(cmd->args[0], "unset", 5)))
-		unset(cmd->args[1]);
+	g_data.exit_code = execve(node->args[0], node->args, g_data.envp);
+	exit(15);
 }
 
-
-
-//fd[0] read
-//fd[1] write
-
-void handle_single_pipe(t_command *cmd)
+void	execute_cmd(t_node *node)
 {
-	int	fd[2];
-	pipe(fd);
-	cmd->output = fd[1];
-	cmd->next->input = fd[0];
-}
+	t_fd *fds;
 
-void	exec_cmd(t_command *cmd, char *envp[])
-{
-	if(cmd->builtin == TRUE && !cmd->next)
-			exec_bultin(cmd);
-	if(cmd->relation && !ft_strncmp(cmd->relation, "|", 1))
-		handle_single_pipe(cmd);
-	dup2(cmd->input, STDIN_FILENO);
-	dup2(cmd->output, STDOUT_FILENO);
-	execve(cmd->args[0], cmd->args, envp);
-}
-
-void	make_command(char *envp[])
-{
-	int		id;
-	int		status;
-	char	*str;
-	t_command *cmd;
-	
-	cmd = g_data.commands;
-	printf("quer graça executor?\n");
-	while(cmd)
+	fds = g_data.fds;
+	while(fds)
 	{
-		id = fork();
-		if (id == 0)
-		{
-			exec_cmd(cmd, envp);
-		}
-		else {
-			str = "a porra do pai tem que esperar o filho caralho\n";	
-			envp++;
-		}
-		if(id != 0)
-			waitpid(id, &status, 0);
-		cmd = cmd->next;
+		if(fds->value != node->fd_in && fds->value != node->fd_out)
+			close(fds->value);
+		fds = fds->next;
 	}
-	printf("%s\n",str);
-}	 */
+	dup2(node->fd_in, STDIN_FILENO);
+	if(node->fd_out != 0)
+		dup2(node->fd_out, STDOUT_FILENO);
+	exec_extern_cmd(node);
+}
+
+void	exec_commands(void)
+{
+	t_node	*node;
+	pid_t	pid;
+
+	node = g_data.node;
+	while(node)
+	{
+		close_prev_fd(node);
+		pid = fork();
+		if(pid == 0)
+			execute_cmd(node);
+		waitpid(pid, NULL, 0);
+		node = node->next;
+	}
+}

@@ -6,7 +6,7 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/03/22 10:01:27 by mamaro-d         ###   ########.fr        #
+#    Updated: 2022/03/31 10:23:22 by mamaro-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,8 +45,9 @@ FILES_M := main.c\
 	status_expansion.c\
 	free_command.c\
 	parser.c\
-	exec_cmd.c
-	
+	handle_operators.c\
+	exec_cmd.c\
+	exec_utils.c\
 
 FILE_OBJ := $(FILES_M:c=o)
 DIR_OBJ := ./obj/

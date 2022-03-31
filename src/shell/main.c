@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 22:08:00 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/22 13:59:22 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/31 10:25:12 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ int	main(int argc, char *argv[], char *envp[])
 	while (1)
 	{
 		line = prompt();
-		ft_parse(line, envp);
+		ft_parse(line);
+		exec_commands();
+		free_commands();
 		free(line);
 	}
 	return (0);
