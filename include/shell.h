@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 23:46:35 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/30 13:10:44 by ensebast         ###   ########.br       */
+/*   Updated: 2022/03/31 10:09:55 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ extern t_shell	g_data;
 char	*prompt(void);
 
 // Convert hash_table to char **
-char	**convert_table_matrix(void);
+char	**convert_table_matrix(t_hash_table *table);
 
 // Clean up
 void	clean_up(void);

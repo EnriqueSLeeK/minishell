@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 22:08:00 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/30 13:26:15 by ensebast         ###   ########.br       */
+/*   Updated: 2022/03/31 10:14:52 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char *argv[], char *envp[])
 		create_relation(line);
 		if (!g_data.commands->builtin)
 			search_bin(&(g_data.commands->args[0]));
-		env = convert_table_matrix();
+		env = convert_table_matrix(g_data.env_vars);
 		if (env != 0)
 			make_command(env);
 		post_exec_clean(line, env);
