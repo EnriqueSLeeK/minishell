@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 23:46:35 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/31 16:37:09 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/31 16:45:55 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ typedef struct s_shell
 	t_fd			*fds;
 	int				exit_code;
 	char			**operators;
-	int				pipe_count;
 	char			**envp;
 }	t_shell;
 
@@ -58,7 +57,7 @@ char	**convert_table_matrix(t_hash_table *table);
 
 // Clean up
 void	clean_up(void);
-void	post_exec_clean(char *line, char **env);
+void	post_exec_clean(char *line);
 
 // inti env table
 int		init_env_table(char *envp[]);

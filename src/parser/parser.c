@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 09:53:01 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/31 16:31:26 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/31 16:57:35 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	ft_parse(char *line)
 	char	*relation;
 
 	index = 0;
-	g_data.pipe_count = 0;
 	while (line[index] != '\0')
 	{
 		relation = is_in(g_data.operators, &line[index]);
@@ -28,7 +27,6 @@ void	ft_parse(char *line)
 			ft_create_cmd(line, relation);
 			line += index + 1;
 			index = 0;
-			g_data.pipe_count++;
 		}
 		index++;
 	}

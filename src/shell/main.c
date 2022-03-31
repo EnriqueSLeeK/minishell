@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 22:08:00 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/31 16:36:42 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/31 16:52:27 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void		init(int argc, char *argv[], char *envp[]);
 int	main(int argc, char *argv[], char *envp[])
 {
 	char		*line;
-	char		**env;
 	t_signal	sig;
 
 	init(argc, argv, envp);
@@ -30,15 +29,7 @@ int	main(int argc, char *argv[], char *envp[])
 		line = prompt();
 		ft_parse(line);
 		exec_commands();
-		free_commands();
-		free(line);
-		create_relation(line);
-		if (!g_data.commands->builtin)
-			search_bin(&(g_data.commands->args[0]));
-		env = convert_table_matrix(g_data.env_vars);
-		if (env != 0)
-			make_command(env);
-		post_exec_clean(line, env);
+		post_exec_clean(line);
 	}
 	return (0);
 }
@@ -50,7 +41,7 @@ void	init(int argc, char *argv[], char *envp[])
 	if (argc == 1 && argv[argc] == 0)
 	{
 		g_data.exit_code = 0;
-		g_data.envp = envp;
+		init_env_table(envp);
 		init_operators();
 	}
 	else

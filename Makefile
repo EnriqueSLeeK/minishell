@@ -6,11 +6,7 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2022/03/31 11:59:17 by mamaro-d         ###   ########.fr        #
-=======
-#    Updated: 2022/03/29 14:44:52 by ensebast         ###   ########.br        #
->>>>>>> 25c36eabe8d03957d4fedf62636de129898d00fb
+#    Updated: 2022/03/31 16:58:08 by mamaro-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,17 +44,13 @@ FILES_M := main.c\
 	init_hash_table.c\
 	create_local_var.c\
 	status_expansion.c\
-	free_command.c\
-	parser.c\
 	parser_utils.c\
 	handle_operators.c\
 	exec_cmd.c\
 	exec_utils.c\
-	create_command.c\
 	signal_handler.c\
 	free_command.c\
 	parser.c\
-	exec_cmd.c\
 	signal_set.c
 	
 

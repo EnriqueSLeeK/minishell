@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 10:26:57 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/31 16:35:56 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/03/31 16:48:04 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	exec_extern_cmd(t_node *node)
 {
+	g_data.envp = convert_table_matrix(g_data.env_vars);
 	g_data.exit_code = execve(node->args[0], node->args, g_data.envp);
 	exit(15);
 }
