@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   convert.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 12:41:57 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/31 10:12:43 by ensebast         ###   ########.br       */
+/*   Updated: 2022/03/31 17:06:45 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ char	*build_format(t_hash_table *tab, int i)
 	char	*line;
 
 	line = 0;
-	tmp = ft_strjoin((tab -> table[i]) -> key, "=");
+	tmp = ft_strjoin((tab->table[i])->key, "=");
 	if (tmp != 0)
 	{
-		line = ft_strjoin(tmp, (tab -> table[i]) -> value);
+		line = ft_strjoin(tmp, (tab->table[i])->value);
 		free(tmp);
 	}
 	return (line);
