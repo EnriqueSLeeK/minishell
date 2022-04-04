@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 13:53:43 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/17 23:40:50 by ensebast         ###   ########.fr       */
+/*   Updated: 2022/04/01 23:03:36 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static int	check_assign(char **arg)
 	i = 0;
 	while (arg[i])
 	{
-		if (!(check_varname(arg[i])) || find_char(arg[i], '=') < 1)
+		if (!(check_varname(arg[i])) || (find_char(arg[i], '=') < 1))
 			return (0);
 		i += 1;
 	}

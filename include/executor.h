@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 10:08:19 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/31 16:20:58 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/04 15:59:09 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,6 @@ void	exec_extern_cmd(t_node *node);
 void	execute_cmd(t_node *node);
 void	exec_commands(void);
 
+// Here doc
+int		here_doc_fd(char *delim);
 #endif
