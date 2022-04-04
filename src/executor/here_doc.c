@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 11:24:28 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/04 16:33:09 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/04 16:42:06 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ static void	writing(int fd_file, char *delim)
 
 static int	tmp_file(int fd_file, char *delim)
 {
-
 	if (fd_file == -1)
 		return (fd_file);
 	writing(fd_file, delim);
