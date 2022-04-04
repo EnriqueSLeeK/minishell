@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 11:24:28 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/04 16:27:13 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/04 16:33:09 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static void	writing(int fd_file, char *delim)
 				break ;
 			write(fd_file, buff, len);
 		}
+		else
+			break ;
 		free(buff);
 		buff = 0;
 	}
