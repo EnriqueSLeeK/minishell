@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:44:03 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/16 21:16:52 by ensebast         ###   ########.fr       */
+/*   Updated: 2022/04/04 15:13:17 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static char	*seach_var(char *var_name)
 	return (buff);
 }
 
+// Prepare the line
 static char	*prepare(char *parsed_line, char *var_name, int k)
 {
 	char	*tmp;
@@ -90,21 +91,34 @@ static void	expand_mix(char **parsed_line, int k, int flag)
 		expand_mix(parsed_line, find_dllsign(*parsed_line), flag);
 }
 
+// This function will expand variables
+// If the wildcard '*' symbol is found, expand the var first(if any)
+// and then match the pattern found
 void	var_expansion(char **parsed_line, int flag)
 {
-	int		i;
-	int		k;
+	int	i;
+	int	k;
+	int	f;
 
 	i = 0;
+	f = 0;
+	if (parsed_line == 0)
+		return ;
 	while (parsed_line[i])
 	{
 		k = find_dllsign(parsed_line[i]);
 		if (k != -1 && parsed_line[i][k] == '$')
 		{
 			expand_mix(&parsed_line[i], k, flag);
-			if (flag == EXPAND_ONE)
-				break ;
+			f = flag;
 		}
+		/*
+		k = find_char(parsed_line[1], '*');
+		if (k != -1)
+			expand_wild(parsed_line[i]);
+		*/
+		if (f == EXPAND_ONE)
+			break ;
 		i += 1;
 	}
 }
