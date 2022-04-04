@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 22:59:42 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/31 16:48:31 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/04 17:00:17 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	clean_up(void)
 {
+	unlink("/tmp/tmp_f");
 	free_table(&g_data.env_vars);
 	free_table(&g_data.local_vars);
 	free_operations();
