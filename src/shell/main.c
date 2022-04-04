@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 22:08:00 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/31 17:57:01 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/04 17:36:24 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ static void	init_operators(void)
 {
 	g_data.operators = (char **)ft_calloc(6, sizeof(char *));
 	g_data.operators[0] = ft_strdup("|");
-	g_data.operators[1] = ft_strdup(">");
-	g_data.operators[2] = ft_strdup("<");
-	g_data.operators[3] = ft_strdup(">>");
-	g_data.operators[4] = ft_strdup("<<");
+	g_data.operators[1] = ft_strdup(">>");
+	g_data.operators[3] = ft_strdup("<<");
+	g_data.operators[2] = ft_strdup(">");
+	g_data.operators[4] = ft_strdup("<");
 }

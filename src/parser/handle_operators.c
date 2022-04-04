@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 10:10:17 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/04 15:25:29 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/04 17:30:15 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@ void	handle_red_output(t_node *node)
 void	handle_red_intput(t_node *node)
 {
 	node->fd_in = open(node->next->args[0], O_RDONLY);
+}
+
+void	handle_here_doc(t_node *node)
+{
+	node->fd_out = here_doc_fd(node->next->args[0]);
 }
 
 int	handle_pipe(t_node *node)

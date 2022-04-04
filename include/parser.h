@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:02:51 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/31 16:23:04 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/04 17:49:34 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,12 @@ typedef struct s_fd
 
 void	ft_parse(char *line);
 char	*is_in(char **operators, char *line);
-void	ft_create_cmd(char *line, char *relation);
+char	*ft_create_cmd(char *line, int index, char *relation);
 
 void	handle_red_output(t_node *node);
 int		handle_pipe(t_node *node);
 void	handle_red_intput(t_node *node);
+void	handle_here_doc(t_node *node);
 
 void	link_relation(void);
 void	add_new_node(t_node *node);

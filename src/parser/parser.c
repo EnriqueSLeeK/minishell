@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 09:53:01 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/04 16:53:09 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/04 17:52:38 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,14 @@ void	ft_parse(char *line)
 		relation = is_in(g_data.operators, &line[index]);
 		if (relation)
 		{
-			line[index] = '\0';
-			ft_create_cmd(line, relation);
-			line += index + 1;
+			line = ft_create_cmd(line, index, relation);
 			index = 0;
 		}
 		index++;
 	}
 	relation = NULL;
 	if (*line != 0)
-		ft_create_cmd(line, relation);
+		ft_create_cmd(line, index, relation);
 }
 
 char	*is_in(char **operators, char *line)
@@ -62,10 +60,13 @@ void	add_new_node(t_node *node)
 		g_data.node = node;
 }
 
-void	ft_create_cmd(char *line, char *relation)
+char	*ft_create_cmd(char *line,int index, char *relation)
 {
 	t_node	*node;
-
+	if(relation)
+		if (!ft_strncmp(relation, "<<", 2) || !ft_strncmp(relation, ">>", 2))
+			index += 1;
+	line[index] = '\0';
 	node = (t_node *)malloc(sizeof(t_node));
 	node->args = ft_split(line, ' ');
 	node->relation = relation;
@@ -76,6 +77,7 @@ void	ft_create_cmd(char *line, char *relation)
 	search_bin(node->args);
 	add_new_node(node);
 	set_type(node);
+	return (line += index + 1);
 }
 
 void	link_relation(void)
@@ -89,12 +91,14 @@ void	link_relation(void)
 		{
 			if (!ft_strncmp(node->relation, "|", 1))
 				handle_pipe(node);
+			else if(!ft_strncmp(node->relation, "<<", 2))
+				handle_here_doc(node);
+			else if(!ft_strncmp(node->relation, ">>", 2))
+				handle_red_output(node);
 			else if (!ft_strncmp(node->relation, ">", 1))
 				handle_red_output(node);
 			else if (!ft_strncmp(node->relation, "<", 1))
 				handle_red_intput(node);
-			else if(!ft_strncmp(node->relation, ">>", 2))
-				handle_red_output(node);
 		}
 		node = node->next;
 	}
