@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 15:19:19 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/31 16:25:25 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/04 15:00:55 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,8 @@ void	free_operations(void)
 	g_data.operators = NULL;
 }
 
-void	free_commands(void)
+void	free_commands_from_last(void)
 {
-	while (g_data.node->next)
-		g_data.node = g_data.node->next;
 	while (g_data.node->previous)
 	{
 		free_args(g_data.node);
@@ -56,6 +54,15 @@ void	free_commands(void)
 		g_data.node = g_data.node->previous;
 		free(g_data.node->next);
 	}
+}
+
+void	free_commands(void)
+{
+	if(!g_data.node)
+		return ;
+	while (g_data.node->next)
+		g_data.node = g_data.node->next;
+	free_commands_from_last();
 	if (g_data.node->fd_in != 0)
 		close(g_data.node->fd_in);
 	if (g_data.node->fd_out != 0)

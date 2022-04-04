@@ -1,0 +1,12 @@
+total 44
+-rwxrwxrwx 1 moacir moacir  2061 Mar 31 16:58 Makefile
+-rwxrwxrwx 1 moacir moacir   366 Mar 13 16:15 README.md
+-rwxrwxrwx 1 moacir moacir     0 Apr  1 11:31 a
+-rwxrwxrwx 1 moacir moacir     6 Apr  1 11:13 in2
+drwxrwxrwx 1 moacir moacir   512 Apr  1 11:01 include
+-rwxrwxrwx 1 moacir moacir     3 Apr  1 11:06 infile
+drwxrwxrwx 1 moacir moacir   512 Mar 31 17:09 libft
+-rwxrwxrwx 1 moacir moacir 39336 Apr  1 11:24 minishell
+drwxrwxrwx 1 moacir moacir   512 Apr  1 11:24 obj
+-rwxrwxrwx 1 moacir moacir   196 Mar 11 11:58 readline.supp
+drwxrwxrwx 1 moacir moacir   512 Mar 31 16:34 src

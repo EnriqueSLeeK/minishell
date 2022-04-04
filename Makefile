@@ -6,7 +6,7 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/03/31 16:58:08 by mamaro-d         ###   ########.fr        #
+#    Updated: 2022/04/04 14:37:37 by mamaro-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME := minishell
 INCLUDE := -I ./include/
 
 CC := gcc
-CFLAGS :=  -Wall -Wextra -Werror
+CFLAGS :=  -Wall -Wextra -Werror -g
 LIB := -lreadline
 
 LIBFT := ./libft/libft.a
