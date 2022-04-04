@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 15:19:19 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/04 15:00:55 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/04 15:17:42 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	free_commands_from_last(void)
 
 void	free_commands(void)
 {
-	if(!g_data.node)
+	if (!g_data.node)
 		return ;
 	while (g_data.node->next)
 		g_data.node = g_data.node->next;
