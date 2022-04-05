@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wild_expand.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 15:10:30 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/04 15:12:53 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/05 19:11:59 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,4 @@
 
 void	expand_wild(char **parsed_line)
 {
-
 }

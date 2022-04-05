@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 10:26:57 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/05 11:10:27 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/05 19:08:31 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	exec_commands(void)
 	exec_sig(&(g_data.sig));
 	while (node)
 	{
+		if (node->fd_in == -1)
+			return ;
 		if (!node->is_file)
 		{
 			close_prev_fd(node);

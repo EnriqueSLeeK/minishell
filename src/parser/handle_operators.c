@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 10:10:17 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/05 11:42:34 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/05 19:10:19 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	handle_red_output(t_node *node)
 	t_node	*file;
 
 	file = node->next;
-	while(file->next && !file->next->relation )
+	while (file->next && !file->next->relation)
 	{
 		close(open(file->args[0], O_CREAT | O_WRONLY | O_TRUNC, 0666));
 		file = file->next;
@@ -28,7 +28,17 @@ void	handle_red_output(t_node *node)
 
 void	handle_red_intput(t_node *node)
 {
-	node->fd_in = open(node->next->args[0], O_RDONLY);
+	t_node	*file;
+
+	file = node->next;
+	while (file->next && !file->next->relation)
+	{
+		node->fd_in = open(file->args[0], O_RDONLY);
+		if (node->fd_in == -1)
+			return ;
+		file = file->next;
+	}
+	node->fd_in = open(file->args[0], O_RDONLY);
 }
 
 void	handle_here_doc(t_node *node)

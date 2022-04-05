@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 09:53:01 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/05 11:33:34 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/05 19:10:57 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,12 @@ void	add_new_node(t_node *node)
 		g_data.node = node;
 }
 
-char	*ft_create_cmd(char *line,int index, char *relation)
+char	*ft_create_cmd(char *line, int index, char *relation)
 {
 	t_node	*node;
+
 	line[index] = '\0';
-	if(relation)
+	if (relation)
 		if (!ft_strncmp(relation, "<<", 2) || !ft_strncmp(relation, ">>", 2))
 			index += 1;
 	line[index] = '\0';
@@ -78,7 +79,7 @@ char	*ft_create_cmd(char *line,int index, char *relation)
 	search_bin(node->args);
 	add_new_node(node);
 	set_type(node);
-	if(node->is_file)
+	if (node->is_file)
 		relation = NULL;
 	return (line += index + 1);
 }
@@ -94,9 +95,9 @@ void	link_relation(void)
 		{
 			if (!ft_strncmp(node->relation, "|", 1))
 				handle_pipe(node);
-			else if(!ft_strncmp(node->relation, "<<", 2))
+			else if (!ft_strncmp(node->relation, "<<", 2))
 				handle_here_doc(node);
-			else if(!ft_strncmp(node->relation, ">>", 2))
+			else if (!ft_strncmp(node->relation, ">>", 2))
 				handle_red_output(node);
 			else if (!ft_strncmp(node->relation, ">", 1))
 				handle_red_output(node);

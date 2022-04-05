@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   var_expansion.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:44:03 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/04 15:13:17 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/05 19:11:36 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,13 +112,14 @@ void	var_expansion(char **parsed_line, int flag)
 			expand_mix(&parsed_line[i], k, flag);
 			f = flag;
 		}
-		/*
-		k = find_char(parsed_line[1], '*');
-		if (k != -1)
-			expand_wild(parsed_line[i]);
-		*/
 		if (f == EXPAND_ONE)
 			break ;
 		i += 1;
 	}
 }
+
+	/*
+		k = find_char(parsed_line[1], '*');
+		if (k != -1)
+			expand_wild(parsed_line[i]);
+		*/

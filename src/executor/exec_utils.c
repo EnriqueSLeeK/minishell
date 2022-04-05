@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 09:56:49 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/31 16:25:01 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/05 19:08:47 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	add_fd(int fd)
 	t_fd	*new_fd;
 	t_fd	*last_fd;
 
+	if (fd == -1)
+		return ;
 	new_fd = (t_fd *)ft_calloc(sizeof(t_fd), 1);
 	new_fd->value = fd;
 	last_fd = g_data.fds;
