@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:44:03 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/05 19:11:36 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/05 19:16:21 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,34 +92,33 @@ static void	expand_mix(char **parsed_line, int k, int flag)
 }
 
 // This function will expand variables
-// If the wildcard '*' symbol is found, expand the var first(if any)
+// If the wildcard '*' is found, expand the var first(if any)
 // and then match the pattern found
-void	var_expansion(char **parsed_line, int flag)
+void	var_expansion(char ***parsed_line, int flag)
 {
-	int	i;
-	int	k;
-	int	f;
+	int		i;
+	int		k;
+	int		f;
+	char	**parsed;
 
 	i = 0;
 	f = 0;
-	if (parsed_line == 0)
+	if (parsed_line == 0 || (*parsed_line) == 0)
 		return ;
-	while (parsed_line[i])
+	parsed = *parsed_line;
+	while (parsed[i])
 	{
-		k = find_dllsign(parsed_line[i]);
-		if (k != -1 && parsed_line[i][k] == '$')
+		k = find_dllsign(parsed[i]);
+		if (k != -1 && parsed[i][k] == '$')
 		{
-			expand_mix(&parsed_line[i], k, flag);
+			expand_mix(&parsed[i], k, flag);
 			f = flag;
 		}
+		k = find_char(parsed[i], '*');
+		if (k != -1)
+			expand_wild(parsed_line, i, k);
 		if (f == EXPAND_ONE)
 			break ;
 		i += 1;
 	}
 }
-
-	/*
-		k = find_char(parsed_line[1], '*');
-		if (k != -1)
-			expand_wild(parsed_line[i]);
-		*/
