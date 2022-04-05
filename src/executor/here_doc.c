@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 11:24:28 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/04 16:42:06 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/05 11:19:41 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void	writing(int fd_file, char *delim)
 
 	while (1)
 	{
+		write(1, "> ", 2);
 		buff = get_next_line(0);
 		if (buff != 0)
 		{
