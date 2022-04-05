@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 11:37:56 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/03/31 16:32:00 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/04 21:20:09 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	is_file(t_node	*node)
 		return (0);
 	if (node->previous)
 	{
-		if (!ft_strncmp(node->previous->relation, "<", 1))
+		if (!ft_strncmp(node->previous->relation, "<", 2))
 		{
 			if (!access(node->args[0], F_OK))
 				return (1);
