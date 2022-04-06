@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 23:46:35 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/31 17:56:27 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/06 10:51:36 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <fcntl.h>
+# include <errno.h>
 
 // Custom project headers
 # include "misc_func.h"
@@ -34,6 +35,12 @@
 # include "parser.h"
 # include "executor.h"
 # include "../libft/libft.h"
+
+/* Error messages */
+# define M_COMMAND_NOT_FOUND ": command not found"
+# define M_INVALID_FILE ": No such file or directory"
+# define M_ERROR_SYNTAX "syntax error near unexpected token "
+# define M_PERMISSION ": Permission denied"
 
 typedef struct s_shell
 {
@@ -60,7 +67,10 @@ char	**convert_table_matrix(t_hash_table *table);
 void	clean_up(void);
 void	post_exec_clean(char *line);
 
-// inti env table
+// init env table
 int		init_env_table(char *envp[]);
+
+//Error Handler
+void	show_error(char *name, char *message, int status, int exit_from_shell);
 
 #endif

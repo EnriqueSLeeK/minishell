@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executor.h                                         :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/17 10:08:19 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/06 10:55:29 by mamaro-d         ###   ########.fr       */
+/*   Created: 2022/04/06 10:34:11 by mamaro-d          #+#    #+#             */
+/*   Updated: 2022/04/06 10:42:16 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXECUTOR_H
-# define EXECUTOR_H
+#include "shell.h"
 
-# include "shell.h"
 
-void	add_fd(int fd);
-void	close_fd(int fd);
-void	close_prev_fd(t_node *node);
-void	free_fds(void);
-void	exec_extern_cmd(t_node *node);
-void	execute_cmd(t_node *node);
-void	exec_commands(void);
+/* int		check_next_relation(t_node *node)
+{
+} */
 
-int		check_grammar(void);
-
-// Here doc
-int		here_doc_fd(char *delim);
-#endif
+void	show_error(char *name, char *message, int status, int exit_from_shell)
+{
+	write(2, "Minishell: ", 12);
+	write(2, name, ft_strlen(name));
+	write(2, message, ft_strlen(message));
+	write(2, "\n", 1);
+	g_data.exit_code = status;
+	if(exit_from_shell)
+	{
+		clean_up();
+		exit(g_data.exit_code);
+	}
+}

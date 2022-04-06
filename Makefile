@@ -6,7 +6,7 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/04/04 16:36:14 by ensebast         ###   ########.br        #
+#    Updated: 2022/04/06 10:37:48 by mamaro-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,8 @@ FILES_M := main.c\
 	signal_handler.c\
 	free_command.c\
 	parser.c\
-	signal_set.c
+	signal_set.c\
+	errors.c
 	
 
 FILE_OBJ := $(FILES_M:c=o)

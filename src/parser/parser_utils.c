@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 11:37:56 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/05 19:11:13 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/06 10:56:50 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,17 @@ void	set_type(t_node *node)
 		node->is_builtin = 1;
 	else if (is_file(node))
 		node->is_file = 1;
+}
+
+int	check_next_relation(t_node *node)
+{
+	if (node->relation && (!node->next || !node->next->args || !node->next->args[0]))
+	{
+		if (!ft_strncmp(node->relation, "'|'", 1))
+			show_error(M_ERROR_SYNTAX, node->relation, 2, 0);
+		else
+			show_error(M_ERROR_SYNTAX, "'newline'", 2, 0);
+		return (1);
+	}
+	return (0);
 }

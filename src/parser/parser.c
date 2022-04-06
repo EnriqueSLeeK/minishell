@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 09:53:01 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/05 19:10:57 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/06 10:44:25 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ char	*ft_create_cmd(char *line, int index, char *relation)
 	node->fd_out = 0;
 	search_bin(node->args);
 	add_new_node(node);
-	set_type(node);
+	if(node->args[0])
+		set_type(node);
 	if (node->is_file)
 		relation = NULL;
 	return (line += index + 1);

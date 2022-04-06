@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:02:51 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/04 17:49:34 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/06 10:54:30 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,7 @@ void	set_type(t_node *node);
 
 void	free_operations(void);
 void	free_commands(void);
+
+int		check_next_relation(t_node *node);
+
 #endif
