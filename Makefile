@@ -6,7 +6,7 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/04/06 18:35:02 by ensebast         ###   ########.br        #
+#    Updated: 2022/04/06 18:49:40 by ensebast         ###   ########.br        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,8 +45,8 @@ FILES_M := main.c\
 	create_local_var.c\
 	status_expansion.c\
 	micro_regex.c\
-	wild.c\
-	list_util.c\
+	wild_expansion.c\
+	file_list.c\
 	here_doc.c\
 	parser_utils.c\
 	handle_operators.c\
@@ -57,7 +57,6 @@ FILES_M := main.c\
 	parser.c\
 	signal_set.c\
 	errors.c
-	
 
 FILE_OBJ := $(FILES_M:c=o)
 DIR_OBJ := ./obj/

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wild.c                                             :+:      :+:    :+:   */
+/*   wild_expansion.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 18:22:46 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/06 18:32:41 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/06 19:28:03 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ char	**list_join(char **list_one, char **list_two, int i)
 	int		b_i;
 	char	**buff;
 
+	if (list_one == 0 || list_two == 0)
+		return (0);
 	buff = ft_calloc(list_size(list_one) + list_size(list_two) + 1,
 			sizeof(char *));
 	if (buff == 0)
@@ -68,8 +70,11 @@ void	expand_wild(char ***parsed_line, int i)
 		return ;
 	get_list_filter((*parsed_line)[i], &file_list);
 	tmp = list_join(*parsed_line, file_list, i);
-	free((*parsed_line)[i]);
-	free(*parsed_line);
-	*parsed_line = tmp;
-	free(file_list);
+	if (tmp != 0)
+	{
+		free((*parsed_line)[i]);
+		free(*parsed_line);
+		*parsed_line = tmp;
+		free(file_list);
+	}
 }
