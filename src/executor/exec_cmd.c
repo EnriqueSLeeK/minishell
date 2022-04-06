@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 10:26:57 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/06 11:04:31 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/06 11:21:30 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	exec_commands(void)
 	pid_t	pid;
 
 	node = g_data.node;
-	if(check_grammar())
+	if (check_grammar())
 		return ;
 	link_relation();
 	exec_sig(&(g_data.sig));
@@ -64,14 +64,14 @@ void	exec_commands(void)
 	}
 }
 
-int		check_grammar(void)
+int	check_grammar(void)
 {
-	t_node *node;
+	t_node	*node;
 
 	node = g_data.node;
-	while(node)
+	while (node)
 	{
-		if(check_next_relation(node))
+		if (check_next_relation(node))
 			return (1);
 		node = node->next;
 	}
