@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 13:48:41 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/05 19:18:41 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/06 18:28:59 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,11 @@ char	*status_code(void);
 int		local_var(char **arg);
 int		check_varname(char *var);
 void	var_expansion(char ***parsed_line, int flag);
-void	wild_expansion(char ***parsed_line, int i, int k);
+void	expand_wild(char ***parsed_line, int i);
+
+// Misc Utils
+int		match_exp(char *regexp, char *text);
+void	get_list_filter(char *exp, char ***file_list);
 
 // Bin utils
 int		search_bin(char **bin);

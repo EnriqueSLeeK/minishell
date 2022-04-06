@@ -6,7 +6,7 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/04/06 10:37:48 by mamaro-d         ###   ########.fr        #
+#    Updated: 2022/04/06 18:35:02 by ensebast         ###   ########.br        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,9 @@ FILES_M := main.c\
 	init_hash_table.c\
 	create_local_var.c\
 	status_expansion.c\
+	micro_regex.c\
+	wild.c\
+	list_util.c\
 	here_doc.c\
 	parser_utils.c\
 	handle_operators.c\

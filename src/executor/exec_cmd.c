@@ -6,11 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 10:26:57 by mamaro-d          #+#    #+#             */
-<<<<<<< Updated upstream
-/*   Updated: 2022/04/06 11:21:30 by mamaro-d         ###   ########.fr       */
-=======
-/*   Updated: 2022/04/05 19:30:01 by ensebast         ###   ########.br       */
->>>>>>> Stashed changes
+/*   Updated: 2022/04/06 18:42:34 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 

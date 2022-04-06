@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 23:46:35 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/06 10:51:36 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/06 18:38:41 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 // System headers
 # include <stdio.h>
 # include <unistd.h>
+# include <dirent.h>
 # include <signal.h>
 # include <stdlib.h>
 # include <termios.h>
