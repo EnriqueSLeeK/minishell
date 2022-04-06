@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:44:03 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/05 19:16:21 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/05 19:26:21 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,10 @@ void	var_expansion(char ***parsed_line, int flag)
 			f = flag;
 		}
 		k = find_char(parsed[i], '*');
+		/*
 		if (k != -1)
 			expand_wild(parsed_line, i, k);
+			*/
 		if (f == EXPAND_ONE)
 			break ;
 		i += 1;

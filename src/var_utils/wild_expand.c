@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wild_expand.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/04 15:10:30 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/05 19:15:12 by ensebast         ###   ########.br       */
+/*   Created: 2022/04/05 19:33:56 by ensebast          #+#    #+#             */
+/*   Updated: 2022/04/05 20:06:02 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,4 @@ void	expand_wild(char ***parsed_line, int i, int k)
 	parsed_line[i][k] = 0;
 	prefix = parsed_line[i];
 	sufix = parsed_line[i][k + 1];
-	if (sufix != 0)
 }
