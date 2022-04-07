@@ -6,7 +6,7 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/04/06 18:49:40 by ensebast         ###   ########.br        #
+#    Updated: 2022/04/07 16:30:30 by ensebast         ###   ########.br        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ FILES_M := main.c\
 	create_local_var.c\
 	status_expansion.c\
 	micro_regex.c\
+	expand.c\
 	wild_expansion.c\
 	file_list.c\
 	here_doc.c\

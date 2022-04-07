@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 13:53:43 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/01 23:03:36 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/06 23:09:07 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ int	check_varname(char *var_name)
 			if (!(ft_isalpha(var_name[i])
 					|| ft_isdigit(var_name[i])
 					|| var_name[i] == '_'))
-				return (0);
+				return (i);
 			i += 1;
 		}
 	}
 	else
-		return (0);
-	return (1);
+		return (i);
+	return (-1);
 }
 
 static int	create_local_var(char **arg, int flag)
@@ -43,7 +43,7 @@ static int	create_local_var(char **arg, int flag)
 	if (*arg == 0)
 		return (flag);
 	i = find_char(*arg, '=');
-	if (i > 0 && check_varname(*arg))
+	if (i > 0 && check_varname(*arg) == -1)
 	{
 		(*arg)[i] = 0;
 		set_entry(g_data.local_vars, create_entry(*arg, &((*arg)[i + 1])));
@@ -59,7 +59,7 @@ static int	check_assign(char **arg)
 	i = 0;
 	while (arg[i])
 	{
-		if (!(check_varname(arg[i])) || (find_char(arg[i], '=') < 1))
+		if (!(check_varname(arg[i]) == -1) || (find_char(arg[i], '=') < 1))
 			return (0);
 		i += 1;
 	}

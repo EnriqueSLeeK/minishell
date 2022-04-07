@@ -6,89 +6,22 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:44:03 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/06 19:12:07 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/07 16:30:11 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-// Just find the dollar sign
-static int	find_dllsign(char *line)
+void	action(int *f, char **parsed, int flag)
 {
-	int	i;
+	int		k;
 
-	i = 0;
-	while (line[i])
+	k = find_char(parsed[0], '$');
+	if (k != -1 && parsed[0][k] == '$')
 	{
-		if (line[i] == '$')
-			return (i);
-		i += 1;
+		expand_mix(&parsed[0], k, flag);
+		*f = flag;
 	}
-	return (-1);
-}
-
-// Search for the var value
-static char	*seach_var(char *var_name)
-{
-	int		i;
-	char	*buff;
-
-	i = find_dllsign(var_name);
-	if (i != -1)
-		var_name[i] = 0;
-	buff = get_value(g_data.env_vars, var_name);
-	if (buff == 0)
-		buff = get_value(g_data.local_vars, var_name);
-	if (i != -1)
-		var_name[i] = '$';
-	return (buff);
-}
-
-// Prepare the line
-static char	*prepare(char *parsed_line, char *var_name, int k)
-{
-	char	*tmp;
-	char	*line;
-	char	*buff;
-
-	tmp = ft_calloc(k + 1, sizeof(char));
-	ft_strlcpy(tmp, parsed_line, k + 1);
-	if (var_name[0] == '?')
-	{
-		buff = status_code();
-		line = ft_strjoin(tmp, buff);
-		free(buff);
-		free(tmp);
-		buff = ft_strjoin(line, &(var_name[1]));
-		free(line);
-	}
-	else
-	{
-		buff = ft_strdup(seach_var(var_name));
-		line = ft_strjoin(tmp, buff);
-		free(buff);
-		free(tmp);
-		buff = ft_strjoin(line, &(var_name[find_dllsign(var_name)]));
-		free(line);
-	}
-	return (buff);
-}
-
-// Expansion when mixed with string
-static void	expand_mix(char **parsed_line, int k, int flag)
-{
-	char	*line;
-	char	*var_name;
-
-	if (k == -1 || (*parsed_line)[k] != '$')
-		return ;
-	var_name = &((*parsed_line)[k + 1]);
-	(*parsed_line)[k] = 0;
-	line = prepare(*parsed_line, var_name, k);
-	free(*parsed_line);
-	*parsed_line = line;
-	if (flag != EXPAND_ONE)
-		expand_mix(parsed_line, find_dllsign(*parsed_line), flag);
 }
 
 // This function will expand variables
@@ -97,7 +30,6 @@ static void	expand_mix(char **parsed_line, int k, int flag)
 void	var_expansion(char ***parsed_line, int flag)
 {
 	int		i;
-	int		k;
 	int		f;
 	char	**parsed;
 
@@ -108,13 +40,8 @@ void	var_expansion(char ***parsed_line, int flag)
 	parsed = *parsed_line;
 	while (parsed[i])
 	{
-		k = find_dllsign(parsed[i]);
-		if (k != -1 && parsed[i][k] == '$')
-		{
-			expand_mix(&parsed[i], k, flag);
-			f = flag;
-		}
-		if (find_char(parsed[i], '*') != -1)
+		action(&f, &(parsed[i]), flag);
+		if (find_char(parsed[0], '*') != -1)
 		{
 			expand_wild(parsed_line, i);
 			parsed = *parsed_line;

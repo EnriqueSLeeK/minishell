@@ -6,57 +6,52 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 18:32:04 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/06 18:32:18 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/07 16:24:39 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static int	find_diff(char c, char *exp);
-static int	match_star(int c, char *regexp, char *text);
 static int	match_symbol(char *regexp, char *text);
 
-// Micro-regex start
-int	match_exp(char *regexp, char *text)
+static char	*consume_extra(char *reg, char c)
 {
-	if (regexp == 0 || *regexp == 0)
-		return (-1);
-	if (match_symbol(regexp, text))
-		return (1);
-	return (0);
+	while (*reg == c && *(reg + 1) == c)
+		reg += 1;
+	return (reg);
 }
 
-// Return a char
-static int	find_diff(char c, char *exp)
+static int	match_star(char *regexp, char *text)
 {
-	int	i;
-
-	i = 0;
-	while (exp[i])
+	while (*text != 0)
 	{
-		if (c != exp[i])
-			return (exp[i]);
-		i += 1;
+		if (match_symbol(regexp + 1, text))
+			return (1);
+		text += 1;
 	}
 	return (0);
 }
 
-//	Recursively call other functions
+// Match symbols
 static int	match_symbol(char *regexp, char *text)
 {
-	if (*regexp == 0 && *text == 0)
+	if ((*regexp == 0 && *text == 0)
+		|| (*regexp == 0 && *(regexp - 1) == '*'))
 		return (1);
 	if (*regexp == '*')
-		return (match_star(find_diff('*', regexp), regexp + 1, text));
-	else if (*regexp == *text)
+		return (match_star(consume_extra(regexp, '*'), text));
+	if (*regexp && *text == *regexp)
 		return (match_symbol(regexp + 1, text + 1));
 	return (0);
 }
 
-// Wildcard *
-static int	match_star(int c, char *regexp, char *text)
+// Micro-regex start
+int	match_exp(char *regexp, char *text)
 {
-	while (*text != 0 && *text != c)
-		text += 1;
-	return (match_symbol(regexp, text));
+	if (regexp == 0 || *regexp == 0
+		|| text == 0 || *text == 0)
+		return (0);
+	if (match_symbol(regexp, text))
+		return (1);
+	return (0);
 }
