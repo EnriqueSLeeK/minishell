@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 18:22:46 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/06 19:28:03 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/07 16:49:53 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ void	expand_wild(char ***parsed_line, int i)
 
 	if (parsed_line == 0
 		|| *parsed_line == 0
-		|| **parsed_line == 0)
+		|| **parsed_line == 0
+		|| find_char((*parsed_line)[i], '/') != -1)
 		return ;
 	get_list_filter((*parsed_line)[i], &file_list);
 	tmp = list_join(*parsed_line, file_list, i);
