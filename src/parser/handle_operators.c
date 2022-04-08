@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 10:10:17 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/05 19:10:19 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/08 12:03:27 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ void	handle_red_output(t_node *node)
 						| O_WRONLY | O_TRUNC, 0666);
 }
 
-void	handle_red_intput(t_node *node)
+void	handle_red_input(t_node *node)
 {
 	t_node	*file;
 
 	file = node->next;
-	while (file->next && !file->next->relation)
+	while (file->next && !file->next->is_file)
 	{
 		node->fd_in = open(file->args[0], O_RDONLY);
 		if (node->fd_in == -1)
@@ -56,7 +56,9 @@ int	handle_pipe(t_node *node)
 	add_fd(fd[1]);
 	if (node->next)
 		node->next->fd_in = fd[0];
-	if (node && node->fd_out == 0)
+	while(node && node->is_file)
+		node = node->previous;
+	if(node && node->fd_out == 1)
 		node->fd_out = fd[1];
 	else
 		close(fd[1]);

@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:02:51 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/06 10:54:30 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/08 10:05:48 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*ft_create_cmd(char *line, int index, char *relation);
 
 void	handle_red_output(t_node *node);
 int		handle_pipe(t_node *node);
-void	handle_red_intput(t_node *node);
+void	handle_red_input(t_node *node);
 void	handle_here_doc(t_node *node);
 
 void	link_relation(void);

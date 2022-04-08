@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 22:08:00 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/05 11:10:23 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/08 11:51:08 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void		init(int argc, char *argv[], char *envp[]);
 int	main(int argc, char *argv[], char *envp[])
 {
 	char		*line;
-
+	
 	init(argc, argv, envp);
 	while (1)
 	{
@@ -49,10 +49,12 @@ void	init(int argc, char *argv[], char *envp[])
 
 static void	init_operators(void)
 {
-	g_data.operators = (char **)ft_calloc(6, sizeof(char *));
+	g_data.operators = (char **)ft_calloc(8, sizeof(char *));
 	g_data.operators[0] = ft_strdup("|");
 	g_data.operators[1] = ft_strdup(">>");
 	g_data.operators[3] = ft_strdup("<<");
 	g_data.operators[2] = ft_strdup(">");
 	g_data.operators[4] = ft_strdup("<");
+	g_data.operators[5] = NULL;
+	g_data.operators[6] = ft_strdup(" ");
 }
