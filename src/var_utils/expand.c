@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:29:43 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/07 16:29:48 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/08 23:47:00 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,10 @@ static char	*contructor(char *buff, char *tmp)
 // Search for the var value
 static char	*seach_var(char *var_name)
 {
-	int		i;
 	int		k;
 	char	*tmp;
 	char	*buff;
 
-	i = find_char(var_name, '$');
-	if (i != -1)
-		var_name[i] = 0;
-	tmp = 0;
 	k = check_varname(var_name);
 	if (k != -1)
 	{
@@ -50,8 +45,6 @@ static char	*seach_var(char *var_name)
 	buff = get_value(g_data.env_vars, var_name);
 	if (buff == 0)
 		buff = get_value(g_data.local_vars, var_name);
-	if (i != -1)
-		var_name[i] = '$';
 	if (k != -1)
 		return (contructor(buff, tmp));
 	return (ft_strdup(buff));
@@ -81,18 +74,44 @@ static char	*prepare(char *parsed_line, char *var_name, int k)
 		line = ft_strjoin(tmp, buff);
 		free(buff);
 		free(tmp);
-		buff = ft_strjoin(line, &(var_name[find_char(var_name, '$')]));
+		buff = ft_strjoin(line, &(var_name[search_expandable(var_name)]));
 		free(line);
 	}
 	return (buff);
 }
 
-// Expansion when mixed with string
-void	expand_mix(char **parsed_line, int k, int flag)
+int	search_expandable(char *line)
 {
+	int	mode;
+	int	l;
+
+	mode = EXPAND;
+	l = 0;
+	while (*line)
+	{
+		if (*line == '\'' && (mode & LOCK_E) != LOCK_E)
+			mode ^= EXPAND;
+		if (*line == '\"' && mode != IGNORE)
+		{
+			mode ^= IGNORE;
+			mode ^= LOCK_E;
+		}
+		if (*line == '$' && mode & EXPAND)
+			break ;
+		line += 1;
+		l += 1;
+	}
+	return (l);
+}
+
+// Expansion when mixed with string
+void	expand_mix(char **parsed_line, int flag)
+{
+	int		k;
 	char	*line;
 	char	*var_name;
 
+	k = search_expandable(*parsed_line);
 	if (k == -1 || (*parsed_line)[k] != '$')
 		return ;
 	var_name = &((*parsed_line)[k + 1]);
@@ -101,5 +120,5 @@ void	expand_mix(char **parsed_line, int k, int flag)
 	free(*parsed_line);
 	*parsed_line = line;
 	if (flag != EXPAND_ONE)
-		expand_mix(parsed_line, find_char(*parsed_line, '$'), flag);
+		expand_mix(parsed_line, flag);
 }

@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 22:08:00 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/08 11:51:08 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/08 23:50:40 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,13 @@ void		init(int argc, char *argv[], char *envp[]);
 int	main(int argc, char *argv[], char *envp[])
 {
 	char		*line;
-	
+
 	init(argc, argv, envp);
 	while (1)
 	{
 		prompt_sig(&(g_data.sig));
 		line = prompt();
+		var_expansion(&line, EXPAND_ALL);
 		ft_parse(line);
 		exec_commands();
 		post_exec_clean(line);
