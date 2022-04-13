@@ -6,7 +6,7 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/04/07 16:30:30 by ensebast         ###   ########.br        #
+#    Updated: 2022/04/13 17:07:11 by ensebast         ###   ########.br        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,8 +46,6 @@ FILES_M := main.c\
 	status_expansion.c\
 	micro_regex.c\
 	expand.c\
-	wild_expansion.c\
-	file_list.c\
 	here_doc.c\
 	parser_utils.c\
 	handle_operators.c\
@@ -57,7 +55,11 @@ FILES_M := main.c\
 	free_command.c\
 	parser.c\
 	signal_set.c\
-	errors.c
+	errors.c\
+	we_pre_util_bonus.c\
+	we_pre_split_bonus.c\
+	file_list_bonus.c\
+	wild_expansion_bonus.c
 
 FILE_OBJ := $(FILES_M:c=o)
 DIR_OBJ := ./obj/
@@ -66,7 +68,7 @@ OBJ_M := $(addprefix $(DIR_OBJ), $(FILE_OBJ))
 
 VPATH := ./src/shell ./src/hash_table ./src/parser ./src/search_bin\
 		 ./src/var_utils ./src/builtin ./src/executor ./src/misc_util\
-		 ./src/signal_handler
+		 ./src/signal_handler ./src/var_utils/wildcard_util
 
 $(DIR_OBJ)%.o: %.c
 	@mkdir -p $(@D)

@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 23:46:35 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/06 18:38:41 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/13 17:11:56 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 # include "parser.h"
 # include "executor.h"
 # include "../libft/libft.h"
+# include "wildcard_bonus.h"
 
 /* Error messages */
 # define M_COMMAND_NOT_FOUND ": command not found"

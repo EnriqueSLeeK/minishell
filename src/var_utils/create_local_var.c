@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 13:53:43 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/06 23:09:07 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/13 17:14:44 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ int	check_varname(char *var_name)
 		i += 1;
 		while (var_name[i] && var_name[i] != '=')
 		{
-			if (!(ft_isalpha(var_name[i])
-					|| ft_isdigit(var_name[i])
+			if (!(ft_isalpha(var_name[i]) || ft_isdigit(var_name[i])
 					|| var_name[i] == '_'))
 				return (i);
 			i += 1;

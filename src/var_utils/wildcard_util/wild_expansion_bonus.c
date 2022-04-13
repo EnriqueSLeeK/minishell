@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wild_expansion.c                                   :+:      :+:    :+:   */
+/*   wild_expansion_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 18:22:46 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/13 00:06:01 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/13 17:12:44 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-int	list_size(char **list)
+static int	list_size(char **list)
 {
 	int	i;
 
@@ -22,7 +22,7 @@ int	list_size(char **list)
 	return (i);
 }
 
-void	move_pointer(char **dest, char **src, int *b_i)
+static void	move_pointer(char **dest, char **src, int *b_i)
 {
 	while (*src)
 	{
@@ -32,7 +32,7 @@ void	move_pointer(char **dest, char **src, int *b_i)
 	}
 }
 
-char	**list_join(char **list_one, char **list_two, int i)
+static char	**list_join(char **list_one, char **list_two, int i)
 {
 	int		b_i;
 	char	**buff;
@@ -66,8 +66,7 @@ void	expand_wild(char ***parsed_line, int i)
 
 	if (parsed_line == 0
 		|| *parsed_line == 0
-		|| **parsed_line == 0
-		|| find_char((*parsed_line)[i], '/') != -1)
+		|| **parsed_line == 0)
 		return ;
 	get_list_filter((*parsed_line)[i], &file_list);
 	tmp = list_join(*parsed_line, file_list, i);

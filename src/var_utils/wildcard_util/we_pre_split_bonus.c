@@ -1,16 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wild_expansion_pre_split.c                         :+:      :+:    :+:   */
+/*   we_pre_split.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/09 00:59:00 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/11 18:34:12 by ensebast         ###   ########.br       */
+/*   Created: 2022/04/13 12:20:30 by ensebast          #+#    #+#             */
+/*   Updated: 2022/04/13 15:49:59 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shell.c"
+#include "shell.h"
+
+char	*make_line(char *pattern);
+void	get_pattern(char *line, int *i);
+void	prepare_line(char **line, int i);
+char	*translate_line(char *line, int i);
+void	joining(char **dest, char *file, char *next);
 
 static int	search_expandable(char *line)
 {
@@ -36,25 +42,16 @@ static int	search_expandable(char *line)
 	return (l);
 }
 
-char	*get_pattern(char *line)
-{
-	char	*pattern;
-
-	pattern = line;
-	while (*line)
-	{
-		line += 1;
-	}
-	return (0);
-}
-
-int wild_expansion_pre_split(char **line)
+void	we_pre_split(char **line, int index)
 {
 	int		i;
-	char	*pattern;
+	int		segment_start;
 
-	i = search_expandable(*line);
-	if (line[i] == 0 || line[i] != '*')
-		return (0);
-	wild_expansion_pre_split(line);
+	i = search_expandable((*line + index)) + index;
+	if ((*line)[i] == 0 || (*line)[i] != '*')
+		return ;
+	segment_start = i;
+	get_pattern((*line + segment_start), &segment_start);
+	prepare_line(line, segment_start);
+	we_pre_split(line, i + 1);
 }

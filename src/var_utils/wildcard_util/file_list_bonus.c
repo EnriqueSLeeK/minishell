@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_util.c                                        :+:      :+:    :+:   */
+/*   file_list.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 18:25:14 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/06 18:41:09 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/13 17:04:04 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,22 @@
 
 static int	check(char *file_name, char *exp)
 {
-	if (!(ft_strncmp(file_name, ".", 2) == 0
-			|| ft_strncmp(file_name, "..", 3) == 0)
-		&& match_exp(exp, file_name))
-	{
+	if (match_exp(exp, file_name))
 		return (1);
-	}
 	return (0);
 }
 
-static int	count_file(char *exp)
+static int	count_file(char *directory, char *exp)
 {
 	int				i;
 	DIR				*dir;
 	struct dirent	*file_entry;
 
 	i = 0;
-	dir = opendir(".");
+	if (directory == 0)
+		dir = opendir(".");
+	else
+		dir = opendir(directory);
 	if (dir == 0)
 		return (-1);
 	file_entry = readdir(dir);
@@ -44,13 +43,16 @@ static int	count_file(char *exp)
 	return (i);
 }
 
-static void	fill_list(char *exp, char **file_list)
+static void	fill_list(char *directory, char *exp, char **file_list)
 {
 	int				i;
 	DIR				*dir;
 	struct dirent	*file_entry;
 
-	dir = opendir(".");
+	if (directory == 0)
+		dir = opendir(".");
+	else
+		dir = opendir(directory);
 	if (dir == 0)
 		return ;
 	i = 0;
@@ -59,7 +61,10 @@ static void	fill_list(char *exp, char **file_list)
 	{
 		if (check(file_entry -> d_name, exp))
 		{
-			file_list[i] = ft_strdup(file_entry -> d_name);
+			if (directory == 0)
+				file_list[i] = ft_strdup(file_entry -> d_name);
+			else
+				file_list[i] = ft_strjoin(directory, file_entry -> d_name);
 			i += 1;
 		}
 		file_entry = readdir(dir);
@@ -67,15 +72,43 @@ static void	fill_list(char *exp, char **file_list)
 	closedir(dir);
 }
 
+char	*separate_and_get_dir(char **exp)
+{
+	char	*dir;
+	char	c;
+	int		i;
+
+	i = ft_strlen(*exp) - 1;
+	while (i > -1)
+	{
+		if ((*exp)[i] == '/')
+			break ;
+		i -= 1;
+	}
+	if (i > -1)
+	{
+		c = (*exp)[i + 1];
+		(*exp)[i + 1] = 0;
+		dir = ft_strdup(*exp);
+		(*exp)[i + 1] = c;
+		*exp = &((*exp)[i + 1]);
+		return (dir);
+	}
+	return (0);
+}
+
 void	get_list_filter(char *exp, char ***file_list)
 {
 	int				quant;
+	char			*directory;
 
 	*file_list = 0;
-	quant = count_file(exp);
+	directory = separate_and_get_dir(&exp);
+	quant = count_file(directory, exp);
 	if (quant > 0)
 		*file_list = ft_calloc(quant + 1, sizeof(char *));
 	if (*file_list == 0)
 		return ;
-	fill_list(exp, *file_list);
+	fill_list(directory, exp, *file_list);
+	free(directory);
 }

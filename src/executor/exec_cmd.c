@@ -6,17 +6,19 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 10:26:57 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/13 10:51:05 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/13 16:10:10 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
+// Clean up data if execve fails
 void	exec_extern_cmd(t_node *node)
 {
 	g_data.envp = convert_table_matrix(g_data.env_vars);
 	g_data.exit_code = execve(node->args[0], node->args, g_data.envp);
 	perror("execve");
+	clean_up();
 	exit(1);
 }
 

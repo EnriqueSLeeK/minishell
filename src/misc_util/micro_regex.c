@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 18:32:04 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/07 16:24:39 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/13 15:38:57 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ static int	match_star(char *regexp, char *text)
 			return (1);
 		text += 1;
 	}
+	if (*text == 0 && *(regexp + 1) == 0)
+		return (1);
 	return (0);
 }
 
@@ -51,7 +53,9 @@ int	match_exp(char *regexp, char *text)
 	if (regexp == 0 || *regexp == 0
 		|| text == 0 || *text == 0)
 		return (0);
-	if (match_symbol(regexp, text))
+	if (*text == '.' && *regexp != *text)
+		return (0);
+	else if (match_symbol(regexp, text))
 		return (1);
 	return (0);
 }
