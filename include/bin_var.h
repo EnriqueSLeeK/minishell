@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 13:48:41 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/08 23:46:20 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/09 01:06:59 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	var_expansion(char **parsed_line, int flag);
 // Misc Utils
 int		match_exp(char *regexp, char *text);
 void	get_list_filter(char *exp, char ***file_list);
-int		search_expandable(char *line);
 
 // Bin utils
 int		search_bin(char **bin);

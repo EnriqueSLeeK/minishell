@@ -6,11 +6,35 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:29:43 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/08 23:47:00 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/09 10:12:49 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
+
+static int	search_expandable(char *line)
+{
+	int	mode;
+	int	l;
+
+	mode = EXPAND;
+	l = 0;
+	while (*line)
+	{
+		if (*line == '\'' && (mode & LOCK_E) != LOCK_E)
+			mode ^= EXPAND;
+		if (*line == '\"' && mode != IGNORE)
+		{
+			mode ^= IGNORE;
+			mode ^= LOCK_E;
+		}
+		if (*line == '$' && (mode & EXPAND))
+			break ;
+		line += 1;
+		l += 1;
+	}
+	return (l);
+}
 
 static char	*contructor(char *buff, char *tmp)
 {
@@ -78,30 +102,6 @@ static char	*prepare(char *parsed_line, char *var_name, int k)
 		free(line);
 	}
 	return (buff);
-}
-
-int	search_expandable(char *line)
-{
-	int	mode;
-	int	l;
-
-	mode = EXPAND;
-	l = 0;
-	while (*line)
-	{
-		if (*line == '\'' && (mode & LOCK_E) != LOCK_E)
-			mode ^= EXPAND;
-		if (*line == '\"' && mode != IGNORE)
-		{
-			mode ^= IGNORE;
-			mode ^= LOCK_E;
-		}
-		if (*line == '$' && mode & EXPAND)
-			break ;
-		line += 1;
-		l += 1;
-	}
-	return (l);
 }
 
 // Expansion when mixed with string
