@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 15:19:19 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/08 11:29:58 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/13 11:16:13 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	free_operations(void)
 	int	index;
 
 	index = 0;
-	while (g_data.operators[index])
+	while (index < 7)
 	{
 		free(g_data.operators[index]);
 		g_data.operators[index] = NULL;

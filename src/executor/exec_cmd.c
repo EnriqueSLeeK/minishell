@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 10:26:57 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/08 23:50:22 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/13 10:51:05 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,25 @@ void	exec_extern_cmd(t_node *node)
 	g_data.exit_code = execve(node->args[0], node->args, g_data.envp);
 	perror("execve");
 	exit(1);
+}
+
+void	exec_bultin(t_node *node)
+{
+	printf("Executando uma bultin\n");
+	if (!ft_strncmp(node->args[0], "echo", 4))
+		echo(node->args);
+	else if (!ft_strncmp(node->args[0], "cd", 2))
+		cd(node->args);
+	else if (!ft_strncmp(node->args[0], "env", 3))
+		env();
+	else if (!ft_strncmp(node->args[0], "exit", 4))
+		b_exit();
+	else if (!ft_strncmp(node->args[0], "export", 6))
+		export(node->args);
+	else if (!ft_strncmp(node->args[0], "pwd", 3))
+		pwd();
+	else if (!ft_strncmp(node->args[0], "unset", 5))
+		unset(node->args[1]);
 }
 
 void	execute_cmd(t_node *node)
@@ -34,7 +53,10 @@ void	execute_cmd(t_node *node)
 	}
 	dup2(node->fd_in, STDIN_FILENO);
 	dup2(node->fd_out, STDOUT_FILENO);
-	exec_extern_cmd(node);
+	/* if(node->is_builtin)
+		exec_bultin(node);
+	else */
+		exec_extern_cmd(node);
 }
 
 void	exec_commands(void)
