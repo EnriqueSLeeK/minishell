@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 13:44:56 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/17 23:27:57 by ensebast         ###   ########.fr       */
+/*   Updated: 2022/04/14 18:04:46 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ static void	prepare_bin_path(char *path, char *bin, char **bin_path)
 
 	tmp = ft_strjoin(path, "/");
 	if (tmp == 0)
-		printf("Slash append failed\n");
+		write(2, "Slash append failed\n", 20);
 	*bin_path = ft_strjoin(tmp, bin);
 	if (*bin_path == 0)
-		printf("Failed to prepare the path");
+		write(2, "Failed to prepare the path\n", 27);
 	free(tmp);
 }
 
@@ -48,7 +48,7 @@ static char	*search(char **bin)
 	{
 		prepare_bin_path(path[i], *bin, &bin_path);
 		if (bin_path == 0)
-			printf("ft_strjoin failure\n");
+			write(2, "ft_strjoin failure\n", 19);
 		if (access(bin_path, X_OK) == 0)
 		{
 			free_str(path, *bin);

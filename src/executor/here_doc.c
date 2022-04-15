@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 11:24:28 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/06 11:16:03 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/14 20:07:52 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ static void	writing(int fd_file, char *delim)
 {
 	int		len;
 	char	*buff;
+	char	*delim_with_nl;
 
+	delim_with_nl = ft_strjoin(delim, "\n");
 	while (1)
 	{
 		write(1, "> ", 2);
@@ -24,7 +26,7 @@ static void	writing(int fd_file, char *delim)
 		if (buff != 0)
 		{
 			len = ft_strlen(buff);
-			if (ft_strncmp(delim, buff, len + 1) == -10)
+			if (ft_strncmp(delim_with_nl, buff, len + 1) == 0)
 				break ;
 			write(fd_file, buff, len);
 		}
@@ -35,6 +37,7 @@ static void	writing(int fd_file, char *delim)
 	}
 	if (buff)
 		free(buff);
+	free(delim_with_nl);
 }
 
 static int	tmp_file(int fd_file, char *delim)
@@ -57,6 +60,5 @@ int	here_doc_fd(char *delim)
 			open("/tmp/tmp_f", O_CREAT | O_WRONLY, 0000644), delim);
 	if (fd == -1)
 		write(2, "Failed to create a tmp file\n", 29);
-	unlink("/tmp/tmp_f");
 	return (fd);
 }

@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 10:26:57 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/13 16:10:10 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/14 21:12:14 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	exec_extern_cmd(t_node *node)
 	g_data.envp = convert_table_matrix(g_data.env_vars);
 	g_data.exit_code = execve(node->args[0], node->args, g_data.envp);
 	perror("execve");
-	clean_up();
+	child_clean_up(g_data.envp);
 	exit(1);
 }
 
@@ -70,20 +70,23 @@ void	exec_commands(void)
 	if (check_grammar())
 		return ;
 	link_relation();
-	exec_sig(&(g_data.sig));
-	while (node)
+	if (g_data.status != CANCEL)
 	{
-		if (node->fd_in == -1)
-			return ;
-		close_prev_fd(node);
-		if (!node->is_file)
+		exec_sig(&(g_data.sig));
+		while (node)
 		{
-			pid = fork();
-			if (pid == 0)
-				execute_cmd(node);
-			waitpid(pid, NULL, 0);
+			if (node->fd_in == -1)
+				return ;
+			close_prev_fd(node);
+			if (!node->is_file)
+			{
+				pid = fork();
+				if (pid == 0)
+					execute_cmd(node);
+				waitpid(pid, NULL, 0);
+			}
+			node = node->next;
 		}
-		node = node->next;
 	}
 }
 

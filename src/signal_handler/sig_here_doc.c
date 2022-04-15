@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wildcard_bonus.h                                   :+:      :+:    :+:   */
+/*   sig_here_doc.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/13 17:09:28 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/14 15:56:42 by ensebast         ###   ########.br       */
+/*   Created: 2022/04/14 19:19:24 by ensebast          #+#    #+#             */
+/*   Updated: 2022/04/14 22:21:40 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WILDCARD_BONUS_H
-# define WILDCARD_BONUS_H
+#include "shell.h"
 
-// Pattern matching with regex
-int		match_exp(char *regexp, char *text);
+void	interrupt_here_doc(int sig)
+{
+	if (SIGINT == sig)
+	{
+		g_data.status = CANCEL;
+		write(1, "\n", 1);
+		exit_code(sig);
+	}
+}
 
-// Core functions
-void	expand_wild(char ***line, int i);
-void	we_pre_split(char **line, int index);
-
-// Get file list
-void	get_list_filter(char *exp, char ***file_list);
-
-#endif
+void	int_here_doc_child(int sig)
+{
+	if (SIGINT == sig)
+	{
+		child_clean_up(NULL);
+		write(1, "\n", 1);
+		exit(sig + 128);
+	}
+}

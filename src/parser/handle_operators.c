@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 10:10:17 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/13 11:58:35 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/14 22:26:01 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,29 @@ void	handle_red_input(t_node *node)
 		if (node->fd_in == -1)
 			return ;
 		close(node->fd_in);
-		if(!file->next->is_file)
+		if (!file->next->is_file)
 			break ;
 		file = file->next;
 	}
 	node->fd_in = open(file->args[0], O_RDONLY);
 }
 
+//node->fd_in = here_doc_fd(node->next->args[0]);
 void	handle_here_doc(t_node *node)
 {
-	node->fd_in = here_doc_fd(node->next->args[0]);
+	pid_t	pid;
+
+	pid = fork();
+	here_doc_parent(&(g_data.sig));
+	if (pid == 0)
+	{
+		here_doc_child(&(g_data.sig));
+		here_doc_fd(node->next->args[0]);
+		child_clean_up(0);
+		exit(0);
+	}
+	wait(NULL);
+	node->fd_in = open("/tmp/tmp_f", O_RDONLY);
 }
 
 int	handle_pipe(t_node *node)
@@ -59,9 +72,9 @@ int	handle_pipe(t_node *node)
 	add_fd(fd[1]);
 	if (node->next)
 		node->next->fd_in = fd[0];
-	while(node && node->is_file)
+	while (node && node->is_file)
 		node = node->previous;
-	if(node && node->fd_out == 1)
+	if (node && node->fd_out == 1)
 		node->fd_out = fd[1];
 	else
 		close(fd[1]);

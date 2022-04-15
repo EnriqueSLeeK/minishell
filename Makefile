@@ -6,7 +6,7 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/04/13 17:07:11 by ensebast         ###   ########.br        #
+#    Updated: 2022/04/14 19:35:41 by ensebast         ###   ########.br        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,7 @@ FILES_M := main.c\
 	exec_cmd.c\
 	exec_utils.c\
 	signal_handler.c\
+	sig_here_doc.c\
 	free_command.c\
 	parser.c\
 	signal_set.c\

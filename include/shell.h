@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 23:46:35 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/13 17:11:56 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/14 21:11:00 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@
 # include "hash_table.h"
 # include "parser.h"
 # include "executor.h"
-# include "../libft/libft.h"
 # include "wildcard_bonus.h"
+# include "../libft/libft.h"
 
 /* Error messages */
 # define M_COMMAND_NOT_FOUND ": command not found"
@@ -51,6 +51,7 @@ typedef struct s_shell
 	t_hash_table	*local_vars;
 	t_node			*node;
 	t_fd			*fds;
+	int				status;
 	int				exit_code;
 	char			**operators;
 	char			**envp;
@@ -67,6 +68,7 @@ char	**convert_table_matrix(t_hash_table *table);
 
 // Clean up
 void	clean_up(void);
+void	child_clean_up(char **envp);
 void	post_exec_clean(char *line);
 
 // init env table
