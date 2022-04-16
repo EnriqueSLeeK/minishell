@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 16:44:07 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/17 23:19:49 by ensebast         ###   ########.fr       */
+/*   Updated: 2022/04/15 22:31:28 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	change_dir(char	*path)
 		return (0);
 	else if (chdir(path) == 0)
 	{
+		set_entry(g_data.env_vars, create_entry("OLDPWD", path));
 		update_pwd_var();
 		return (0);
 	}
