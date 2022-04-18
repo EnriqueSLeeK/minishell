@@ -29,7 +29,9 @@ int	main(int argc, char *argv[], char *envp[])
 		var_expansion(&line, EXPAND_ALL);
 		we_pre_split(&line, 0);
 		ft_parse(line);
-		exec_commands();
+		link_relation();
+		if(!check_grammar())
+			exec_commands();
 		post_exec_clean(line);
 	}
 	return (0);

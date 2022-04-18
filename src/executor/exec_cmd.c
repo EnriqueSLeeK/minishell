@@ -28,6 +28,8 @@ void	exec_bultin(t_node *node)
 		echo(node->args);
 	else if (!ft_strncmp(node->args[0], "env", 3))
 		env();
+	else if(!ft_strncmp(node->args[0], "cd", 2))
+		cd(node->args);
 	else if (!ft_strncmp(node->args[0], "exit", 4))
 		b_exit();
 	else if (!ft_strncmp(node->args[0], "export", 6))
@@ -52,15 +54,10 @@ void	execute_cmd(t_node *node)
 	}
 	dup2(node->fd_in, STDIN_FILENO);
 	dup2(node->fd_out, STDOUT_FILENO);
-	if (node->is_builtin)
-	{
+	if(node->is_builtin)
 		exec_bultin(node);
-		exit(0);
-	}
 	else if (node->args[0])
 		exec_extern_cmd(node);
-	else
-		exit(1);
 }
 
 void	exec_commands(void)
@@ -69,17 +66,14 @@ void	exec_commands(void)
 	pid_t	pid;
 
 	node = g_data.node;
-	if (check_grammar())
-		return ;
-	link_relation();
-	if (g_data.status != CANCEL)
+	if(node->is_builtin && !node->next)
+				exec_bultin(node);
+	else if (g_data.status != CANCEL)
 	{
 		exec_sig(&(g_data.sig));
 		while (node && node->fd_in != -1)
 		{
 			close_prev_fd(node);
-			if (!ft_strncmp(node->args[0], "cd", 2))
-				cd(node->args);
 			if (!node->is_file)
 			{
 				pid = fork();
