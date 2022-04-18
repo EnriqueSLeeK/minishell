@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 10:26:57 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/18 14:53:24 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/18 15:00:25 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,19 @@ void	exec_extern_cmd(t_node *node)
 void	exec_bultin(t_node *node)
 {
 	printf("Executando uma bultin\n");
-	if (!ft_strncmp(node->args[0], "echo", 5))
+	if (!ft_strncmp(node->args[0], "echo", 4))
 		echo(node->args);
-	else if (!ft_strncmp(node->args[0], "cd", 3))
+	else if (!ft_strncmp(node->args[0], "cd", 2))
 		cd(node->args);
-	else if (!ft_strncmp(node->args[0], "env", 4))
+	else if (!ft_strncmp(node->args[0], "env", 3))
 		env();
-	else if (!ft_strncmp(node->args[0], "exit", 5))
+	else if (!ft_strncmp(node->args[0], "exit", 4))
 		b_exit();
-	else if (!ft_strncmp(node->args[0], "export", 7))
+	else if (!ft_strncmp(node->args[0], "export", 6))
 		export(node->args);
-	else if (!ft_strncmp(node->args[0], "pwd", 4))
+	else if (!ft_strncmp(node->args[0], "pwd", 3))
 		pwd();
-	else if (!ft_strncmp(node->args[0], "unset", 6))
+	else if (!ft_strncmp(node->args[0], "unset", 5))
 		unset(node->args[1]);
 }
 
