@@ -60,8 +60,10 @@ void	execute_cmd(t_node *node)
 		exec_bultin(node);
 		exit(0);
 	}
-	else
+	else if(node->args[0])
 		exec_extern_cmd(node);
+	else 
+		exit(1);
 }
 
 void	exec_commands(void)
