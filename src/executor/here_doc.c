@@ -6,18 +6,35 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 11:24:28 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/14 20:07:52 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/18 20:51:10 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static void	writing(int fd_file, char *delim)
+static int	check_and_write(char *delim_with_nl, char **buff, int flag, int fd)
 {
 	int		len;
+
+	if (flag)
+		expand_mix(buff, EXPAND_ALL);
+	len = ft_strlen(*buff);
+	if (ft_strncmp(delim_with_nl, *buff, len + 1) == 0)
+		return (0);
+	write(fd, *buff, len);
+	free(*buff);
+	return (1);
+}
+
+static void	writing(int fd_file, char *delim)
+{
+	int		flag;
 	char	*buff;
 	char	*delim_with_nl;
 
+	flag = 1;
+	if (*delim == '\'' || *delim == '\"')
+		flag = 0;
 	delim_with_nl = ft_strjoin(delim, "\n");
 	while (1)
 	{
@@ -25,14 +42,11 @@ static void	writing(int fd_file, char *delim)
 		buff = get_next_line(0);
 		if (buff != 0)
 		{
-			len = ft_strlen(buff);
-			if (ft_strncmp(delim_with_nl, buff, len + 1) == 0)
+			if (!check_and_write(delim_with_nl, &buff, flag, fd_file))
 				break ;
-			write(fd_file, buff, len);
 		}
 		else
 			break ;
-		free(buff);
 		buff = 0;
 	}
 	if (buff)
