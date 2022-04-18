@@ -76,7 +76,7 @@ char	*ft_create_cmd(char *line, int index, char *relation)
 	add_new_node(node);
 	if (node->args[0])
 		set_type(node);
-	if(!node->is_builtin)
+	if (!node->is_builtin)
 		search_bin(node->args);
 	return (line += index + 1);
 }

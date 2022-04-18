@@ -64,9 +64,9 @@ void	close_prev_fd(t_node *node)
 {
 	if (node->previous && !node->previous->is_file)
 	{
-		if(node->previous->fd_in != 0)
+		if (node->previous->fd_in != 0)
 			close_fd(node->previous->fd_in);
-		if(node->previous->fd_out != 1)
+		if (node->previous->fd_out != 1)
 			close_fd(node->previous->fd_out);
 	}
 }
