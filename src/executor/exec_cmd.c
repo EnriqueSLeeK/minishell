@@ -28,7 +28,7 @@ void	exec_bultin(t_node *node)
 		echo(node->args);
 	else if (!ft_strncmp(node->args[0], "env", 3))
 		env();
-	else if(!ft_strncmp(node->args[0], "cd", 2))
+	else if (!ft_strncmp(node->args[0], "cd", 2))
 		cd(node->args);
 	else if (!ft_strncmp(node->args[0], "exit", 4))
 		b_exit();
@@ -54,7 +54,7 @@ void	execute_cmd(t_node *node)
 	}
 	dup2(node->fd_in, STDIN_FILENO);
 	dup2(node->fd_out, STDOUT_FILENO);
-	if(node->is_builtin)
+	if (node->is_builtin)
 		exec_bultin(node);
 	else if (node->args[0])
 		exec_extern_cmd(node);
@@ -66,8 +66,8 @@ void	exec_commands(void)
 	pid_t	pid;
 
 	node = g_data.node;
-	if(node->is_builtin && !node->next)
-				exec_bultin(node);
+	if (node->is_builtin && !node->next)
+		exec_bultin(node);
 	else if (g_data.status != CANCEL)
 	{
 		exec_sig(&(g_data.sig));
