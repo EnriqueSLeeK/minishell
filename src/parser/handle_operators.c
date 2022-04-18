@@ -19,11 +19,15 @@ void	handle_red_output(t_node *node)
 	file = node->next;
 	while (file->next && file->next->is_file)
 	{
-		close(open(file->args[0], O_CREAT | O_WRONLY | O_TRUNC, 0666));
+		close(open(file->args[0], O_WRONLY | O_CREAT | O_TRUNC, 0777));
 		file = file->next;
 	}
-	node->fd_out = open(file->args[0], O_CREAT \
-						| O_WRONLY | O_TRUNC, 0666);
+	if (!ft_strncmp(node->relation, ">>", 2))
+		node->fd_out = open(file->args[0], O_WRONLY \
+						| O_APPEND | O_CREAT, 0777);
+	else
+		node->fd_out = open(file->args[0], O_WRONLY \
+						| O_TRUNC | O_CREAT, 0777);
 }
 
 void	handle_red_input(t_node *node)

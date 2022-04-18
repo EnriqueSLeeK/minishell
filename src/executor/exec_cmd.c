@@ -17,18 +17,15 @@ void	exec_extern_cmd(t_node *node)
 {
 	g_data.envp = convert_table_matrix(g_data.env_vars);
 	g_data.exit_code = execve(node->args[0], node->args, g_data.envp);
-	perror("execve");
+	printf("%s command not found", node->args[0]);
 	child_clean_up(g_data.envp);
 	exit(1);
 }
 
 void	exec_bultin(t_node *node)
 {
-	printf("Executando uma bultin\n");
 	if (!ft_strncmp(node->args[0], "echo", 4))
 		echo(node->args);
-	else if (!ft_strncmp(node->args[0], "cd", 2))
-		cd(node->args);
 	else if (!ft_strncmp(node->args[0], "env", 3))
 		env();
 	else if (!ft_strncmp(node->args[0], "exit", 4))
@@ -60,9 +57,9 @@ void	execute_cmd(t_node *node)
 		exec_bultin(node);
 		exit(0);
 	}
-	else if(node->args[0])
+	else if (node->args[0])
 		exec_extern_cmd(node);
-	else 
+	else
 		exit(1);
 }
 
@@ -78,11 +75,11 @@ void	exec_commands(void)
 	if (g_data.status != CANCEL)
 	{
 		exec_sig(&(g_data.sig));
-		while (node)
+		while (node && node->fd_in != -1)
 		{
-			if (node->fd_in == -1)
-				return ;
 			close_prev_fd(node);
+			if (!ft_strncmp(node->args[0], "cd", 2))
+				cd(node->args);
 			if (!node->is_file)
 			{
 				pid = fork();
