@@ -55,9 +55,12 @@ void	execute_cmd(t_node *node)
 	}
 	dup2(node->fd_in, STDIN_FILENO);
 	dup2(node->fd_out, STDOUT_FILENO);
-	/* if(node->is_builtin)
+	if(node->is_builtin)
+	{
 		exec_bultin(node);
-	else */
+		exit(0);
+	}
+	else
 		exec_extern_cmd(node);
 }
 
