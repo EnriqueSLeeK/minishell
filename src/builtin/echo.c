@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 14:39:11 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/17 15:01:24 by ensebast         ###   ########.fr       */
+/*   Updated: 2022/04/18 19:53:16 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ static void	print_args(char **args)
 	i = 0;
 	while (args[i])
 	{
-		printf("%s", args[i]);
+		write(1, args[i], ft_strlen(args[i]));
 		if (args[i + 1] != 0)
-			printf(" ");
+			write(1, " ", 1);
 		i += 1;
 	}
 }
@@ -68,7 +68,7 @@ int	echo(char **args)
 		find_flag(args, &index, &flag);
 		print_args(&(args[index]));
 		if (!(flag))
-			printf("\n");
+			write(1, "\n", 1);
 	}
 	return (0);
 }
