@@ -6,7 +6,7 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/04/19 17:05:30 by ensebast         ###   ########.br        #
+#    Updated: 2022/04/19 19:58:27 by ensebast         ###   ########.br        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,6 @@ FILES_M := main.c\
 	init_hash_table.c\
 	create_local_var.c\
 	status_expansion.c\
-	micro_regex.c\
 	expand.c\
 	here_doc.c\
 	parser_utils.c\
@@ -59,21 +58,32 @@ FILES_M := main.c\
 	signal_set.c\
 	expand_util.c\
 	errors.c\
-	we_pre_util_bonus.c\
-	we_pre_split_bonus.c\
-	file_list_bonus.c\
-	wild_expansion_bonus.c
+
+FILE_B := file_list_bonus.c\
+		  we_pre_split_bonus.c\
+		  we_pre_util_bonus.c\
+		  micro_regex_bonus.c\
+		  wild_expansion_bonus.c
 
 FILE_OBJ := $(FILES_M:c=o)
 DIR_OBJ := ./obj/
 
+FILE_OBJ_BONUS := $(FILE_B:c=o)
+DIR_OBJ_BONUS := ./obj_bonus/
+
 OBJ_M := $(addprefix $(DIR_OBJ), $(FILE_OBJ))
+OBJ_B := $(addprefix $(DIR_OBJ_BONUS), $(FILE_OBJ_BONUS))
 
 VPATH := ./src/shell ./src/hash_table ./src/parser ./src/search_bin\
 		 ./src/var_utils ./src/builtin ./src/executor ./src/misc_util\
-		 ./src/signal_handler ./src/var_utils/wildcard_util
+		 ./src/signal_handler\
+		 ./bonus/var_utils/wildcard_util ./bonus/misc_util/
 
 $(DIR_OBJ)%.o: %.c
+	@mkdir -p $(@D)
+	$(CC) $(CFLAGS) $(INCLUDE) -c $^ -o $@
+
+$(DIR_OBJ_BONUS)%.o: %.c
 	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) $(INCLUDE) -c $^ -o $@
 
@@ -85,8 +95,12 @@ $(LIBFT):
 
 all: $(NAME)
 
+bonus: $(OBJ_B) $(LIBFT)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ_B) $(LIBFT) $(LIB)
+
 clean:
 	$(RM) $(DIR_OBJ)
+	$(RM) $(DIR_OBJ_BONUS)
 	make clean -C libft
 
 fclean: clean
@@ -95,4 +109,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
