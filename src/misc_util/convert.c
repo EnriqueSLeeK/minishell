@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 12:41:57 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/31 17:06:45 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/19 18:30:29 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	**convert_table_matrix(t_hash_table *tab)
 				if (buff[k] != 0)
 					k += 1;
 				else
-					printf("Something is wrong\n");
+					write(2, "Something is wrong\n", 19);
 			}
 			i += 1;
 		}

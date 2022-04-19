@@ -6,14 +6,14 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 17:00:47 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/19 17:10:04 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/19 17:42:10 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
 void	check(int *mode, char c);
-int	search_expandable_var(char *line);
+int		search_expandable_var(char *line);
 
 char	*contructor(char *buff, char *tmp)
 {
