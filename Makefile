@@ -6,7 +6,7 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/04/14 19:35:41 by ensebast         ###   ########.br        #
+#    Updated: 2022/04/19 17:05:30 by ensebast         ###   ########.br        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,10 +52,12 @@ FILES_M := main.c\
 	exec_cmd.c\
 	exec_utils.c\
 	signal_handler.c\
+	skip_segment.c\
 	sig_here_doc.c\
 	free_command.c\
 	parser.c\
 	signal_set.c\
+	expand_util.c\
 	errors.c\
 	we_pre_util_bonus.c\
 	we_pre_split_bonus.c\

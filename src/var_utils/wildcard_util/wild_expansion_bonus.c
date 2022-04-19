@@ -6,14 +6,13 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 18:22:46 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/13 20:54:37 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/19 16:58:43 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
 // This file may be deleted if not used
-
 static int	list_size(char **list)
 {
 	int	i;
