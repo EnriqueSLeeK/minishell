@@ -30,7 +30,7 @@ int	main(int argc, char *argv[], char *envp[])
 		we_pre_split(&line, 0);
 		ft_parse(line);
 		link_relation();
-		if (!check_grammar())
+		if (!check_grammar() && g_data.node)
 			exec_commands();
 		post_exec_clean(line);
 	}
