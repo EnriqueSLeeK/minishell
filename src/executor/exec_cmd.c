@@ -17,7 +17,7 @@ void	exec_extern_cmd(t_node *node)
 {
 	g_data.envp = convert_table_matrix(g_data.env_vars);
 	g_data.exit_code = execve(node->args[0], node->args, g_data.envp);
-	printf("%s command not found", node->args[0]);
+	printf("%s command not found\n", node->args[0]);
 	child_clean_up(g_data.envp);
 	exit(1);
 }
