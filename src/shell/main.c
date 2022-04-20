@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 22:08:00 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/20 11:39:48 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/20 11:42:20 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ int	main(int argc, char *argv[], char *envp[])
 	{
 		prompt_sig(&(g_data.sig));
 		line = prompt();
-		var_expansion(&line, EXPAND_ALL);
-		we_pre_split(&line, 0);
+		var_expansion_line(&line, EXPAND_ALL);
 		ft_parse(line);
 		link_relation();
 		if (!check_grammar() && g_data.node)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   we_pre_split.c                                     :+:      :+:    :+:   */
+/*   we_pre_split_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 12:20:30 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/13 15:49:59 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/19 17:22:49 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,19 @@ void	prepare_line(char **line, int i);
 char	*translate_line(char *line, int i);
 void	joining(char **dest, char *file, char *next);
 
+static void	check(int *mode, char c)
+{
+	if (c == '<')
+		*mode |= OP_ARG;
+	else if (c == '\'' && (*mode & LOCK_E) != LOCK_E)
+		*mode ^= EXPAND;
+	else if (c == '\"' && *mode != IGNORE)
+	{
+		*mode ^= EXPAND;
+		*mode ^= LOCK_E;
+	}
+}
+
 static int	search_expandable(char *line)
 {
 	int	mode;
@@ -27,14 +40,14 @@ static int	search_expandable(char *line)
 	mode = EXPAND;
 	while (*line)
 	{
-		if (*line == '\'' && (mode & LOCK_E) != LOCK_E)
-			mode ^= EXPAND;
-		if (*line == '\"' && mode != IGNORE)
+		check(&mode, *line);
+		if (mode & OP_ARG)
 		{
-			mode ^= EXPAND;
-			mode ^= LOCK_E;
+			if (*(line + 1) == '<')
+				skip_segment(&line);
+			mode ^= OP_ARG;
 		}
-		if (*line == '*' && (mode & EXPAND))
+		if (*line == '*' && (mode & EXPAND) && (mode ^ OP_ARG))
 			break ;
 		line += 1;
 		l += 1;

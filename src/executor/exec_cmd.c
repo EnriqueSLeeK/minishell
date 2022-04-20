@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 10:26:57 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/20 11:40:30 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/20 11:42:08 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	exec_commands(void)
 	pid_t	pid;
 
 	node = g_data.node;
-	if (node->is_builtin && !node->next)
+	if (node->is_builtin && !node->next && g_data.status != CANCEL)
 		g_data.exit_code = exec_bultin(node);
 	else if (g_data.status != CANCEL)
 	{

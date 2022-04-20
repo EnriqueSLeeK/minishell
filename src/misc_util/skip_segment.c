@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   var_expansion.c                                    :+:      :+:    :+:   */
+/*   skip_segment.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/09 13:44:03 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/19 21:36:31 by ensebast         ###   ########.br       */
+/*   Created: 2022/04/19 16:46:08 by ensebast          #+#    #+#             */
+/*   Updated: 2022/04/19 16:51:40 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-// This function will expand variables
-void	var_expansion_list(char **line, int flag)
+void	skip_segment(char **line)
 {
-	while (*line)
-	{
-		if (find_char(*line, '$') == -1)
-			expand_mix(line, flag);
-		line += 1;
-	}
-}
+	int	i;
+	int	flag;
 
-void	var_expansion_line(char **line, int flag)
-{
-	expand_mix(line, flag);
+	if (line == 0 || *line == 0)
+		return ;
+	i = find_char(*line, ' ');
+	if (i != -1)
+		*line += i + 1;
+	while (**line)
+	{
+		if (**line != ' ')
+			flag = 1;
+		if (flag && **line == ' ')
+			break ;
+		*line += 1;
+	}
 }
