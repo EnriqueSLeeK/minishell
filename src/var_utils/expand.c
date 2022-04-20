@@ -6,15 +6,13 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:29:43 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/19 17:22:06 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/19 20:43:41 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-char	*prepare(char *parsed_line, char *var_name, int k);
-char	*contructor(char *buff, char *tmp);
-char	*seach_var(char *var_name);
+char	*prepare(char *parsed_line, char *var_name, int k, int bracket);
 
 void	check(int *mode, char c)
 {
@@ -63,9 +61,12 @@ void	expand_mix(char **parsed_line, int flag)
 	k = search_expandable_var(*parsed_line);
 	if (k == -1 || (*parsed_line)[k] != '$')
 		return ;
-	var_name = &((*parsed_line)[k + 1]);
+	if ((*parsed_line)[k + 1] == '{')
+		var_name = &((*parsed_line)[k + 2]);
+	else
+		var_name = &((*parsed_line)[k + 1]);
 	(*parsed_line)[k] = 0;
-	line = prepare(*parsed_line, var_name, k);
+	line = prepare(*parsed_line, var_name, k, (*parsed_line)[k + 1] == '{');
 	free(*parsed_line);
 	*parsed_line = line;
 	if (flag != EXPAND_ONE)
