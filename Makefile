@@ -6,7 +6,7 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/04/20 14:50:02 by ensebast         ###   ########.br        #
+#    Updated: 2022/04/20 15:39:57 by ensebast         ###   ########.br        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ FILES_M := main.c\
 	parser_utils.c\
 	handle_operators.c\
 	exec_cmd.c\
+	quote_res.c\
 	exec_utils.c\
 	signal_handler.c\
 	skip_segment.c\
