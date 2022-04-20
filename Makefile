@@ -6,7 +6,7 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/04/20 11:51:21 by ensebast         ###   ########.br        #
+#    Updated: 2022/04/20 14:50:02 by ensebast         ###   ########.br        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,7 @@ FILES_M := main.c\
 	skip_segment.c\
 	sig_here_doc.c\
 	free_command.c\
+	quotes.c\
 	parser.c\
 	signal_set.c\
 	expand_util.c\
