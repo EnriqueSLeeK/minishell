@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 10:26:57 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/18 20:11:09 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/20 11:40:30 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	exec_extern_cmd(t_node *node)
 {
 	g_data.envp = convert_table_matrix(g_data.env_vars);
 	g_data.exit_code = execve(node->args[0], node->args, g_data.envp);
-	printf("%s command not found\n", node->args[0]);
+	show_error(M_COMMAND_NOT_FOUND, node->args[0], 2, 0);
 	child_clean_up(g_data.envp);
 	exit(1);
 }
@@ -90,13 +90,23 @@ void	exec_commands(void)
 int	check_grammar(void)
 {
 	t_node	*node;
+	char	*buffer;
 
 	node = g_data.node;
+	if(!node)
+		return (1);
 	while (node)
 	{
 		if (check_next_relation(node))
 			return (1);
+		buffer = get_full_instruction(node);
+		if (check_quotes(buffer))
+		{
+			free(buffer);
+			return (1);
+		}
 		node = node->next;
 	}
+	free(buffer);
 	return (0);
 }

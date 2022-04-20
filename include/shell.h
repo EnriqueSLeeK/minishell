@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 23:46:35 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/14 21:11:00 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/20 11:17:41 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,12 @@
 # include "../libft/libft.h"
 
 /* Error messages */
-# define M_COMMAND_NOT_FOUND ": command not found"
-# define M_INVALID_FILE ": No such file or directory"
+# define M_COMMAND_NOT_FOUND "command not found "
+# define M_INVALID_FILE "No such file or directory"
 # define M_ERROR_SYNTAX "syntax error near unexpected token "
-# define M_PERMISSION ": Permission denied"
+# define M_PERMISSION "Permission denied"
+# define M_QUOTES_ERROR "unexpected EOF while looking for matching `\"' "
+# define M_SYNTAX_EOF "syntax error: unexpected end of file"
 
 typedef struct s_shell
 {

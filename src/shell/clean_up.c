@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 22:59:42 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/14 21:10:42 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/20 11:19:30 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	clean_up(void)
 	free_table(&g_data.env_vars);
 	free_table(&g_data.local_vars);
 	free_operations();
+	free_commands();
 	free_fds();
 	rl_clear_history();
 }
@@ -29,6 +30,7 @@ void	child_clean_up(char **envp)
 	free_table(&g_data.env_vars);
 	free_table(&g_data.local_vars);
 	free_operations();
+	free_commands();
 	free_fds();
 	rl_clear_history();
 }

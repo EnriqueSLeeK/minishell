@@ -6,7 +6,7 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/04/14 19:35:41 by ensebast         ###   ########.br        #
+#    Updated: 2022/04/20 10:26:23 by mamaro-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,8 @@ FILES_M := main.c\
 	we_pre_util_bonus.c\
 	we_pre_split_bonus.c\
 	file_list_bonus.c\
-	wild_expansion_bonus.c
+	wild_expansion_bonus.c\
+	quotes.c
 
 FILE_OBJ := $(FILES_M:c=o)
 DIR_OBJ := ./obj/

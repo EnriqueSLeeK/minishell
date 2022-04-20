@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:02:51 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/08 10:05:48 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/20 11:11:37 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 
 # define TRUE 1
 # define FALSE 0
-# define QUOTE '\''
-# define DOUBLE_QOUTE '"'
 
 typedef struct s_node
 {
@@ -52,10 +50,13 @@ void	add_new_node(t_node *node);
 int		is_builtin(t_node *node);
 int		is_file(t_node	*node);
 void	set_type(t_node *node);
+char	*get_full_instruction(t_node *node);
 
 void	free_operations(void);
 void	free_commands(void);
 
 int		check_next_relation(t_node *node);
+
+int		check_quotes(char *line);
 
 #endif

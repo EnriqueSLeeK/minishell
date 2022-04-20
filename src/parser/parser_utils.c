@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 11:37:56 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/13 11:07:36 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/20 11:38:32 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,23 @@ int	check_next_relation(t_node *node)
 		return (1);
 	}
 	return (0);
+}
+
+char	*get_full_instruction(t_node *node)
+{
+	char	*buffer;
+	int		index;
+	char	*tmp;
+
+	index = 0;
+	buffer = ft_strdup("");
+	while(node->args[index])
+	{
+		tmp = ft_strdup(buffer);
+		free(buffer);
+		buffer = ft_strjoin(tmp, node->args[index]);
+		free(tmp);
+		index++;
+	}
+	return (buffer);
 }

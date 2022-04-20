@@ -4,6 +4,7 @@
 		"shell.h": "c",
 		"libft.h": "c",
 		"readline.h": "c",
-		"stdio.h": "c"
+		"stdio.h": "c",
+		"signal_handler.h": "c"
 	}
 }
