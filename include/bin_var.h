@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 13:48:41 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/19 21:35:53 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/19 21:46:01 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int		check_varname(char *var);
 void	expand_mix(char **parsed_line, int flag);
 void	var_expansion_list(char **parsed_line, int flag);
 void	var_expansion_line(char **parsed_line, int flag);
-
 
 // Bin utils
 int		search_bin(char **bin);
