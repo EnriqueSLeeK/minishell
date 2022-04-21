@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 18:35:44 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/21 19:53:01 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/21 20:36:41 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,47 @@ char	**swap_char_matrix(char **matrix)
 		index++;
 	}
 	return (matrix);
+}
+
+
+
+char	*copy_string_trim(char **matrix, int j, int *is_active, char *quoute)
+{
+	int		i;
+	int		desloc;
+	char	*tmp;
+
+	tmp = (char *) ft_calloc(ft_strlen(matrix[j]) + 1, sizeof(char));
+	i = 0;
+	desloc = 0;
+	while (matrix[j][i + desloc])
+	{
+		if (check_quoute(matrix[j][i + desloc], is_active, quoute))
+		{
+			tmp[i] = matrix[j][i + desloc];
+			i++;
+		}
+		else
+			desloc++;
+	}
+	return (tmp);
+}
+
+void	trim_quotes(char **matrix)
+{
+	char	*tmp;
+	int		j;
+	int		is_active;
+	char	quoute;
+
+	j = 0;
+	quoute = 0;
+	is_active = FALSE;
+	while (matrix[j])
+	{
+		tmp = copy_string_trim(matrix, j, &is_active, &quoute);
+		free(matrix[j]);
+		matrix[j] = tmp;
+		j++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 10:15:48 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/21 19:52:10 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/21 20:37:05 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@ static int	get_second_quote(char *line, char quote)
 			return (1);
 		line++;
 	}
+	return (0);
+}
+
+static int	is_quoute(char c)
+{
+	if (c == '\'' || c == '"')
+		return (1);
 	return (0);
 }
 
@@ -63,4 +70,35 @@ void	has_quote(char *line, char *quote)
 		else if (*quote && *line == *quote)
 			*quote = FALSE;
 	}
+}
+
+int	check_quoute(char c, int *is_active, char *quoute)
+{
+	if (!*is_active && is_quoute(c) && c != *quoute)
+	{
+		*quoute = c;
+		*is_active = TRUE;
+		return (0);
+	}
+	if (*is_active == TRUE && c == *quoute)
+	{
+		*quoute = 0;
+		*is_active = FALSE;
+		return (0);
+	}
+	return (1);
+}
+
+
+void	can_trim(t_node *node)
+{
+	if(node->previous)
+	{
+		if(!ft_strncmp(node->previous->relation, "<<", 2))
+			return ;
+		else
+			trim_quotes(node->args);
+	}
+	else
+		trim_quotes(node->args);
 }

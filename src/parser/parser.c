@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 09:53:01 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/21 19:51:38 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/21 20:36:57 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void	add_new_node(t_node *node)
 		g_data.node = node;
 }
 
+
 char	*ft_create_cmd(char *line, int index, char *relation)
 {
 	t_node	*node;
@@ -89,6 +90,7 @@ char	*ft_create_cmd(char *line, int index, char *relation)
 	line[index] = '\0';
 	node = parse_cmd(ft_strdup(line), relation);
 	add_new_node(node);
+	can_trim(node);
 	if (node->args[0])
 		set_type(node);
 	if (!node->is_builtin && !node->is_file)

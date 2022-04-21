@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:02:51 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/21 19:53:21 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/21 20:37:22 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,11 @@ void	has_quote(char *line, char *quote);
 
 char	*swap_char(char *line, char old_char, char new_char);
 char	**swap_char_matrix(char **matrix);
+
+int		check_quoute(char c, int *is_active, char *quoute);
+char	*copy_string_trim(char **matrix, int j, int *is_active, char *quoute);
+void	trim_quotes(char **matrix);
+void	can_trim(t_node *node);
+
 
 #endif
