@@ -6,11 +6,7 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2022/04/20 10:26:23 by mamaro-d         ###   ########.fr        #
-=======
-#    Updated: 2022/04/19 19:58:27 by ensebast         ###   ########.br        #
->>>>>>> 302e8fa1a8a88368fe117817bac48864f821b54d
+#    Updated: 2022/04/20 11:44:27 by mamaro-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,20 +58,13 @@ FILES_M := main.c\
 	signal_set.c\
 	expand_util.c\
 	errors.c\
-<<<<<<< HEAD
-	we_pre_util_bonus.c\
-	we_pre_split_bonus.c\
-	file_list_bonus.c\
-	wild_expansion_bonus.c\
 	quotes.c
-=======
 
 FILE_B := file_list_bonus.c\
 		  we_pre_split_bonus.c\
 		  we_pre_util_bonus.c\
 		  micro_regex_bonus.c\
 		  wild_expansion_bonus.c
->>>>>>> 302e8fa1a8a88368fe117817bac48864f821b54d
 
 FILE_OBJ := $(FILES_M:c=o)
 DIR_OBJ := ./obj/
