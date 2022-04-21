@@ -6,22 +6,25 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 09:53:01 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/14 20:59:20 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/21 11:17:48 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
+
 void	ft_parse(char *line)
 {
 	int		index;
 	char	*relation;
+	char	on_quote;
 
 	index = 0;
 	while (line[index] != '\0')
 	{
+		has_quote(&line[index], &on_quote);
 		relation = is_in(g_data.operators, &line[index]);
-		if (relation)
+		if (relation && !on_quote)
 		{
 			line = ft_create_cmd(line, index, relation);
 			index = 0;

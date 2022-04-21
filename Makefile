@@ -6,11 +6,7 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2022/04/20 11:44:27 by mamaro-d         ###   ########.fr        #
-=======
-#    Updated: 2022/04/20 15:39:57 by ensebast         ###   ########.br        #
->>>>>>> 70064983df1d6b7107f2ebe132aae63f085ce9a2
+#    Updated: 2022/04/21 10:19:17 by mamaro-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +60,6 @@ FILES_M := main.c\
 	signal_set.c\
 	expand_util.c\
 	errors.c\
-	quotes.c
 
 FILE_B := file_list_bonus.c\
 		  we_pre_split_bonus.c\

@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 10:15:48 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/20 11:28:48 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/21 11:15:36 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,16 @@ int	check_quotes(char *line)
 	{
 		show_error(M_QUOTES_ERROR, "", 2, 0);
 		return (1);
+	}
+}
+
+void	has_quote(char *line, char *quote)
+{
+	if (*line == '\'' || *line == '"')
+	{
+		if (!*quote)
+			*quote = *line;
+		else if (*quote && *line == *quote)
+			*quote = FALSE;
 	}
 }
