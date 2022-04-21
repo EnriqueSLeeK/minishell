@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:02:51 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/21 11:17:18 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/21 19:53:21 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,8 @@ int		check_next_relation(t_node *node);
 
 int		check_quotes(char *line);
 void	has_quote(char *line, char *quote);
+
+char	*swap_char(char *line, char old_char, char new_char);
+char	**swap_char_matrix(char **matrix);
 
 #endif

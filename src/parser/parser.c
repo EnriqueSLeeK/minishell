@@ -6,12 +6,26 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 09:53:01 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/21 11:17:48 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/21 19:51:38 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
+t_node	*parse_cmd(char *line, char *relation)
+{
+	t_node	*node;
+	char	*parsed_line;
+
+	parsed_line = swap_char(line, ' ', 1);
+	node = (t_node *)ft_calloc(sizeof(t_node), 1);
+	node->args = ft_split(parsed_line, ' ');
+	node->fd_out = 1;
+	node->relation = relation;
+	node->args = swap_char_matrix(node->args);
+	free(line);
+	return (node);
+}
 
 void	ft_parse(char *line)
 {
@@ -20,6 +34,7 @@ void	ft_parse(char *line)
 	char	on_quote;
 
 	index = 0;
+	on_quote = 0;
 	while (line[index] != '\0')
 	{
 		has_quote(&line[index], &on_quote);
@@ -72,38 +87,11 @@ char	*ft_create_cmd(char *line, int index, char *relation)
 		if (!ft_strncmp(relation, "<<", 2) || !ft_strncmp(relation, ">>", 2))
 			index += 1;
 	line[index] = '\0';
-	node = (t_node *)ft_calloc(sizeof(t_node), 1);
-	node->args = ft_split(line, ' ');
-	node->fd_out = 1;
-	node->relation = relation;
+	node = parse_cmd(ft_strdup(line), relation);
 	add_new_node(node);
 	if (node->args[0])
 		set_type(node);
 	if (!node->is_builtin && !node->is_file)
 		search_bin(node->args);
 	return (line += index + 1);
-}
-
-void	link_relation(void)
-{
-	t_node	*node;
-
-	node = g_data.node;
-	while (node)
-	{
-		if (node->relation)
-		{
-			if (!ft_strncmp(node->relation, "|", 1))
-				handle_pipe(node);
-			else if (!ft_strncmp(node->relation, "<<", 2))
-				handle_here_doc(node);
-			else if (!ft_strncmp(node->relation, ">>", 2))
-				handle_red_output(node);
-			else if (!ft_strncmp(node->relation, ">", 1))
-				handle_red_output(node);
-			else if (!ft_strncmp(node->relation, "<", 1))
-				handle_red_input(node);
-		}
-		node = node->next;
-	}
 }

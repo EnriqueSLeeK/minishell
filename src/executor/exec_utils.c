@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 09:56:49 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/08 11:35:52 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/21 19:50:51 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,29 @@ void	close_prev_fd(t_node *node)
 			close_fd(node->previous->fd_in);
 		if (node->previous->fd_out != 1)
 			close_fd(node->previous->fd_out);
+	}
+}
+
+void	link_relation(void)
+{
+	t_node	*node;
+
+	node = g_data.node;
+	while (node)
+	{
+		if (node->relation)
+		{
+			if (!ft_strncmp(node->relation, "|", 1))
+				handle_pipe(node);
+			else if (!ft_strncmp(node->relation, "<<", 2))
+				handle_here_doc(node);
+			else if (!ft_strncmp(node->relation, ">>", 2))
+				handle_red_output(node);
+			else if (!ft_strncmp(node->relation, ">", 1))
+				handle_red_output(node);
+			else if (!ft_strncmp(node->relation, "<", 1))
+				handle_red_input(node);
+		}
+		node = node->next;
 	}
 }

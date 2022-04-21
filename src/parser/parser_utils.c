@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 11:37:56 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/20 11:38:32 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/21 19:51:51 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ char	*get_full_instruction(t_node *node)
 
 	index = 0;
 	buffer = ft_strdup("");
-	while(node->args[index])
+	while (node->args[index])
 	{
 		tmp = ft_strdup(buffer);
 		free(buffer);

@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 10:26:57 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/20 11:42:08 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/21 19:51:07 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,11 @@ void	execute_cmd(t_node *node)
 	dup2(node->fd_in, STDIN_FILENO);
 	dup2(node->fd_out, STDOUT_FILENO);
 	if (node->is_builtin)
-		exit(exec_bultin(node));
+	{
+		g_data.exit_code = exec_bultin(node);
+		clean_up();
+		exit(g_data.exit_code);
+	}
 	else if (node->args[0])
 		exec_extern_cmd(node);
 }
@@ -93,10 +97,13 @@ int	check_grammar(void)
 	char	*buffer;
 
 	node = g_data.node;
-	if(!node)
+	buffer = NULL;
+	if (!node)
 		return (1);
 	while (node)
 	{
+		if (buffer)
+			free(buffer);
 		if (check_next_relation(node))
 			return (1);
 		buffer = get_full_instruction(node);
