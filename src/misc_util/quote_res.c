@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 15:48:58 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/20 16:11:53 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/21 20:01:46 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ static char	*treat_quotes(char *line)
 	return (buff);
 }
 
+// Main function for this operation
 char	*quote_resolution(char *line, int *flag)
 {
 	char	*buff;
