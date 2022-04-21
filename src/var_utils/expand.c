@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:29:43 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/19 20:43:41 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/21 20:16:54 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,11 @@ int	search_expandable_var(char *line)
 		}
 		if (*line == '$' && (mode & EXPAND))
 			break ;
-		line += 1;
-		l += 1;
+		if (*line)
+		{
+			line += 1;
+			l += 1;
+		}
 	}
 	return (l);
 }

@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 11:24:28 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/20 17:14:42 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/21 20:12:26 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	check_and_write(char *delim_with_nl, char **buff, int flag, int fd)
 	len = ft_strlen(*buff);
 	if (ft_strncmp(delim_with_nl, *buff, len + 1) == 0)
 		return (0);
-	if (flag)
+	if (flag && **buff != 0)
 		expand_mix(buff, EXPAND_ALL);
 	len = ft_strlen(*buff);
 	write(fd, *buff, len);
