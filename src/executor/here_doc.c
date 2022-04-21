@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 11:24:28 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/19 16:24:39 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/20 17:14:42 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,11 @@ static int	check_and_write(char *delim_with_nl, char **buff, int flag, int fd)
 	return (1);
 }
 
-static void	writing(int fd_file, char *delim)
+static void	writing(int fd_file, char *delim, int flag)
 {
-	int		flag;
 	char	*buff;
 	char	*delim_with_nl;
 
-	flag = 1;
-	if (*delim == '\'' || *delim == '\"')
-		flag = 0;
 	delim_with_nl = ft_strjoin(delim, "\n");
 	while (1)
 	{
@@ -47,7 +43,10 @@ static void	writing(int fd_file, char *delim)
 				break ;
 		}
 		else
+		{
+			write(1, "\n", 1);
 			break ;
+		}
 		buff = 0;
 	}
 	if (buff)
@@ -57,9 +56,13 @@ static void	writing(int fd_file, char *delim)
 
 static int	tmp_file(int fd_file, char *delim)
 {
+	int	flag;
+
+	delim = quote_resolution(delim, &flag);
 	if (fd_file == -1)
 		return (fd_file);
-	writing(fd_file, delim);
+	writing(fd_file, delim, flag);
+	free(delim);
 	close(fd_file);
 	fd_file = open("/tmp/tmp_f", O_RDONLY);
 	return (fd_file);

@@ -6,7 +6,11 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2022/04/20 11:44:27 by mamaro-d         ###   ########.fr        #
+=======
+#    Updated: 2022/04/20 15:39:57 by ensebast         ###   ########.br        #
+>>>>>>> 70064983df1d6b7107f2ebe132aae63f085ce9a2
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,11 +53,13 @@ FILES_M := main.c\
 	parser_utils.c\
 	handle_operators.c\
 	exec_cmd.c\
+	quote_res.c\
 	exec_utils.c\
 	signal_handler.c\
 	skip_segment.c\
 	sig_here_doc.c\
 	free_command.c\
+	quotes.c\
 	parser.c\
 	signal_set.c\
 	expand_util.c\

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quote_remover.c                                    :+:      :+:    :+:   */
+/*   quote_res.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 15:48:58 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/19 16:16:56 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/20 16:11:53 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,22 +43,36 @@ static int	calculate_len(char *line)
 	if (line == 0)
 		return (-1);
 	size = 0;
-	init_or_update(&flag, NULL, 1);
+	init_or_update(&flag, 0, 1);
 	while (*line)
 	{
 		init_or_update(&flag, *line, 0);
-		if (*str != ' ' && parse_flag.segment_flag == 0)
-		{
-			parse_flag.segment_flag = 1;
+		if ((flag.sp_quote == 0 && flag.db_quote == 0)
+			|| (flag.sp_quote == 1 && *line != '\'')
+			|| (flag.db_quote == 1 && *line != '\"'))
 			size += 1;
-		}
-		else if (*str == ' '
-			&& parse_flag.sp_quote == 0
-			&& parse_flag.db_quote == 0)
-			parse_flag.segment_flag = 0;
 		line += 1;
 	}
 	return (size);
+}
+
+static void	solve_line(char *buff, char *line)
+{
+	t_parse_flag	flag;
+
+	init_or_update(&flag, 0, 1);
+	while (*line)
+	{
+		init_or_update(&flag, *line, 0);
+		if ((flag.sp_quote == 0 && flag.db_quote == 0)
+			|| (flag.sp_quote == 1 && *line != '\'')
+			|| (flag.db_quote == 1 && *line != '\"'))
+		{
+			*buff = *line;
+			buff += 1;
+		}
+		line += 1;
+	}
 }
 
 static char	*treat_quotes(char *line)
@@ -72,20 +86,29 @@ static char	*treat_quotes(char *line)
 		buff = ft_calloc(size + 1, sizeof(char));
 		if (buff == 0)
 			return (0);
+		solve_line(buff, line);
 	}
 	else
 		buff = 0;
 	return (buff);
 }
 
-char	*quote_resolution(char *line)
+char	*quote_resolution(char *line, int *flag)
 {
 	char	*buff;
 
 	buff = 0;
 	if (find_char(line, '\'') != -1 || find_char(line, '\"') != -1)
-		buff = treat_quotes(lines);
+	{
+		buff = treat_quotes(line);
+		if (flag != 0)
+			*flag = 0;
+	}
 	else
+	{
 		buff = ft_strdup(line);
+		if (flag != 0)
+			*flag = 1;
+	}
 	return (buff);
 }
