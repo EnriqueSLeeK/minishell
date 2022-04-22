@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 15:48:58 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/21 20:01:46 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/22 15:36:27 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // mode = 1 init struct t_parse_flag var
 // mode = 0 update the flags in t_parse_flag
-static void	init_or_update(t_parse_flag *flag, char c, int mode)
+void	init_or_update(t_parse_flag *flag, char c, int mode)
 {
 	if (mode)
 	{
