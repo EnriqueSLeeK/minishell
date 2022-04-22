@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 16:44:07 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/18 15:27:13 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/22 12:33:19 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ static int	change_preset_dir(char *var_name)
 			buff = ft_strjoin(tmp, " not set\n");
 			if (buff != 0)
 				write(2, buff, ft_strlen(buff));
+			free(buff);
 		}
 		free(tmp);
-		free(buff);
 		return (1);
 	}
 	return (change_dir(path));
@@ -82,8 +82,8 @@ static int	change_dir(char	*path)
 		return (1);
 	if (chdir(path) == 0)
 	{
-		update_pwd_var("OLDPWD", old_dir);
 		update_pwd_var("PWD", path);
+		update_pwd_var("OLDPWD", old_dir);
 		free(old_dir);
 		return (0);
 	}

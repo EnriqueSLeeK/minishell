@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 15:28:46 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/17 15:10:23 by ensebast         ###   ########.fr       */
+/*   Updated: 2022/04/22 12:26:57 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ t_entry	*create_entry(char *key, char *value)
 }
 
 // Set a entry or update it
-// Return values : 1 -> inserted value; 2 -> updated value, 0 -> failure
 int	set_entry(t_hash_table *table, t_entry *entry)
 {
 	unsigned long long int	index;	

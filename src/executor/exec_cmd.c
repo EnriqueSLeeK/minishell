@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 10:26:57 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/21 21:55:41 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/22 11:59:58 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	exec_extern_cmd(t_node *node)
 	g_data.exit_code = execve(node->args[0], node->args, g_data.envp);
 	show_error(M_COMMAND_NOT_FOUND, node->args[0], 2, 0);
 	child_clean_up(g_data.envp);
-	exit(1);
+	exit(127);
 }
 
 int	exec_bultin(t_node *node)
@@ -64,7 +64,10 @@ void	execute_cmd(t_node *node)
 	else if (node->args[0])
 		exec_extern_cmd(node);
 	else
+	{
+		child_clean_up(0);
 		exit(1);
+	}
 }
 
 void	exec_commands(void)

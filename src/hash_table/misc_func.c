@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 15:34:55 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/10 18:21:46 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/22 12:34:12 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,20 +50,20 @@ void	print_elem(t_hash_table *table, char *key)
 }
 
 // Update the entry or return a index pointing to a empty place
-int	update_or_find_null(t_hash_table *table, t_entry *entry,
+int	update_or_find_null(t_hash_table *h_table, t_entry *entry,
 		unsigned long long int *i)
 {
-	while (table -> table[*i] != 0)
+	while (h_table -> table[*i] != 0)
 	{
-		if (ft_strncmp(entry -> key, table -> table[*i]-> key,
+		if (ft_strncmp(entry -> key, h_table -> table[*i]-> key,
 				ft_strlen(entry -> key)) == 0)
 		{
-			free(table -> table[*i]-> value);
-			table -> table[*i]-> value = ft_strdup(entry -> value);
+			free(h_table -> table[*i]-> value);
+			h_table -> table[*i]-> value = ft_strdup(entry -> value);
 			free_entry(&entry);
 			return (1);
 		}
-		*i = index_adjust(*i + 1, (unsigned long long int)table -> capacity);
+		*i = index_adjust(*i + 1, (unsigned long long int)h_table -> capacity);
 	}
 	return (0);
 }
