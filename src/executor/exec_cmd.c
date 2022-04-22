@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 10:26:57 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/21 19:51:07 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/21 21:55:41 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void	execute_cmd(t_node *node)
 	}
 	else if (node->args[0])
 		exec_extern_cmd(node);
+	else
+		exit(1);
 }
 
 void	exec_commands(void)

@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 10:10:17 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/14 22:26:01 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/21 21:48:38 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	handle_red_input(t_node *node)
 //node->fd_in = here_doc_fd(node->next->args[0]);
 void	handle_here_doc(t_node *node)
 {
+	int		fd;
 	pid_t	pid;
 
 	pid = fork();
@@ -58,7 +59,11 @@ void	handle_here_doc(t_node *node)
 	if (pid == 0)
 	{
 		here_doc_child(&(g_data.sig));
-		here_doc_fd(node->next->args[0]);
+		fd = here_doc_fd(node->next->args[0]);
+		if (fd > -1)
+			close(fd);
+		else
+			exit(1);
 		child_clean_up(0);
 		exit(0);
 	}
