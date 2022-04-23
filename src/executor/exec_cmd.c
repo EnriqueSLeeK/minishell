@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 10:26:57 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/23 10:55:26 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/23 16:10:56 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,19 @@ void	exec_extern_cmd(t_node *node)
 
 int	exec_bultin(t_node *node)
 {
-	if (!ft_strncmp(node->args[0], "echo", 4))
+	if (!ft_strncmp(node->args[0], "echo", ft_strlen(node->args[0])))
 		return (echo(node->args));
-	else if (!ft_strncmp(node->args[0], "env", 3))
+	else if (!ft_strncmp(node->args[0], "env", ft_strlen(node->args[0])))
 		return (env());
-	else if (!ft_strncmp(node->args[0], "cd", 2))
+	else if (!ft_strncmp(node->args[0], "cd", ft_strlen(node->args[0])))
 		return (cd(node->args));
-	else if (!ft_strncmp(node->args[0], "exit", 4))
+	else if (!ft_strncmp(node->args[0], "exit", ft_strlen(node->args[0])))
 		b_exit();
-	else if (!ft_strncmp(node->args[0], "export", 6))
+	else if (!ft_strncmp(node->args[0], "export", ft_strlen(node->args[0])))
 		return (export(node->args));
-	else if (!ft_strncmp(node->args[0], "pwd", 3))
+	else if (!ft_strncmp(node->args[0], "pwd", ft_strlen(node->args[0])))
 		return (pwd());
-	else if (!ft_strncmp(node->args[0], "unset", 5))
+	else if (!ft_strncmp(node->args[0], "unset", ft_strlen(node->args[0])))
 		return (unset(&(node->args[1])));
 	return (1);
 }
