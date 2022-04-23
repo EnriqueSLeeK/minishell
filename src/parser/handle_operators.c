@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 10:10:17 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/21 21:48:38 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/23 17:22:11 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ void	handle_red_output(t_node *node)
 	file = node->next;
 	while (file->next && file->next->is_file)
 	{
-		close(open(file->args[0], O_WRONLY | O_CREAT | O_TRUNC, 0777));
+		close(open(file->args[0], O_WRONLY | O_CREAT | O_TRUNC, 0000644));
 		file = file->next;
 	}
 	if (!ft_strncmp(node->relation, ">>", 2))
 		node->fd_out = open(file->args[0], O_WRONLY \
-						| O_APPEND | O_CREAT, 0777);
+						| O_APPEND | O_CREAT, 0000644);
 	else
 		node->fd_out = open(file->args[0], O_WRONLY \
-						| O_TRUNC | O_CREAT, 0777);
+						| O_TRUNC | O_CREAT, 0000644);
 }
 
 void	handle_red_input(t_node *node)
