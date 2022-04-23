@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 18:35:44 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/23 10:17:31 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/23 18:50:01 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@ char	**swap_char_matrix(char **matrix)
 	return (matrix);
 }
 
-
-
 char	*copy_string_trim(char **matrix, int j, int *is_active, char *quoute)
 {
 	int		i;
@@ -93,4 +91,17 @@ void	trim_quotes(char **matrix)
 		matrix[j] = tmp;
 		j++;
 	}
+}
+
+void	can_trim(t_node *node)
+{
+	if (node->previous)
+	{
+		if (!ft_strncmp(node->previous->relation, "<<", 2))
+			return ;
+		else
+			trim_quotes(node->args);
+	}
+	else
+		trim_quotes(node->args);
 }

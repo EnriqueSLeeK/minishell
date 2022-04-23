@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 10:10:17 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/23 18:38:54 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/23 18:50:17 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	handle_here_doc(t_node *node)
 int	handle_pipe(t_node *node)
 {
 	int	fd[2];
+
 	if (pipe(fd) == -1)
 		return (0);
 	add_fd(fd[0]);

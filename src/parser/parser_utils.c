@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 11:37:56 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/23 18:40:01 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/23 18:48:24 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 int	is_builtin(t_node *node)
 {
-	if(ft_strncmp(node->relation, "<<", ft_strlen(node->relation))
+	if (ft_strncmp(node->relation, "<<", ft_strlen(node->relation))
 		&& ft_strncmp(node->relation, ">>", ft_strlen(node->relation)))
 	{
 		if (!ft_strncmp(node->args[0], "echo", ft_strlen(node->args[0])))
-		return (1);
-	else if (!ft_strncmp(node->args[0], "cd", ft_strlen(node->args[0])))
-		return (1);
-	else if (!ft_strncmp(node->args[0], "env", ft_strlen(node->args[0])))
-		return (1);
-	else if (!ft_strncmp(node->args[0], "exit", ft_strlen(node->args[0])))
-		return (1);
-	else if (!ft_strncmp(node->args[0], "export", ft_strlen(node->args[0])))
-		return (1);
-	else if (!ft_strncmp(node->args[0], "pwd", ft_strlen(node->args[0])))
-		return (1);
-	else if (!ft_strncmp(node->args[0], "unset", ft_strlen(node->args[0])))
-		return (1);
-	else
-		return (0);
+			return (1);
+		else if (!ft_strncmp(node->args[0], "cd", ft_strlen(node->args[0])))
+			return (1);
+		else if (!ft_strncmp(node->args[0], "env", ft_strlen(node->args[0])))
+			return (1);
+		else if (!ft_strncmp(node->args[0], "exit", ft_strlen(node->args[0])))
+			return (1);
+		else if (!ft_strncmp(node->args[0], "export", ft_strlen(node->args[0])))
+			return (1);
+		else if (!ft_strncmp(node->args[0], "pwd", ft_strlen(node->args[0])))
+			return (1);
+		else if (!ft_strncmp(node->args[0], "unset", ft_strlen(node->args[0])))
+			return (1);
+		else
+			return (0);
 	}
 	return (0);
 }
@@ -71,7 +71,8 @@ void	set_type(t_node *node)
 
 int	check_next_relation(t_node *node)
 {
-	if(!ft_strncmp(node->relation, "|", ft_strlen(node->relation)) && !node->args[0])
+	if (!ft_strncmp(node->relation, "|", ft_strlen(node->relation))
+		&& !node->args[0])
 	{
 		show_error(M_ERROR_SYNTAX, node->relation, 2, 0);
 		return (1);
