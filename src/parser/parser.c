@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 09:53:01 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/23 11:04:31 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/23 17:48:30 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	add_new_node(t_node *node)
 	else
 		g_data.node = node;
 }
+
 
 char	*ft_create_cmd(char *line, int index, char *relation)
 {
