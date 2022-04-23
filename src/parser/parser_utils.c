@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 11:37:56 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/23 16:13:50 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/23 18:40:01 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,15 @@ void	set_type(t_node *node)
 
 int	check_next_relation(t_node *node)
 {
+	if(!ft_strncmp(node->relation, "|", ft_strlen(node->relation)) && !node->args[0])
+	{
+		show_error(M_ERROR_SYNTAX, node->relation, 2, 0);
+		return (1);
+	}
 	if (node->relation && (!node->next || !node->next->args \
 		|| !node->next->args[0]))
 	{
-		if (!ft_strncmp(node->relation, "'|'", 1))
+		if (!ft_strncmp(node->relation, "|", ft_strlen(node->relation)))
 			show_error(M_ERROR_SYNTAX, node->relation, 2, 0);
 		else
 			show_error(M_ERROR_SYNTAX, "'newline'", 2, 0);

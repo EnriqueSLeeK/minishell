@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:02:51 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/21 20:37:22 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/23 18:17:29 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int		handle_pipe(t_node *node);
 void	handle_red_input(t_node *node);
 void	handle_here_doc(t_node *node);
 
-void	link_relation(void);
 void	add_new_node(t_node *node);
 
 int		is_builtin(t_node *node);

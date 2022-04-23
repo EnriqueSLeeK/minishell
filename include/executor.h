@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 10:08:19 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/23 10:44:05 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/23 18:33:49 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	execute_cmd(t_node *node);
 void	exec_commands(void);
 
 int		check_grammar(void);
+void 	link_relation(void);
 
 // Here doc
 int		here_doc_fd(char *delim);
