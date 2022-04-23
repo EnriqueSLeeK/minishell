@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 11:37:56 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/21 19:51:51 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/23 14:22:35 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 int	is_builtin(t_node *node)
 {
-	if (!ft_strncmp(node->args[0], "echo", 4))
+	if (!ft_strncmp(node->args[0], "echo", ft_strlen(node->args[0])))
 		return (1);
-	else if (!ft_strncmp(node->args[0], "cd", 2))
+	else if (!ft_strncmp(node->args[0], "cd", ft_strlen(node->args[0])))
 		return (1);
-	else if (!ft_strncmp(node->args[0], "env", 3))
+	else if (!ft_strncmp(node->args[0], "env", ft_strlen(node->args[0])))
 		return (1);
-	else if (!ft_strncmp(node->args[0], "exit", 4))
+	else if (!ft_strncmp(node->args[0], "exit", ft_strlen(node->args[0])))
 		return (1);
-	else if (!ft_strncmp(node->args[0], "export", 6))
+	else if (!ft_strncmp(node->args[0], "export", ft_strlen(node->args[0])))
 		return (1);
-	else if (!ft_strncmp(node->args[0], "pwd", 3))
+	else if (!ft_strncmp(node->args[0], "pwd", ft_strlen(node->args[0])))
 		return (1);
-	else if (!ft_strncmp(node->args[0], "unset", 5))
+	else if (!ft_strncmp(node->args[0], "unset", ft_strlen(node->args[0])))
 		return (1);
 	else
 		return (0);

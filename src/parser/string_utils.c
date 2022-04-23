@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 18:35:44 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/21 20:36:41 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/23 10:17:31 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ char	*swap_char(char *line, char old_char, char new_char)
 			{
 				if (line[index] == old_char)
 					line[index] = new_char;
-				index++;
 				has_quote(&line[index], &quote);
+				index++;
 			}
 		}
 		else if (line[index])

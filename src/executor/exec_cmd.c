@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 10:26:57 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/22 11:59:58 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/23 10:55:26 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ int	check_grammar(void)
 			free(buffer);
 			return (1);
 		}
+		can_trim(node);
 		node = node->next;
 	}
 	free(buffer);

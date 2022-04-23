@@ -6,13 +6,13 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 10:15:48 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/21 20:37:05 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/23 10:56:36 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static int	get_second_quote(char *line, char quote)
+static int	get_second_quote(char *line, char quote, int *last_index)
 {
 	int	index;
 
@@ -20,8 +20,11 @@ static int	get_second_quote(char *line, char quote)
 	while (line[index])
 	{
 		if (line[index] == quote)
+		{
+			*last_index += index;
 			return (1);
-		line++;
+		}
+		index++;
 	}
 	return (0);
 }
@@ -46,13 +49,12 @@ int	check_quotes(char *line)
 		{
 			quote = line[index];
 			index++;
-			break ;
+			if(get_second_quote(&line[index], quote, &index))
+				quote = FALSE;
 		}
 		index++ ;
 	}
 	if (!quote)
-		return (0);
-	if (get_second_quote(&line[index], quote))
 		return (0);
 	else
 	{
@@ -88,7 +90,6 @@ int	check_quoute(char c, int *is_active, char *quoute)
 	}
 	return (1);
 }
-
 
 void	can_trim(t_node *node)
 {
