@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 09:53:01 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/23 18:47:22 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/25 10:52:02 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,21 @@ void	ft_parse(char *line)
 
 char	*is_in(char **operators, char *line)
 {
+	if (!ft_strncmp(operators[6], line, ft_strlen(operators[6])))
+	{
+		if (g_data.node)
+		{
+			if (g_data.node->relation)
+			{
+				if (!ft_strncmp(g_data.node->relation, "<", 1))
+					return (operators[6]);
+				else
+					return (0);
+			}
+		}
+		else
+			return (0);
+	}
 	while (*operators)
 	{
 		if (!ft_strncmp(*operators, line, ft_strlen(*operators)))

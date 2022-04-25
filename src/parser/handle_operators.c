@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 10:10:17 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/23 18:50:17 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/25 10:53:51 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,26 @@ void	handle_red_output(t_node *node)
 						| O_TRUNC | O_CREAT, 0000644);
 }
 
+void	handle_red_input_first(t_node *node)
+{
+	t_node	*file;
+	t_node	*cmd;
+
+	file = node->next;
+	if (file->next)
+	{
+		cmd = file->next;
+		cmd->fd_in = open(file->args[0], O_RDONLY);
+	}
+}
+
 void	handle_red_input(t_node *node)
 {
 	t_node	*file;
 
 	file = node->next;
+	if (!node->args[0])
+		return (handle_red_input_first(node));
 	while (file->next && !file->next->is_file)
 	{
 		node->fd_in = open(file->args[0], O_RDONLY);
