@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 10:26:57 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/25 11:42:45 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/26 11:18:01 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ void	execute_cmd(t_node *node)
 			close(fds->value);
 		fds = fds->next;
 	}
-	if (node->fd_in != 0)
+	if (node->fd_in != 0 && node->args[0])
 		dup2(node->fd_in, STDIN_FILENO);
-	if (node->fd_out != 1)
+	if (node->fd_out != 1 && node->args[0])
 		dup2(node->fd_out, STDOUT_FILENO);
 	if (node->is_builtin)
 	{
