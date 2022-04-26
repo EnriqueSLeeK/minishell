@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 23:46:35 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/20 11:17:41 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/26 12:07:40 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,8 @@ int		init_env_table(char *envp[]);
 
 //Error Handler
 void	show_error(char *name, char *message, int status, int exit_from_shell);
+
+//Convert exit Status
+int		get_status(int status);
 
 #endif

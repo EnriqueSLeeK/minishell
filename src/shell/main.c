@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 22:08:00 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/25 10:32:15 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/26 12:06:31 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,9 @@ static void	init_operators(void)
 	g_data.operators[4] = ft_strdup("<");
 	g_data.operators[5] = NULL;
 	g_data.operators[6] = ft_strdup(" ");
+}
+
+int	get_status(int status)
+{
+	return (((status) & 0xff00) >> 8);
 }

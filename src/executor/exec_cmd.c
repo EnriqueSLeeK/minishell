@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 10:26:57 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/26 11:18:01 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/26 12:06:18 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@
 void	exec_extern_cmd(t_node *node)
 {
 	g_data.envp = convert_table_matrix(g_data.env_vars);
-	g_data.exit_code = execve(node->args[0], node->args, g_data.envp);
+	execve(node->args[0], node->args, g_data.envp);
 	show_error(M_COMMAND_NOT_FOUND, node->args[0], 2, 0);
 	child_clean_up(g_data.envp);
-	exit(127);
 }
 
 int	exec_bultin(t_node *node)
@@ -83,12 +82,13 @@ void	exec_commands(void)
 		while (node && node->fd_in != -1)
 		{
 			close_prev_fd(node);
-			if (!node->is_file)
+			if (!node->is_file && node->args[0])
 			{
 				pid = fork();
 				if (pid == 0)
 					execute_cmd(node);
-				waitpid(pid, NULL, 0);
+				waitpid(pid, &g_data.exit_code, 0);
+				g_data.exit_code = get_status(g_data.exit_code);
 			}
 			node = node->next;
 		}

@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 11:37:56 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/26 11:18:30 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/26 11:57:32 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,45 +14,46 @@
 
 int	is_builtin(t_node *node)
 {
-	if (node->previous && ft_strncmp(node->previous->relation, ">", 1))
-	{
-		if (!ft_strncmp(node->args[0], "echo", ft_strlen(node->args[0])))
-			return (1);
-		else if (!ft_strncmp(node->args[0], "cd", ft_strlen(node->args[0])))
-			return (1);
-		else if (!ft_strncmp(node->args[0], "env", ft_strlen(node->args[0])))
-			return (1);
-		else if (!ft_strncmp(node->args[0], "exit", ft_strlen(node->args[0])))
-			return (1);
-		else if (!ft_strncmp(node->args[0], "export", ft_strlen(node->args[0])))
-			return (1);
-		else if (!ft_strncmp(node->args[0], "pwd", ft_strlen(node->args[0])))
-			return (1);
-		else if (!ft_strncmp(node->args[0], "unset", ft_strlen(node->args[0])))
-			return (1);
-		else
-			return (0);
-	}
-	return (0);
+	if (!ft_strncmp(node->args[0], "echo", ft_strlen(node->args[0])))
+		return (1);
+	else if (!ft_strncmp(node->args[0], "cd", ft_strlen(node->args[0])))
+		return (1);
+	else if (!ft_strncmp(node->args[0], "env", ft_strlen(node->args[0])))
+		return (1);
+	else if (!ft_strncmp(node->args[0], "exit", ft_strlen(node->args[0])))
+		return (1);
+	else if (!ft_strncmp(node->args[0], "export", ft_strlen(node->args[0])))
+		return (1);
+	else if (!ft_strncmp(node->args[0], "pwd", ft_strlen(node->args[0])))
+		return (1);
+	else if (!ft_strncmp(node->args[0], "unset", ft_strlen(node->args[0])))
+		return (1);
+	else
+		return (0);
 }
 
 int	is_file(t_node	*node)
 {
-	if (is_builtin(node))
-		return (0);
 	if (node->previous)
 	{
 		if (!ft_strncmp(node->previous->relation, "<<", 2))
+		{
+			node->is_builtin = 0;
 			return (1);
+		}
 		else if (!ft_strncmp(node->previous->relation, "<", 1))
 		{
+			node->is_builtin = 0;
 			if (!access(node->args[0], F_OK))
 				return (1);
 			else
 				perror("Error");
 		}
 		else if (!ft_strncmp(node->previous->relation, ">", 1))
+		{
+			node->is_builtin = 0;
 			return (1);
+		}
 	}
 	return (0);
 }
