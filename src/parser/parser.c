@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 09:53:01 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/25 10:52:02 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/26 09:43:14 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	*is_in(char **operators, char *line)
 		{
 			if (g_data.node->relation)
 			{
-				if (!ft_strncmp(g_data.node->relation, "<", 1))
+				if (!ft_strncmp(g_data.node->relation, "<", 1) && !g_data.node->next)
 					return (operators[6]);
 				else
 					return (0);
