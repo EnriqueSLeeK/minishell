@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 23:46:35 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/26 12:07:40 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/26 13:30:52 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char	**convert_table_matrix(t_hash_table *table);
 
 // Clean up
 void	clean_up(void);
-void	child_clean_up(char **envp);
+void	child_clean_up(char **envp, int exit_code);
 void	post_exec_clean(char *line);
 
 // init env table

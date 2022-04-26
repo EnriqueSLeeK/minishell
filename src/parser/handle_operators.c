@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 10:10:17 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/26 11:15:43 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/26 13:33:52 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,7 @@ void	handle_here_doc(t_node *node)
 			close(fd);
 		else
 			exit(1);
-		child_clean_up(0);
-		exit(0);
+		child_clean_up(0, 0);
 	}
 	wait(NULL);
 	node->fd_in = open("/tmp/tmp_f", O_RDONLY);

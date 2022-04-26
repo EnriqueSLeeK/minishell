@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 10:26:57 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/26 12:06:18 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/26 13:33:14 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	exec_extern_cmd(t_node *node)
 	g_data.envp = convert_table_matrix(g_data.env_vars);
 	execve(node->args[0], node->args, g_data.envp);
 	show_error(M_COMMAND_NOT_FOUND, node->args[0], 2, 0);
-	child_clean_up(g_data.envp);
+	child_clean_up(g_data.envp, 127);
 }
 
 int	exec_bultin(t_node *node)
@@ -65,7 +65,7 @@ void	execute_cmd(t_node *node)
 	else if (node->args[0])
 		exec_extern_cmd(node);
 	else
-		child_clean_up(0);
+		child_clean_up(0, 1);
 }
 
 void	exec_commands(void)

@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 22:05:58 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/22 15:43:12 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/26 10:57:21 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*prompt(void)
 	}
 	else
 	{
-		if (check_here_doc(line))
+		if (*line != 0 && check_here_doc(line))
 			add_history(line);
 	}
 	return (line);

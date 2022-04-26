@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 22:59:42 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/26 11:58:33 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/26 13:32:00 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	clean_up(void)
 	rl_clear_history();
 }
 
-void	child_clean_up(char **envp)
+void	child_clean_up(char **envp, int exit_code)
 {
 	if (envp != 0)
 		free_bmatrix(envp);
@@ -33,7 +33,7 @@ void	child_clean_up(char **envp)
 	free_commands();
 	free_fds();
 	rl_clear_history();
-	exit(127);
+	exit(exit_code);
 }
 
 void	post_exec_clean(char *line)
