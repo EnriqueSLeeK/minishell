@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 11:37:56 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/27 11:38:38 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/27 12:14:36 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,26 +37,25 @@ int	is_file(t_node	*node)
 	if (node->previous)
 	{
 		if (!ft_strncmp(node->previous->relation, "<<", 2))
-		{
-			node->is_builtin = 0;
 			return (1);
-		}
 		else if (!ft_strncmp(node->previous->relation, "<", 1))
 		{
-			node->is_builtin = 0;
 			if (!access(node->args[0], F_OK))
 				return (1);
 			else
 			{
-				perror("Error");
+				perror(node->args[0]);
 				return (1);
 			}
 		}
 		else if (!ft_strncmp(node->previous->relation, ">", 1))
-		{
-			node->is_builtin = 0;
 			return (1);
-		}
+	}
+	else if (!ft_strncmp(node->args[0], "/", 1))
+	{
+		access(node->args[0], F_OK);
+		perror(node->args[0]);
+		return (1);
 	}
 	return (0);
 }
@@ -64,12 +63,24 @@ int	is_file(t_node	*node)
 void	set_type(t_node *node)
 
 {
-	node->is_builtin = 0;
-	node->is_file = 0;
+	int	index;
+
+	index = 0;
+	while (node->args[0][index] == '/' && node->args[0])
+		index++;
+	if (index == ft_strlen(node->args[0]))
+	{
+		node->is_file = 1;
+		printf("Minishell: %s: Is a directory\n", node->args[0]);
+		return ;
+	}
 	if (is_builtin(node))
 		node->is_builtin = 1;
 	else if (is_file(node))
+	{
+		node->is_builtin = 0;
 		node->is_file = 1;
+	}
 }
 
 int	check_next_relation(t_node *node)
