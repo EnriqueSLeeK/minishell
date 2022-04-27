@@ -6,7 +6,7 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/04/21 18:36:25 by mamaro-d         ###   ########.fr        #
+#    Updated: 2022/04/27 12:59:12 by ensebast         ###   ########.br        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,11 +62,50 @@ FILES_M := main.c\
 	expand_util.c\
 	errors.c\
 
-FILE_B := file_list_bonus.c\
-		  we_pre_split_bonus.c\
-		  we_pre_util_bonus.c\
-		  micro_regex_bonus.c\
-		  wild_expansion_bonus.c
+FILE_B := main.c\
+	hash.c\
+	pwd.c\
+	cd.c\
+	env.c\
+	exit.c\
+	find.c\
+	echo.c\
+	unset.c\
+	export.c\
+	prompt.c\
+	convert.c\
+	clean_up.c\
+	misc_func.c\
+	table_util.c\
+	entry_util.c\
+	search_bin.c\
+	free_matrix.c\
+	var_expansion.c\
+	init_hash_table.c\
+	create_local_var.c\
+	status_expansion.c\
+	expand.c\
+	here_doc.c\
+	parser_utils.c\
+	handle_operators.c\
+	exec_cmd.c\
+	quote_res.c\
+	exec_utils.c\
+	signal_handler.c\
+	skip_segment.c\
+	sig_here_doc.c\
+	free_command.c\
+	parser_quotes_helper.c\
+	parser.c\
+	string_utils.c\
+	signal_set.c\
+	expand_util.c\
+	errors.c\
+	file_list_bonus.c\
+	we_pre_split_bonus.c\
+	we_pre_util_bonus.c\
+	micro_regex_bonus.c\
+	wild_expansion_bonus.c
 
 FILE_OBJ := $(FILES_M:c=o)
 DIR_OBJ := ./obj/
