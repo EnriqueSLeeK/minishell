@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 22:05:58 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/26 10:57:21 by ensebast         ###   ########.br       */
+/*   Updated: 2022/04/27 12:44:19 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ char	*prompt(void)
 	line = readline("\e[1;34m minishell \e[01;34m>\e[00m ");
 	if (line == 0)
 	{
+		write(1, "exit\n", 5);
 		clean_up();
 		exit(0);
 	}
