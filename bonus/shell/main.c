@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 22:08:00 by ensebast          #+#    #+#             */
-/*   Updated: 2022/05/02 10:12:27 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/05/02 20:54:57 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int	main(int argc, char *argv[], char *envp[])
 		prompt_sig(&(g_data.sig));
 		line = prompt();
 		var_expansion_line(&line, EXPAND_ALL);
-		we_pre_split(&line, 0);
 		ft_parse(line);
 		link_relation();
+		star_expansion(g_data.node);
 		if (!check_grammar() && g_data.node)
 			exec_commands();
 		post_exec_clean(line);
@@ -54,16 +54,14 @@ void	init(int argc, char *argv[], char *envp[])
 
 static void	init_operators(void)
 {
-	g_data.operators = (char **)ft_calloc(10, sizeof(char *));
+	g_data.operators = (char **)ft_calloc(8, sizeof(char *));
 	g_data.operators[0] = ft_strdup("|");
 	g_data.operators[1] = ft_strdup(">>");
 	g_data.operators[3] = ft_strdup("<<");
 	g_data.operators[2] = ft_strdup(">");
 	g_data.operators[4] = ft_strdup("<");
-	g_data.operators[5] = ft_strdup("&&");
-	g_data.operators[6] = ft_strdup("||");
-	g_data.operators[7] = NULL;
-	g_data.operators[8] = ft_strdup(" ");
+	g_data.operators[5] = NULL;
+	g_data.operators[6] = ft_strdup(" ");
 }
 
 int	get_status(int status)
