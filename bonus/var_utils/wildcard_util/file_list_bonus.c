@@ -6,65 +6,57 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 18:25:14 by ensebast          #+#    #+#             */
-/*   Updated: 2022/05/02 20:44:40 by ensebast         ###   ########.br       */
+/*   Updated: 2022/05/02 23:00:07 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static int	check(char *file_name, char *exp)
-{
-	if (match_exp(exp, file_name))
-		return (1);
-	return (0);
-}
+void	is_dir(char *exp, int *flag);
+void	append_slash(char **file_list);
+int	open_dir(char *directory, DIR **dir);
+int	check_exp(char *file_name, char *exp);
+int	check_valid(struct dirent *file_entry, int dir_flag, char *exp);
 
-static int	count_file(char *directory, char *exp)
+static int	count_file(char *directory, char *exp, int dir_flag)
 {
 	int				i;
 	DIR				*dir;
 	struct dirent	*file_entry;
 
 	i = 0;
-	if (directory == 0)
-		dir = opendir(".");
-	else
-		dir = opendir(directory);
-	if (dir == 0)
+	if (open_dir(directory, &dir))
 		return (-1);
 	file_entry = readdir(dir);
 	while (file_entry)
 	{
-		if (check(file_entry -> d_name, exp))
-			i += 1;
+		i += check_valid(file_entry, dir_flag, exp);
 		file_entry = readdir(dir);
 	}
 	closedir(dir);
 	return (i);
 }
 
-static void	fill_list(char *directory, char *exp, char **file_list)
+static void	fill_list(char *directory, char *exp, char **file_list, int dir_flag)
 {
 	int				i;
 	DIR				*dir;
 	struct dirent	*file_entry;
 
-	if (directory == 0)
-		dir = opendir(".");
-	else
-		dir = opendir(directory);
-	if (dir == 0)
+	if (open_dir(directory, &dir))
 		return ;
 	i = 0;
 	file_entry = readdir(dir);
 	while (file_entry)
 	{
-		if (check(file_entry -> d_name, exp))
+		if (check_valid(file_entry, dir_flag, exp))
 		{
 			if (directory == 0)
 				file_list[i] = ft_strdup(file_entry -> d_name);
 			else
 				file_list[i] = ft_strjoin(directory, file_entry -> d_name);
+			if (dir_flag)
+				append_slash(file_list + i);
 			i += 1;
 		}
 		file_entry = readdir(dir);
@@ -72,16 +64,20 @@ static void	fill_list(char *directory, char *exp, char **file_list)
 	closedir(dir);
 }
 
-char	*separate_and_get_dir(char **exp)
+static char	*separate_and_get_dir(char **exp)
 {
 	char	*dir;
 	char	c;
 	int		i;
+	int		flag;
 
 	i = ft_strlen(*exp) - 1;
+	flag = 0;
 	while (i > -1)
 	{
-		if ((*exp)[i] == '/')
+		if ((*exp)[i] == '*')
+			flag = 1;
+		if (flag && (*exp)[i] == '/')
 			break ;
 		i -= 1;
 	}
@@ -101,14 +97,22 @@ void	get_list_filter(char *exp, char ***file_list)
 {
 	int				quant;
 	char			*directory;
+	int				dir_exp_flag;
 
 	*file_list = 0;
 	directory = separate_and_get_dir(&exp);
-	quant = count_file(directory, exp);
+	is_dir(exp, &dir_exp_flag);
+	quant = count_file(directory, exp, dir_exp_flag);
 	if (quant > 0)
 		*file_list = ft_calloc(quant + 1, sizeof(char *));
 	if (*file_list == 0)
+	{
+		if (dir_exp_flag)
+			exp[ft_strlen(exp)] = '/';
 		return ;
-	fill_list(directory, exp, *file_list);
+	}
+	fill_list(directory, exp, *file_list, dir_exp_flag);
+	if (dir_exp_flag)
+		exp[ft_strlen(exp)] = '/';
 	free(directory);
 }

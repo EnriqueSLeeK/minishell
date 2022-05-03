@@ -6,7 +6,7 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/04/27 13:30:03 by ensebast         ###   ########.br        #
+#    Updated: 2022/05/02 21:28:14 by ensebast         ###   ########.br        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,7 @@ FILE_B := main.c\
 	expand_util.c\
 	errors.c\
 	file_list_bonus.c\
+	file_list_util_bonus.c\
 	we_pre_split_bonus.c\
 	we_pre_util_bonus.c\
 	micro_regex_bonus.c\
