@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 17:09:28 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/18 16:51:49 by ensebast         ###   ########.br       */
+/*   Updated: 2022/05/02 20:36:54 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,8 @@ void	we_pre_split(char **line, int index);
 
 // Get file list
 void	get_list_filter(char *exp, char ***file_list);
+
+// Star expansion
+void	star_expansion(t_node *node);
 
 #endif
