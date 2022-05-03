@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 21:20:56 by ensebast          #+#    #+#             */
-/*   Updated: 2022/05/02 22:44:53 by ensebast         ###   ########.br       */
+/*   Updated: 2022/05/02 23:03:19 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	is_dir(char *exp, int *flag)
 		if (exp[i] == '/')
 			*flag = 1;
 		if (*flag == 1 && exp[i] != '/')
-					exp[i + 1] = 0;
+			exp[i + 1] = 0;
 		if (exp[i] != '/')
 			break ;
 		i -= 1;
@@ -60,7 +60,7 @@ void	is_dir(char *exp, int *flag)
 int	check_valid(struct dirent *file_entry, int dir_flag, char *exp)
 {
 	if (dir_flag == 1 && file_entry -> d_type == DT_DIR
-			&& check_exp(file_entry -> d_name, exp))
+		&& check_exp(file_entry -> d_name, exp))
 		return (1);
 	if (dir_flag == 0 && check_exp(file_entry -> d_name, exp))
 		return (1);

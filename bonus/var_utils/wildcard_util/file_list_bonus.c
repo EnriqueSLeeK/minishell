@@ -6,7 +6,7 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 18:25:14 by ensebast          #+#    #+#             */
-/*   Updated: 2022/05/02 23:00:07 by ensebast         ###   ########.br       */
+/*   Updated: 2022/05/02 23:04:14 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	is_dir(char *exp, int *flag);
 void	append_slash(char **file_list);
-int	open_dir(char *directory, DIR **dir);
-int	check_exp(char *file_name, char *exp);
-int	check_valid(struct dirent *file_entry, int dir_flag, char *exp);
+int		open_dir(char *directory, DIR **dir);
+int		check_exp(char *file_name, char *exp);
+int		check_valid(struct dirent *file_entry, int dir_flag, char *exp);
 
 static int	count_file(char *directory, char *exp, int dir_flag)
 {
@@ -37,7 +37,8 @@ static int	count_file(char *directory, char *exp, int dir_flag)
 	return (i);
 }
 
-static void	fill_list(char *directory, char *exp, char **file_list, int dir_flag)
+static void	fill_list(char *directory, char *exp,
+		char **file_list, int dir_flag)
 {
 	int				i;
 	DIR				*dir;
