@@ -6,12 +6,12 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/05/03 19:09:00 by mamaro-d         ###   ########.fr        #
+#    Updated: 2022/05/02 21:28:14 by ensebast         ###   ########.br        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := minishell
-INCLUDE := -I ./include/
+INCLUDE := -I ../include/
 
 CC := gcc
 CFLAGS :=  -Wall -Wextra -Werror -g
@@ -65,8 +65,7 @@ FILE_B := main.c\
 	we_pre_split_bonus.c\
 	we_pre_util_bonus.c\
 	micro_regex_bonus.c\
-	wild_expansion_bonus.c\
-	relations_bonus.c
+	wild_expansion_bonus.c
 
 FILE_OBJ := $(FILES_M:c=o)
 DIR_OBJ := ./obj/

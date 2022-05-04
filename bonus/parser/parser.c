@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 09:53:01 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/05/03 19:09:52 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/04/27 11:35:23 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,12 @@ void	ft_parse(char *line)
 	while (line[index] != '\0')
 	{
 		has_quote(&line[index], &on_quote);
-		line = check_relation(line, &index, on_quote);
+		relation = is_in(g_data.operators, &line[index]);
+		if (relation && !on_quote)
+		{
+			line = ft_create_cmd(line, index, relation);
+			index = 0;
+		}
 		if (line[index])
 			index++;
 	}
