@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 09:53:01 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/05/03 19:09:52 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/05/05 20:42:32 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ t_node	*parse_cmd(char *line, char *relation)
 void	ft_parse(char *line)
 {
 	int		index;
-	char	*relation;
 	char	on_quote;
 
 	index = 0;
@@ -39,12 +38,9 @@ void	ft_parse(char *line)
 	{
 		has_quote(&line[index], &on_quote);
 		line = check_relation(line, &index, on_quote);
-		if (line[index])
-			index++;
 	}
-	relation = NULL;
 	if (*line != 0)
-		ft_create_cmd(line, index, relation);
+		ft_create_cmd(line, index, NULL);
 }
 
 char	*is_in(char **operators, char *line)

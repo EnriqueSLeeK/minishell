@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:18:34 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/05/03 19:11:17 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/05/05 20:48:07 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ char    *create_subshell(char *line)
 
     sub_line = (char *)ft_calloc(get_line_len(line), sizeof(char));
     ft_strlcpy(sub_line, &line[1], get_line_len(line));
+    line += get_line_len(line) + 1;
     relation = is_in(g_data.operators, line);
     if (*line && !relation)
     {
@@ -52,6 +53,7 @@ char    *create_subshell(char *line)
     node->args = ft_split("subshell", ' ');
     node->relation = relation;
     node->sub_line = sub_line;
+    node->fd_out = 1;
     add_new_node(node);
     return (line);
 }

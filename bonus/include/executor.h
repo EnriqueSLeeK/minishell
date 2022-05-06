@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 10:08:19 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/23 18:51:15 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/05/05 19:25:49 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	free_fds(void);
 void	exec_extern_cmd(t_node *node);
 void	execute_cmd(t_node *node);
 void	exec_commands(void);
+int	exec_bultin(t_node *node);
+void verify_node(t_node *node, int *status);
 
 int		check_grammar(void);
 void	link_relation(void);

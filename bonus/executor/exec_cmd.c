@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 10:26:57 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/04/26 13:33:14 by ensebast         ###   ########.br       */
+/*   Updated: 2022/05/05 21:28:47 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	exec_bultin(t_node *node)
 void	execute_cmd(t_node *node)
 {
 	t_fd	*fds;
+	int		status;
 
 	fds = g_data.fds;
 	child_sig(&(g_data.sig));
@@ -52,21 +53,9 @@ void	execute_cmd(t_node *node)
 			close(fds->value);
 		fds = fds->next;
 	}
-	if (node->fd_in != 0 && node->args[0])
-		dup2(node->fd_in, STDIN_FILENO);
-	if (node->fd_out != 1 && node->args[0])
-		dup2(node->fd_out, STDOUT_FILENO);
-	if (node->is_builtin)
-	{
-		g_data.exit_code = exec_bultin(node);
-		clean_up();
-		exit(g_data.exit_code);
-	}
-	else if (node->args[0])
-		exec_extern_cmd(node);
-	else
-		child_clean_up(0, 1);
+	verify_node(node, &status);
 }
+	
 
 void	exec_commands(void)
 {
