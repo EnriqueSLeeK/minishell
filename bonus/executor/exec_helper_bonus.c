@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:19:45 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/05/05 21:55:13 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/05/09 19:05:36 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ void sub_shell(t_node *node)
     free_commands();
     ft_parse(line);
     link_relation();
+    free(line);
     star_expansion(g_data.node);
     if (!check_grammar() && g_data.node)
         exec_commands();
     clean_up();
-    free(line);
     exit(g_data.exit_code);
 }
 
