@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 10:26:57 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/05/10 11:28:07 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/05/12 17:20:10 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ t_node *get_next_node(t_node *node)
 {
 	if(node->relation)
 	{
-		if(!ft_strncmp(node->relation, "&&", ft_strlen(node->relation)))
+		if(!ft_strncmp(node->relation, "&&", 2))
 			return (handle_and(node));
-		else if(!ft_strncmp(node->relation, "||", ft_strlen(node->relation)))
+		else if(!ft_strncmp(node->relation, "||", 2))
 			return (handle_or(node));
 		else
 			return (node->next);

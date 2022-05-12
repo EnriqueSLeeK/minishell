@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 11:37:56 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/05/10 11:44:56 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/05/12 17:22:27 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int	check_next_relation(t_node *node)
 	{
 		if (!ft_strncmp(node->relation, "|", ft_strlen(node->relation)) \
 )
-			show_error(M_ERROR_SYNTAX, "relation errada boy", 2, 0);
+			show_error(M_ERROR_SYNTAX, "|", 2, 0);
 		else
 			show_error(M_ERROR_SYNTAX, "'newline'", 2, 0);
 		return (1);

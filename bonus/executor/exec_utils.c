@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 09:56:49 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/05/09 20:18:32 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/05/12 17:21:41 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	link_relation(void)
 			return ;
 		if (node->relation && ft_strncmp(node->relation, " ", 1))
 		{
-			if (!ft_strncmp(node->relation, "|", 1))
+			if (!ft_strncmp(node->relation, "|", 1) && !node->relation[1])
 				handle_pipe(node);
 			else if (!ft_strncmp(node->relation, "<<", 2))
 				handle_here_doc(node);
@@ -92,9 +92,6 @@ void	link_relation(void)
 				handle_red_output(node);
 			else if (!ft_strncmp(node->relation, "<", 1))
 				handle_red_input(node);
-			/* else if(ft_strncmp(node->relation, "&&", 2)
-			|| ft_strncmp(node->relation, "||", 2))
-				show_error(M_ERROR_SYNTAX, "'newline'", 2, 0); */
 		}
 		node = node->next;
 	}
