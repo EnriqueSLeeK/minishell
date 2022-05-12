@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 10:26:57 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/05/05 21:28:47 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/05/10 11:28:07 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,34 @@ void	execute_cmd(t_node *node)
 	}
 	verify_node(node, &status);
 }
+
+t_node *handle_and(t_node *node)
+{
+	if(g_data.exit_code == 0 && node->next)
+		return (node->next);
+	return (NULL);
+}
+
+t_node *handle_or(t_node *node)
+{
+	if(g_data.exit_code != 0 && node->next)
+		return (node->next);
+	return (NULL);
+}
+
+t_node *get_next_node(t_node *node)
+{
+	if(node->relation)
+	{
+		if(!ft_strncmp(node->relation, "&&", ft_strlen(node->relation)))
+			return (handle_and(node));
+		else if(!ft_strncmp(node->relation, "||", ft_strlen(node->relation)))
+			return (handle_or(node));
+		else
+			return (node->next);
+	}
+	return (node->next);
+}
 	
 
 void	exec_commands(void)
@@ -79,7 +107,7 @@ void	exec_commands(void)
 				waitpid(pid, &g_data.exit_code, 0);
 				g_data.exit_code = get_status(g_data.exit_code);
 			}
-			node = node->next;
+			node = get_next_node(node);
 		}
 	}
 }
