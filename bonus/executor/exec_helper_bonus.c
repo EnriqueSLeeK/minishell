@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:19:45 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/05/09 19:05:36 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/05/12 21:18:45 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void verify_node(t_node *node, int *status)
         if (id == 0)
             sub_shell(node);
         waitpid(id, status, 0);
-        child_clean_up(0, 0);
-    }
+        child_clean_up(0, get_status(*status));
+    } 
     if (node->fd_in != 0 && node->args[0])
 		dup2(node->fd_in, STDIN_FILENO);
 	if (node->fd_out != 1 && node->args[0])

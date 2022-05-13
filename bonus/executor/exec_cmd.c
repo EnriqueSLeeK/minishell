@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 10:26:57 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/05/12 17:20:10 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/05/12 21:18:43 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ t_node *get_next_node(t_node *node)
 	}
 	return (node->next);
 }
-	
 
 void	exec_commands(void)
 {
