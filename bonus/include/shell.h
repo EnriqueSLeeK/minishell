@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 23:46:35 by ensebast          #+#    #+#             */
-/*   Updated: 2022/05/03 19:09:15 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/05/13 18:50:41 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@
 # define M_ERROR_SYNTAX "syntax error near unexpected token "
 # define M_PERMISSION "Permission denied"
 # define M_QUOTES_ERROR "unexpected EOF while looking for matching `\"' "
+# define M_PAR_ERROR "unexpected EOF while looking for matching ( or )"
 # define M_SYNTAX_EOF "syntax error: unexpected end of file"
 
 typedef struct s_shell

@@ -6,11 +6,29 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:18:34 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/05/05 20:48:07 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/05/13 18:59:41 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
+
+static int      verify_parentheses(char *line)
+{
+    int index;
+    int count;
+
+    index = 0;
+    count = 0;
+    while (line[index])
+    {
+        if (line[index] == '(')
+            count++;
+        if (line[index] == ')')
+            count--;
+        index++;
+    }
+    return (count);
+}
 
 static int     get_line_len(char *line)
 {
@@ -25,7 +43,7 @@ static int     get_line_len(char *line)
             count++;
         if (line[index] == ')')
             count--;
-        if (!count)
+        if(!count)
             break ;
         index++;
     }
@@ -61,6 +79,11 @@ char    *create_subshell(char *line)
 char    *check_relation(char *line, int *index, int quote)
 {
     char    *relation;
+    if(verify_parentheses(line))
+    {
+        show_error(M_PAR_ERROR, "", 2, 0);
+        return (line += ft_strlen(line));
+    } 
     if(line[*index] == '(' && !quote)
     {
         line = create_subshell(&line[*index]);
