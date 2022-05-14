@@ -6,12 +6,12 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 23:46:35 by ensebast          #+#    #+#             */
-/*   Updated: 2022/05/14 15:19:35 by ensebast         ###   ########.br       */
+/*   Updated: 2022/05/14 15:26:55 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
+#ifndef SHELL_BONUS_H
+# define SHELL_BONUS_H
 
 // System headers
 # include <stdio.h>

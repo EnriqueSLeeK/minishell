@@ -6,12 +6,12 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 15:42:03 by ensebast          #+#    #+#             */
-/*   Updated: 2022/03/07 23:05:01 by ensebast         ###   ########.br       */
+/*   Updated: 2022/05/14 15:27:15 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HASH_TABLE_H
-# define HASH_TABLE_H
+#ifndef HASH_TABLE_BONUS_H
+# define HASH_TABLE_BONUS_H
 
 # define INIT_SIZE 128
 # define FNV_PRIME 1099511628211UL

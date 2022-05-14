@@ -6,12 +6,12 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:27:22 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/22 15:37:23 by ensebast         ###   ########.br       */
+/*   Updated: 2022/05/14 15:27:48 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MISC_FUNC_H
-# define MISC_FUNC_H
+#ifndef MISC_FUNC_BONUS_H
+# define MISC_FUNC_BONUS_H
 
 // Quote flag interpretation
 typedef struct s_parse_flag
