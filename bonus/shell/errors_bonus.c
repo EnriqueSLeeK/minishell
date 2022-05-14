@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 10:34:11 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/05/14 15:30:18 by ensebast         ###   ########.br       */
+/*   Updated: 2022/05/14 16:12:38 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 } */
 void	show_error(char *name, char *message, int status, int exit_from_shell)
 {
-	write(2, "Minishell_bonus: ", 12);
+	write(2, "Minishell: ", 12);
 	write(2, name, ft_strlen(name));
 	write(2, message, ft_strlen(message));
 	write(2, "\n", 1);
