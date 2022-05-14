@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 15:19:19 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/05/09 19:37:24 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/05/14 14:21:07 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	free_args(t_node *node)
 		index++;
 	}
 	free(node->args);
-	if(node->sub_line)
+	if (node->sub_line)
 		free(node->sub_line);
 	node->args = NULL;
 }

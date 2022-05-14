@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:02:51 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/05/03 18:58:36 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/05/14 14:04:31 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	handle_red_output(t_node *node);
 int		handle_pipe(t_node *node);
 void	handle_red_input(t_node *node);
 void	handle_here_doc(t_node *node);
+t_node	*get_next_node(t_node *node);
 
 void	add_new_node(t_node *node);
 
@@ -68,6 +69,6 @@ char	*copy_string_trim(char **matrix, int j, int *is_active, char *quoute);
 void	trim_quotes(char **matrix);
 void	can_trim(t_node *node);
 
-char    *check_relation(char *line, int *index, int quote);
+char	*check_relation(char *line, int *index, int quote);
 
 #endif

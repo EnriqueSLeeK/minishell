@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 10:26:57 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/05/12 21:18:43 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/05/14 14:03:24 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,34 +54,6 @@ void	execute_cmd(t_node *node)
 		fds = fds->next;
 	}
 	verify_node(node, &status);
-}
-
-t_node *handle_and(t_node *node)
-{
-	if(g_data.exit_code == 0 && node->next)
-		return (node->next);
-	return (NULL);
-}
-
-t_node *handle_or(t_node *node)
-{
-	if(g_data.exit_code != 0 && node->next)
-		return (node->next);
-	return (NULL);
-}
-
-t_node *get_next_node(t_node *node)
-{
-	if(node->relation)
-	{
-		if(!ft_strncmp(node->relation, "&&", 2))
-			return (handle_and(node));
-		else if(!ft_strncmp(node->relation, "||", 2))
-			return (handle_or(node));
-		else
-			return (node->next);
-	}
-	return (node->next);
 }
 
 void	exec_commands(void)

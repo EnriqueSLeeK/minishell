@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 09:53:01 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/05/14 12:14:00 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/05/14 14:25:31 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_parse(char *line)
 			index++;
 	}
 	relation = NULL;
-	while(*line == ' ' || *line == '\t')
+	while (*line == ' ' || *line == '\t')
 		line++;
 	if (*line != 0)
 		ft_create_cmd(line, index, relation);
