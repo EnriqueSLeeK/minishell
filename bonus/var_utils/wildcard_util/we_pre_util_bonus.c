@@ -6,11 +6,11 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 15:49:27 by ensebast          #+#    #+#             */
-/*   Updated: 2022/04/13 18:05:36 by ensebast         ###   ########.br       */
+/*   Updated: 2022/05/14 15:15:01 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shell.h"
+#include "shell_bonus.h"
 
 void	get_pattern(char *line, int *i)
 {

@@ -6,11 +6,11 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 21:20:56 by ensebast          #+#    #+#             */
-/*   Updated: 2022/05/02 23:03:19 by ensebast         ###   ########.br       */
+/*   Updated: 2022/05/14 15:15:01 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shell.h"
+#include "shell_bonus.h"
 
 void	append_slash(char **file_list)
 {

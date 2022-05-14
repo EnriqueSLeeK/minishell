@@ -1,43 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   we_pre_split_bonus.c                               :+:      :+:    :+:   */
+/*   expand_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/13 12:20:30 by ensebast          #+#    #+#             */
-/*   Updated: 2022/05/14 15:15:01 by ensebast         ###   ########.br       */
+/*   Created: 2022/04/07 16:29:43 by ensebast          #+#    #+#             */
+/*   Updated: 2022/05/14 15:14:40 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell_bonus.h"
 
-char	*make_line(char *pattern);
-void	get_pattern(char *line, int *i);
-void	prepare_line(char **line, int i);
-char	*translate_line(char *line, int i);
-void	joining(char **dest, char *file, char *next);
+char	*prepare(char *parsed_line, char *var_name, int k, int bracket);
 
-static void	check(int *mode, char c)
+void	check(int *mode, char c)
 {
-	if (c == '<')
+	if (c == '<' && (*mode ^ OP_ARG))
 		*mode |= OP_ARG;
 	else if (c == '\'' && (*mode & LOCK_E) != LOCK_E)
 		*mode ^= EXPAND;
 	else if (c == '\"' && *mode != IGNORE)
 	{
-		*mode ^= EXPAND;
+		*mode ^= IGNORE;
 		*mode ^= LOCK_E;
 	}
 }
 
-static int	search_expandable(char *line)
+int	search_expandable_var(char *line)
 {
 	int	mode;
 	int	l;
 
-	l = 0;
 	mode = EXPAND;
+	l = 0;
 	while (*line)
 	{
 		check(&mode, *line);
@@ -47,24 +43,35 @@ static int	search_expandable(char *line)
 				skip_segment(&line);
 			mode ^= OP_ARG;
 		}
-		if (*line == '*' && (mode & EXPAND) && (mode ^ OP_ARG))
+		if (*line == '$' && (mode & EXPAND))
 			break ;
-		line += 1;
-		l += 1;
+		if (*line)
+		{
+			line += 1;
+			l += 1;
+		}
 	}
 	return (l);
 }
 
-void	we_pre_split(char **line, int index)
+// Expansion when mixed with string
+void	expand_mix(char **parsed_line, int flag)
 {
-	int		i;
-	int		segment_start;
+	int		k;
+	char	*line;
+	char	*var_name;
 
-	i = search_expandable((*line + index)) + index;
-	if ((*line)[i] == 0 || (*line)[i] != '*')
+	k = search_expandable_var(*parsed_line);
+	if (k == -1 || (*parsed_line)[k] != '$')
 		return ;
-	segment_start = i;
-	get_pattern((*line + segment_start), &segment_start);
-	prepare_line(line, segment_start);
-	we_pre_split(line, i + 1);
+	if ((*parsed_line)[k + 1] == '{')
+		var_name = &((*parsed_line)[k + 2]);
+	else
+		var_name = &((*parsed_line)[k + 1]);
+	(*parsed_line)[k] = 0;
+	line = prepare(*parsed_line, var_name, k, (*parsed_line)[k + 1] == '{');
+	free(*parsed_line);
+	*parsed_line = line;
+	if (flag != EXPAND_ONE)
+		expand_mix(parsed_line, flag);
 }

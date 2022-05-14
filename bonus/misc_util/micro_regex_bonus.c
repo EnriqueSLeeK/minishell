@@ -6,11 +6,11 @@
 /*   By: ensebast <ensebast@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 18:32:04 by ensebast          #+#    #+#             */
-/*   Updated: 2022/05/02 20:17:23 by ensebast         ###   ########.br       */
+/*   Updated: 2022/05/14 15:11:48 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shell.h"
+#include "shell_bonus.h"
 
 static int	match_symbol(char *regexp, char *text);
 

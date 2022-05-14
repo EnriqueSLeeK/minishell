@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   free_matrix_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/23 14:58:34 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/05/14 14:26:02 by mamaro-d         ###   ########.fr       */
+/*   Created: 2022/03/17 15:23:40 by ensebast          #+#    #+#             */
+/*   Updated: 2022/05/14 15:11:48 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "shell_bonus.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+// Bidimensional matrix
+void	free_bmatrix(char **matrix)
 {
-	if (n < 1)
-		return (0);
-	if (!s1 || !s2)
-		return (-1);
-	while (--n && *s1 && *s2)
+	int	i;
+
+	i = 0;
+	if (matrix == 0)
+		return ;
+	while (matrix[i])
 	{
-		if (*(unsigned char *)s1 != *(unsigned char *)s2)
-			break ;
-		s1++;
-		s2++;
+		free(matrix[i]);
+		i += 1;
 	}
-	return (*(unsigned char *)s1 - *(unsigned char *)s2);
+	free(matrix);
 }

@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   exit_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/23 14:58:34 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/05/14 14:26:02 by mamaro-d         ###   ########.fr       */
+/*   Created: 2022/03/15 18:30:24 by ensebast          #+#    #+#             */
+/*   Updated: 2022/05/14 15:09:56 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "shell_bonus.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	b_exit(void)
 {
-	if (n < 1)
-		return (0);
-	if (!s1 || !s2)
-		return (-1);
-	while (--n && *s1 && *s2)
-	{
-		if (*(unsigned char *)s1 != *(unsigned char *)s2)
-			break ;
-		s1++;
-		s2++;
-	}
-	return (*(unsigned char *)s1 - *(unsigned char *)s2);
+	clean_up();
+	exit(0);
 }

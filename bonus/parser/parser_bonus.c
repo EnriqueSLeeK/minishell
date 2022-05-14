@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   parser_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 09:53:01 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/05/14 14:25:31 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/05/14 15:11:48 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shell.h"
+#include "shell_bonus.h"
 
 t_node	*parse_cmd(char *line, char *relation)
 {
@@ -30,7 +30,6 @@ t_node	*parse_cmd(char *line, char *relation)
 void	ft_parse(char *line)
 {
 	int		index;
-	char	*relation;
 	char	on_quote;
 
 	index = 0;
@@ -38,25 +37,17 @@ void	ft_parse(char *line)
 	while (line[index] != '\0')
 	{
 		has_quote(&line[index], &on_quote);
-		relation = is_in(g_data.operators, &line[index]);
-		if (relation && !on_quote)
-		{
-			line = ft_create_cmd(line, index, relation);
-			index = 0;
-		}
-		if (line[index])
-			index++;
+		line = check_relation(line, &index, on_quote);
 	}
-	relation = NULL;
 	while (*line == ' ' || *line == '\t')
 		line++;
 	if (*line != 0)
-		ft_create_cmd(line, index, relation);
+		ft_create_cmd(line, index, NULL);
 }
 
 char	*is_in(char **operators, char *line)
 {
-	if (!ft_strncmp(operators[6], line, ft_strlen(operators[6])))
+	if (!ft_strncmp(operators[8], line, ft_strlen(operators[8])))
 	{
 		if (g_data.node)
 		{
@@ -65,7 +56,7 @@ char	*is_in(char **operators, char *line)
 				if ((!ft_strncmp(g_data.node->relation, "<", 1) \
 				|| !ft_strncmp(g_data.node->relation, ">", 1)) \
 				&& !g_data.node->next)
-					return (operators[6]);
+					return (operators[8]);
 				else
 					return (0);
 			}
@@ -104,12 +95,13 @@ char	*ft_create_cmd(char *line, int index, char *relation)
 
 	line[index] = '\0';
 	if (relation)
-		if (!ft_strncmp(relation, "<<", 2) || !ft_strncmp(relation, ">>", 2))
+		if (!ft_strncmp(relation, "<<", 2) || !ft_strncmp(relation, ">>", 2) \
+			|| !ft_strncmp(relation, "&&", 2) || !ft_strncmp(relation, "||", 2))
 			index += 1;
 	line[index] = '\0';
 	node = parse_cmd(ft_strdup(line), relation);
 	add_new_node(node);
-	if (node && node->args[0])
+	if (node->args[0])
 		set_type(node);
 	if (!node->is_builtin && !node->is_file)
 		search_bin(node->args);

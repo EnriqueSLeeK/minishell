@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   parser_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:02:51 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/05/14 14:25:49 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/05/14 15:16:45 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSER_H
 # define PARSER_H
-# include "shell.h"
+# include "shell_bonus.h"
 
 # define TRUE 1
 # define FALSE 0
@@ -44,6 +44,7 @@ void	handle_red_output(t_node *node);
 int		handle_pipe(t_node *node);
 void	handle_red_input(t_node *node);
 void	handle_here_doc(t_node *node);
+t_node	*get_next_node(t_node *node);
 
 void	add_new_node(t_node *node);
 
@@ -67,5 +68,7 @@ int		check_quoute(char c, int *is_active, char *quoute);
 char	*copy_string_trim(char **matrix, int j, int *is_active, char *quoute);
 void	trim_quotes(char **matrix);
 void	can_trim(t_node *node);
+
+char	*check_relation(char *line, int *index, int quote);
 
 #endif

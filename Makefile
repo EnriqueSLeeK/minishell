@@ -6,12 +6,14 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/05/02 20:15:49 by ensebast         ###   ########.br        #
+#    Updated: 2022/05/14 15:20:27 by ensebast         ###   ########.br        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := minishell
 INCLUDE := -I ./include/
+
+INCLUDE_B := -I ./bonus/include/
 
 CC := gcc
 CFLAGS :=  -Wall -Wextra -Werror -g
@@ -62,49 +64,53 @@ FILES_M := main.c\
 	expand_util.c\
 	errors.c\
 
-FILE_B := main_bonus.c\
-	hash_bonus.c\
-	pwd_bonus.c\
-	cd_bonus.c\
+FILE_B := cd_bonus.c\
+	echo_bonus.c\
 	env_bonus.c\
 	exit_bonus.c\
-	find_bonus.c\
-	echo_bonus.c\
-	unset_bonus.c\
 	export_bonus.c\
-	prompt_bonus.c\
-	convert_bonus.c\
-	clean_up_bonus.c\
+	pwd_bonus.c\
+	unset_bonus.c\
+	exec_cmd_bonus.c\
+	exec_helper_bonus.c\
+	exec_utils_bonus.c\
+	here_doc_bonus.c\
+	entry_util_bonus.c\
+	hash_bonus.c\
+	init_hash_table_bonus.c\
 	misc_func_bonus.c\
 	table_util_bonus.c\
-	entry_util_bonus.c\
-	search_bin_bonus.c\
+	convert_bonus.c\
+	find_bonus.c\
 	free_matrix_bonus.c\
-	var_expansion_bonus.c\
-	init_hash_table_bonus.c\
-	create_local_var_bonus.c\
-	status_expansion_bonus.c\
-	expand_bonus.c\
-	here_doc_bonus.c\
-	parser_utils_bonus.c\
-	handle_operators_bonus.c\
-	exec_cmd_bonus.c\
+	micro_regex_bonus.c\
 	quote_res_bonus.c\
-	exec_utils_bonus.c\
-	signal_handler_bonus.c\
 	skip_segment_bonus.c\
-	sig_here_doc_bonus.c\
 	free_command_bonus.c\
-	parser_quotes_helper_bonus.c\
+	handle_operators_bonus.c\
+	handle_operator_2_bonus.c\
 	parser_bonus.c\
+	parser_quotes_helper_bonus.c\
+	parser_utils_bonus.c\
+	relations_bonus.c\
 	string_utils_bonus.c\
-	signal_set_bonus.c\
-	expand_util_bonus.c\
+	search_bin_bonus.c\
+	clean_up_bonus.c\
 	errors_bonus.c\
+	main_bonus.c\
+	prompt_bonus.c\
+	sig_here_doc_bonus.c\
+	signal_handler_bonus.c\
+	signal_set_bonus.c\
+	create_local_var_bonus.c\
+	expand_bonus.c\
+	expand_util_bonus.c\
+	status_expansion_bonus.c\
+	var_expansion_bonus.c\
 	file_list_bonus.c\
+	file_list_util_bonus.c\
 	we_pre_split_bonus.c\
 	we_pre_util_bonus.c\
-	micro_regex_bonus.c\
 	wild_expansion_bonus.c
 
 FILE_OBJ := $(FILES_M:c=o)
@@ -119,7 +125,9 @@ OBJ_B := $(addprefix $(DIR_OBJ_BONUS), $(FILE_OBJ_BONUS))
 VPATH := ./src/shell ./src/hash_table ./src/parser ./src/search_bin\
 		 ./src/var_utils ./src/builtin ./src/executor ./src/misc_util\
 		 ./src/signal_handler\
-		 ./bonus/var_utils/wildcard_util ./bonus/misc_util
+		 ./bonus/var_utils/wildcard_util ./bonus/shell ./bonus/hash_table\
+		 ./bonus/parser ./bonus/search_bin ./bonus/var_utils ./bonus/builtin\
+		 ./bonus/executor ./bonus/misc_util ./bonus/signal_handler
 
 $(DIR_OBJ)%.o: %.c
 	@mkdir -p $(@D)
@@ -127,7 +135,7 @@ $(DIR_OBJ)%.o: %.c
 
 $(DIR_OBJ_BONUS)%.o: %.c
 	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) $(INCLUDE) -c $^ -o $@
+	$(CC) $(CFLAGS) $(INCLUDE_B) -c $^ -o $@
 
 $(NAME): $(OBJ_M) $(LIBFT)
 	$(CC) $(CFLAGS) -o $@ $(OBJ_M) $(LIBFT) $(LIB)
