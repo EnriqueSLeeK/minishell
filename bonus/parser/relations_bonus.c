@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:18:34 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/05/14 15:13:19 by ensebast         ###   ########.br       */
+/*   Updated: 2022/05/14 16:18:58 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char	*create_subshell_bonus(char *line)
 	if (*line)
 		line += ft_strlen(relation);
 	node = (t_node *)ft_calloc(sizeof(t_node), 1);
-	node->args = ft_split("subshell_bonus", ' ');
+	node->args = ft_split("subshell", ' ');
 	node->relation = relation;
 	node->sub_line = sub_line;
 	node->fd_out = 1;

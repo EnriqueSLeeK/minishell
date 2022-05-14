@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 11:37:56 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/05/14 15:13:19 by ensebast         ###   ########.br       */
+/*   Updated: 2022/05/14 16:18:32 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	set_type(t_node *node)
 	if (index == ft_strlen(node->args[0]))
 	{
 		node->is_file = 1;
-		printf("Minishell_bonus: %s: Is a directory\n", node->args[0]);
+		printf("Minishell: %s: Is a directory\n", node->args[0]);
 		return ;
 	}
 	if (is_builtin(node))
