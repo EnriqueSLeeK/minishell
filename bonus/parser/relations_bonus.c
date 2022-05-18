@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:18:34 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/05/18 11:40:02 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/05/18 11:51:40 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,5 @@ char	*check_relation(char *line, int *index, int quote)
 		line = ft_create_cmd(line, *index, relation);
 		*index = 0;
 	}
-	else
-		*index += 1;
 	return (line);
 }
