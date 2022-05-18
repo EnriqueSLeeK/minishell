@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 11:37:56 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/05/14 16:18:32 by ensebast         ###   ########.br       */
+/*   Updated: 2022/05/18 11:38:54 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,6 @@ int	is_file(t_node	*node)
 	}
 	return (0);
 }
-
-/* 	else if (ft_strncmp(node->args[0], "/usr", 4))
-	{
-		access(node->args[0], F_OK);
-		perror(node->args[0]);
-		return (1);
-	} */
 
 void	set_type(t_node *node)
 

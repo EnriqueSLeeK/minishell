@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 09:53:01 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/05/14 15:11:48 by ensebast         ###   ########.br       */
+/*   Updated: 2022/05/18 11:44:57 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ void	ft_parse(char *line)
 	{
 		has_quote(&line[index], &on_quote);
 		line = check_relation(line, &index, on_quote);
+		if (line[index])
+			index++;
 	}
-	while (*line == ' ' || *line == '\t')
-		line++;
 	if (*line != 0)
 		ft_create_cmd(line, index, NULL);
 }
@@ -93,6 +93,11 @@ char	*ft_create_cmd(char *line, int index, char *relation)
 {
 	t_node	*node;
 
+	while (*line == ' ' || *line == '\t')
+	{
+		index--;
+		line++;
+	}
 	line[index] = '\0';
 	if (relation)
 		if (!ft_strncmp(relation, "<<", 2) || !ft_strncmp(relation, ">>", 2) \
