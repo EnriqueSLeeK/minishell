@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 11:37:56 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/05/18 11:38:54 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/05/19 10:11:26 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,13 @@ void	set_type(t_node *node)
 	}
 }
 
+/* 		if (!ft_strncmp(node->relation, "|", ft_strlen(node->relation)))
+			show_error(M_ERROR_SYNTAX, "|", 2, 0);
+		else */
 int	check_next_relation(t_node *node)
 {
-	if (!ft_strncmp(node->relation, "|", ft_strlen(node->relation))
-		&& !node->args[0])
+	if (!ft_strncmp(node->relation, "|", ft_strlen(node->relation)) \
+	&& !node->args[0])
 	{
 		show_error(M_ERROR_SYNTAX, node->relation, 2, 0);
 		return (1);
@@ -88,11 +91,17 @@ int	check_next_relation(t_node *node)
 	if (node->relation && (!node->next || !node->next->args \
 		|| !node->next->args[0]))
 	{
-		if (!ft_strncmp(node->relation, "|", ft_strlen(node->relation)) \
-)
-			show_error(M_ERROR_SYNTAX, "|", 2, 0);
-		else
-			show_error(M_ERROR_SYNTAX, "'newline'", 2, 0);
+		show_error(M_ERROR_SYNTAX, "'newline'", 2, 0);
+		return (1);
+	}
+	if ((node->sub_line && node->previous) && !node->previous->relation)
+	{
+		show_error(M_ERROR_SYNTAX, "( or )", 2, 0);
+		return (1);
+	}
+	if ((node->sub_line && node->next) && !node->relation)
+	{
+		show_error(M_ERROR_SYNTAX, node->next->args[0], 2, 0);
 		return (1);
 	}
 	return (0);

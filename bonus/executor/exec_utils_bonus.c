@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 09:56:49 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/05/14 15:11:48 by ensebast         ###   ########.br       */
+/*   Updated: 2022/05/19 09:28:45 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,4 @@ void	link_relation(void)
 		}
 		node = node->next;
 	}
-	return ;
 }

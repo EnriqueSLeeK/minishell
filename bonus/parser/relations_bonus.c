@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 11:18:34 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/05/18 11:51:40 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/05/19 10:01:01 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,17 +85,17 @@ char	*check_relation(char *line, int *index, int quote)
 		show_error(M_PAR_ERROR, "", 2, 0);
 		return (line += ft_strlen(line));
 	}
+	relation = is_in(g_data.operators, &line[*index]);
+	if ((relation && !quote) || (line[*index + 1] == '(' && !quote))
+	{
+		line = ft_create_cmd(line, *index, relation);
+		*index = 0;
+	}
 	if (line[*index] == '(' && !quote)
 	{
 		line = create_subshell_bonus(&line[*index]);
 		*index = 0;
 		return (line);
-	}
-	relation = is_in(g_data.operators, &line[*index]);
-	if (relation && !quote)
-	{
-		line = ft_create_cmd(line, *index, relation);
-		*index = 0;
 	}
 	return (line);
 }
