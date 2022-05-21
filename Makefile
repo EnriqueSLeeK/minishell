@@ -6,7 +6,7 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/05/14 15:20:27 by ensebast         ###   ########.br        #
+#    Updated: 2022/05/21 15:01:51 by ensebast         ###   ########.br        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -129,6 +129,8 @@ VPATH := ./src/shell ./src/hash_table ./src/parser ./src/search_bin\
 		 ./bonus/parser ./bonus/search_bin ./bonus/var_utils ./bonus/builtin\
 		 ./bonus/executor ./bonus/misc_util ./bonus/signal_handler
 
+all: $(NAME)
+
 $(DIR_OBJ)%.o: %.c
 	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) $(INCLUDE) -c $^ -o $@
@@ -137,15 +139,14 @@ $(DIR_OBJ_BONUS)%.o: %.c
 	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) $(INCLUDE_B) -c $^ -o $@
 
-$(NAME): $(OBJ_M) $(LIBFT)
-	$(CC) $(CFLAGS) -o $@ $(OBJ_M) $(LIBFT) $(LIB)
-
 $(LIBFT):
 	make -C libft
 
-all: $(NAME)
+$(NAME): $(OBJ_M) $(LIBFT) prot
+	$(CC) $(CFLAGS) -o $@ $(OBJ_M) $(LIBFT) $(LIB)
 
-bonus: $(OBJ_B) $(LIBFT)
+
+bonus: $(OBJ_B) $(LIBFT) prot
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ_B) $(LIBFT) $(LIB)
 
 clean:
@@ -159,4 +160,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+prot:
+	@rm -f minishell
+
+.PHONY: all clean fclean re bonus prot
