@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 22:08:00 by ensebast          #+#    #+#             */
-/*   Updated: 2022/05/19 10:29:19 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/05/25 18:51:02 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	main(int argc, char *argv[], char *envp[])
 	while (1)
 	{
 		prompt_sig(&(g_data.sig));
+		g_data.total_nodes = 0;
 		line = prompt();
 		var_expansion_line(&line, EXPAND_ALL);
 		ft_parse(line);

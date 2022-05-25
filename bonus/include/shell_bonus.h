@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 23:46:35 by ensebast          #+#    #+#             */
-/*   Updated: 2022/05/14 15:26:55 by ensebast         ###   ########.br       */
+/*   Updated: 2022/05/25 18:48:41 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_shell_bonus
 	t_fd			*fds;
 	int				status;
 	int				exit_code;
+	int				total_nodes;
 	char			**operators;
 	char			**envp;
 	t_signal		sig;

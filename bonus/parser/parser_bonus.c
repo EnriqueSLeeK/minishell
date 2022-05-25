@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 09:53:01 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/05/19 09:59:47 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/05/25 18:52:34 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,20 @@ void	ft_parse(char *line)
 {
 	int		index;
 	char	on_quote;
+	int		last_total_nodes;
 
 	index = 0;
 	on_quote = 0;
+	last_total_nodes = g_data.total_nodes;
 	while (line[index] != '\0')
 	{
 		has_quote(&line[index], &on_quote);
 		line = check_relation(line, &index, on_quote);
+		if (g_data.total_nodes > last_total_nodes)
+		{
+			last_total_nodes = g_data.total_nodes;
+			continue ;
+		}
 		if (line[index])
 			index++;
 	}
@@ -110,5 +117,6 @@ char	*ft_create_cmd(char *line, int index, char *relation)
 		set_type(node);
 	if (!node->is_builtin && !node->is_file)
 		search_bin(node->args);
+	g_data.total_nodes += 1;
 	return (line += index + 1);
 }
