@@ -6,11 +6,12 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/05/27 14:27:36 by ensebast         ###   ########.br        #
+#    Updated: 2022/05/27 15:27:49 by ensebast         ###   ########.br        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := minishell
+NAME_B := minishell_bonus
 INCLUDE := -I ./include/
 
 INCLUDE_B := -I ./bonus/include/
@@ -131,6 +132,8 @@ VPATH := ./src/shell ./src/hash_table ./src/parser ./src/search_bin\
 
 all: $(NAME)
 
+bonus: $(NAME_B)
+
 $(DIR_OBJ)%.o: %.c
 	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) $(INCLUDE) -c $^ -o $@
@@ -145,9 +148,8 @@ $(LIBFT):
 $(NAME): $(OBJ_M) $(LIBFT)
 	$(CC) $(CFLAGS) -o $@ $(OBJ_M) $(LIBFT) $(LIB)
 
-
-bonus: $(OBJ_B) $(LIBFT)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ_B) $(LIBFT) $(LIB)
+$(NAME_B): $(OBJ_B) $(LIBFT)
+	$(CC) $(CFLAGS) -o $@ $(OBJ_B) $(LIBFT) $(LIB)
 
 clean:
 	$(RM) $(DIR_OBJ)
@@ -155,7 +157,7 @@ clean:
 	make clean -C libft
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(NAME_B)
 	make fclean -C libft
 
 re: fclean all
