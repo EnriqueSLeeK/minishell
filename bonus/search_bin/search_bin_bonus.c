@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 13:44:56 by ensebast          #+#    #+#             */
-/*   Updated: 2022/05/14 15:13:34 by ensebast         ###   ########.br       */
+/*   Updated: 2022/05/27 14:35:58 by ensebast         ###   ########.br       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static char	*search(char **bin)
 
 	i = 0;
 	path = ft_split(get_value(g_data.env_vars, "PATH"), ':');
-	if (path[0] == NULL)
+	if (path == 0 || path[0] == NULL)
 		return (*bin);
 	while (path[i])
 	{

@@ -6,7 +6,7 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/05/21 15:01:51 by ensebast         ###   ########.br        #
+#    Updated: 2022/05/27 14:27:36 by ensebast         ###   ########.br        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -142,11 +142,11 @@ $(DIR_OBJ_BONUS)%.o: %.c
 $(LIBFT):
 	make -C libft
 
-$(NAME): $(OBJ_M) $(LIBFT) prot
+$(NAME): $(OBJ_M) $(LIBFT)
 	$(CC) $(CFLAGS) -o $@ $(OBJ_M) $(LIBFT) $(LIB)
 
 
-bonus: $(OBJ_B) $(LIBFT) prot
+bonus: $(OBJ_B) $(LIBFT)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ_B) $(LIBFT) $(LIB)
 
 clean:
@@ -160,7 +160,4 @@ fclean: clean
 
 re: fclean all
 
-prot:
-	@rm -f minishell
-
-.PHONY: all clean fclean re bonus prot
+.PHONY: all clean fclean re bonus
