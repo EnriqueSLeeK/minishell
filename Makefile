@@ -140,7 +140,7 @@ $(LIBFT):
 	make -C libft
 
 $(NAME): $(DIR_OBJ) $(LIBFT)
-	(test -f obj/main_bonus.o \
+	(test -f obj/main_bonus.o || \
 		$(CC) $(CFLAGS) -o $@ $(OBJ_M) $(LIBFT) $(LIB)) || true;
 	(test -f obj/main_bonus.o && \
 		$(CC) $(CFLAGS) -o $@ $(OBJ_B) $(LIBFT) $(LIB)) || true;
