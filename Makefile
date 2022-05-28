@@ -6,19 +6,18 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/05/27 15:27:49 by ensebast         ###   ########.br        #
+#    Updated: 2022/05/28 13:33:37 by ensebast         ###   ########.br        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := minishell
-NAME_B := minishell_bonus
-INCLUDE := -I ./include/
 
+INCLUDE := -I ./include/
 INCLUDE_B := -I ./bonus/include/
 
 CC := gcc
-CFLAGS :=  -Wall -Wextra -Werror -g
 LIB := -lreadline
+CFLAGS :=  -Wall -Wextra -Werror -g
 
 LIBFT := ./libft/libft.a
 
@@ -115,13 +114,12 @@ FILE_B := cd_bonus.c\
 	wild_expansion_bonus.c
 
 FILE_OBJ := $(FILES_M:c=o)
+FILE_OBJ_BONUS := $(FILE_B:c=o)
+
 DIR_OBJ := ./obj/
 
-FILE_OBJ_BONUS := $(FILE_B:c=o)
-DIR_OBJ_BONUS := ./obj_bonus/
-
 OBJ_M := $(addprefix $(DIR_OBJ), $(FILE_OBJ))
-OBJ_B := $(addprefix $(DIR_OBJ_BONUS), $(FILE_OBJ_BONUS))
+OBJ_B := $(addprefix $(DIR_OBJ), $(FILE_OBJ_BONUS))
 
 VPATH := ./src/shell ./src/hash_table ./src/parser ./src/search_bin\
 		 ./src/var_utils ./src/builtin ./src/executor ./src/misc_util\
@@ -130,34 +128,27 @@ VPATH := ./src/shell ./src/hash_table ./src/parser ./src/search_bin\
 		 ./bonus/parser ./bonus/search_bin ./bonus/var_utils ./bonus/builtin\
 		 ./bonus/executor ./bonus/misc_util ./bonus/signal_handler
 
-all: $(NAME)
+all: $(OBJ_M) $(NAME)
 
-bonus: $(NAME_B)
+bonus: $(OBJ_B) $(NAME)
 
 $(DIR_OBJ)%.o: %.c
 	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) $(INCLUDE) -c $^ -o $@
-
-$(DIR_OBJ_BONUS)%.o: %.c
-	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) $(INCLUDE_B) -c $^ -o $@
+	$(CC) $(CFLAGS) $(INCLUDE_B) $(INCLUDE) -c $^ -o $@
 
 $(LIBFT):
 	make -C libft
 
-$(NAME): $(OBJ_M) $(LIBFT)
-	$(CC) $(CFLAGS) -o $@ $(OBJ_M) $(LIBFT) $(LIB)
-
-$(NAME_B): $(OBJ_B) $(LIBFT)
-	$(CC) $(CFLAGS) -o $@ $(OBJ_B) $(LIBFT) $(LIB)
+$(NAME): $(DIR_OBJ) $(LIBFT)
+	-test -f obj/main_bonus.o || $(CC) $(CFLAGS) -o $@ $(OBJ_M) $(LIBFT) $(LIB);
+	-test -f obj/main_bonus.o && $(CC) $(CFLAGS) -o $@ $(OBJ_B) $(LIBFT) $(LIB);
 
 clean:
 	$(RM) $(DIR_OBJ)
-	$(RM) $(DIR_OBJ_BONUS)
 	make clean -C libft
 
 fclean: clean
-	$(RM) $(NAME) $(NAME_B)
+	$(RM) $(NAME)
 	make fclean -C libft
 
 re: fclean all
