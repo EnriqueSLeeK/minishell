@@ -6,7 +6,7 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 22:59:02 by ensebast          #+#    #+#              #
-#    Updated: 2022/05/28 14:10:44 by ensebast         ###   ########.br        #
+#    Updated: 2022/05/28 14:27:33 by ensebast         ###   ########.br        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -140,8 +140,10 @@ $(LIBFT):
 	make -C libft
 
 $(NAME): $(DIR_OBJ) $(LIBFT)
-	test -f obj/main_bonus.o || $(CC) $(CFLAGS) -o $@ $(OBJ_M) $(LIBFT) $(LIB);
-	(test -f obj/main_bonus.o && $(CC) $(CFLAGS) -o $@ $(OBJ_B) $(LIBFT) $(LIB)) || true;
+	(test -f obj/main.o && rm -f $(OBJ_B) && \
+		$(CC) $(CFLAGS) -o $@ $(OBJ_M) $(LIBFT) $(LIB)) || true;
+	(test -f obj/main_bonus.o && rm -f $(OBJ_M) && \
+		$(CC) $(CFLAGS) -o $@ $(OBJ_B) $(LIBFT) $(LIB)) || true;
 
 clean:
 	$(RM) $(DIR_OBJ)
