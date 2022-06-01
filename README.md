@@ -25,7 +25,7 @@ make bonus
 ### Not implemented
 - ; and \ metacharacter are not implemented
 
-## Built-ins
+## Builtins
 ### cd
 Change the current directory
 ```
