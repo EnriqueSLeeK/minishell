@@ -55,3 +55,9 @@ Unset environment variables
 ```
 unset <var1> ... <varn>
 ```
+
+### Exit
+Just exit the program
+```
+exit
+```
