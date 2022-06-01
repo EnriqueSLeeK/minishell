@@ -44,19 +44,19 @@ echo <arg1> ... <argn>
 echo -n <arg1> ... <argn>
 ```
 
-### Export
+### export
 Set or substitue a environment variables
 ```
 export <var1>=<value1> ... <varn>=<valuen>
 ```
 
-### Unset
+### unset
 Unset environment variables
 ```
 unset <var1> ... <varn>
 ```
 
-### Exit
+### exit
 Just exit the program
 ```
 exit
