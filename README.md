@@ -14,7 +14,7 @@ make bonus
 ```
 
 ## Functionalities
-- Redirections ( <, <<, >, >> )
+- Input/Output redirections ( <, <<, >, >> )
 - Wildcard (only the * expansion) [bonus only]
 - Logical operator ( &&, || ) [bonus only]
 
