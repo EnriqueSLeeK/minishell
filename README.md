@@ -17,6 +17,7 @@ make bonus
 - Input/Output redirections ( <, <<, >, >> )
 - Wildcard (only the * expansion) [bonus only]
 - Logical operator ( &&, || ) [bonus only]
+- Priority parentheses [bonus only]
 
 ## Not implemented
 - ; and \ metacharacter are not implemented
