@@ -38,7 +38,7 @@ pwd
 ```
 ### echo
 Print out the arguments given to him
-Supported flag: -n (have the same behavior as the original echo)
+(Supported flag: -n (have the same behavior as the original echo))
 ```
 echo <arg1> ... <argn>
 echo -n <arg1> ... <argn>
