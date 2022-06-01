@@ -17,7 +17,7 @@ make bonus
 ### Implemented
 - Input/Output redirections ( <, <<, >, >> )
 - Some builtins
-- Environment variables ( creation, deletion, substitution )
+- Environment variables ( creation, deletion, substitution, expansion )
 - Wildcard (only the * expansion) [bonus only]
 - Logical operator ( &&, || ) [bonus only]
 - Priority parentheses [bonus only]
