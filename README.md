@@ -15,6 +15,7 @@ make bonus
 
 ## Functionalities
 ### Implemented
+- Pipes
 - Input/Output redirections ( <, <<, >, >> )
 - Some builtins
 - Environment variables ( creation, deletion, substitution, expansion )
